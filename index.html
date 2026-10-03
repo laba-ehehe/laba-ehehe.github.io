@@ -651,6 +651,21 @@ button.burst:hover .sbx{transform:translate(-50%,-50%) rotate(-12deg) scale(1.06
 #dock .rz:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
 #dock .tray{background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,.08));border-left:2px solid rgba(255,255,255,.6);box-shadow:inset 2px 0 4px rgba(0,0,40,.25)}
 #dock .tray #clk2{font:600 13px var(--f-pix);background:#0b1a4a;color:#7ee8ff;border-radius:6px;padding:2px 8px;letter-spacing:.06em;box-shadow:inset 0 1px 3px rgba(0,0,0,.6)}
+
+/* ---------- v16 side quests ---------- */
+.sg{gap:22px}
+.sk{display:flex;flex-direction:column;color:#fff;background:#17121f;border:3px solid var(--q);border-radius:20px;box-shadow:5px 5px 0 var(--q);transform:rotate(var(--r,0deg));overflow:hidden;transition:transform .18s,box-shadow .18s}
+.sk:hover{transform:rotate(0) translate(-3px,-3px);box-shadow:8px 8px 0 var(--q);border-color:var(--q)}
+.sk .qh{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;background:var(--q);color:var(--ink);font:700 12px var(--f-pix);letter-spacing:.1em}
+.sk .qh i{font-style:normal;background:var(--ink);color:var(--q);border-radius:999px;padding:1px 9px;font-size:10.5px}
+.sk .im{height:140px;border-bottom:3px solid var(--q)}
+.sk .qb{display:flex;flex-direction:column;gap:8px;padding:14px 16px 16px;flex:1}
+.sk .qb b{padding:0;font-size:16px}
+.sk .qb small{padding:0;flex:1;color:#cfc8e4;font-size:13.5px;line-height:1.45}
+.sk .qt{display:flex;flex-wrap:wrap;gap:6px}
+.sk .qt em{font:600 11px var(--f-pix);font-style:normal;letter-spacing:.06em;text-transform:uppercase;color:var(--q);border:1.5px solid var(--q);border-radius:999px;padding:2px 9px}
+.sk .qg{align-self:flex-start;margin-top:4px;font:700 12px var(--f-wide);color:var(--ink);background:var(--q);border:2px solid var(--ink);border-radius:999px;padding:6px 14px;box-shadow:2px 2px 0 rgba(255,255,255,.35)}
+@media(max-width:600px){.sk{transform:none}}
 @media(max-width:960px){
   .bento{grid-template-columns:1fr 1fr}.A{grid-column:span 2;grid-row:auto;min-height:480px}.F{grid-column:span 2}.G{grid-column:span 2}.G .xp .bd{grid-template-columns:1fr}
   .ab-g,.mg{grid-template-columns:1fr}.polas{height:400px;max-width:360px;margin:0 auto}
@@ -723,7 +738,7 @@ button.burst:hover .sbx{transform:translate(-50%,-50%) rotate(-12deg) scale(1.06
     <div class="tray">
       <div class="bento">
         <div class="card A reveal">
-          <div class="xp dlg"><div class="tt"><span class="ti">Error</span><span class="bs"><i>×</i></span></div><div class="bd"><svg><use href="#warn"/></svg><span>Unable to load: way too cute &amp; too amazing for one screen. (0x2027LA)</span></div><button class="ok" type="button">OK</button></div>
+          <div class="xp dlg"><div class="tt"><span class="ti">Error</span><span class="bs"><i>×</i></span></div><div class="bd"><svg><use href="#warn"/></svg><span>Unable to load: way too cute and amazing (and autistic) (0x67)</span></div><button class="ok" type="button">OK</button></div>
           <svg class="cursors" viewBox="0 0 70 40"><use href="#cur" x="0" y="0" width="26" height="28"/><use href="#cur" x="14" y="4" width="26" height="28"/><use href="#cur" x="28" y="8" width="26" height="28"/></svg>
           <img id="av" src="/assets/img/avatar-px.png" alt="Pixel avatar of Lan Anh">
         </div>
@@ -802,7 +817,7 @@ button.burst:hover .sbx{transform:translate(-50%,-50%) rotate(-12deg) scale(1.06
   </div>
 </section>
 
-<footer><div class="wrap"><div class="chr">Thanks 4 visiting</div><p>made with 💖 by lan anh · i lob u</p><a class="btn pk" href="#top">▲ Back to the portal</a></div></footer>
+<footer><div class="wrap"><div class="chr">Thanks 4 visiting</div><p>made with 💖 by lan anh · ilysm ♥</p><a class="btn pk" href="#top">▲ Back to the portal</a></div></footer>
 
 <div id="smenu" aria-hidden="true">
   <div class="sh"><span class="av"><img src="/assets/img/avatar-px.png" alt=""></span><div><b>Lan Anh Do</b><small>CompE + Econ · UF '27</small></div></div>
@@ -926,7 +941,7 @@ $('#cams').innerHTML = main.map((p,i) => { const M = PM[i]; return `
     <div class="ctl3"><div class="dp3">OK</div><div class="bs3"><i>MENU</i><i>DEL</i></div><div class="spk">${'<i></i>'.repeat(12)}</div></div></div></div>
     <div class="info"><h3>${esc(p.name)}</h3><div class="rl">${esc(p.role||'')} · ${esc(p.dates||'')}</div><p>${esc(p.desc)}</p><div class="mtiles">${M.m.slice(1).map(([n,l]) => `<div class="mt"><b>${esc(n)}</b><span>${esc(l)}</span></div>`).join('')}</div>${p.points?`<ul>${p.points.map(b => `<li>${emph(fmt(b))}</li>`).join('')}</ul>`:''}<div class="tg">${p.tags.map(t => `<span>${esc(t)}</span>`).join('')}</div><div class="lk">${p.links.map(([t,u]) => `<a class="btn pk" href="${u}" target="_blank" rel="noopener">${esc(t)} ↗</a>`).join('')}</div></div></article>`; }).join('');
 $('#pcount').textContent = String(D.projects.length).padStart(2,'0')+' ITEMS';
-$('#sg').innerHTML = side.map(p => `<a class="sk reveal" href="${p.links[0][1]}" target="_blank" rel="noopener"><div class="im">${COVERS[p.name]||`<img src="${p.img}" alt="" loading="lazy">`}</div><b>${esc(p.name)}</b><small>${esc(p.desc)}</small></a>`).join('');
+$('#sg').innerHTML = side.map((p,i) => `<a class="sk reveal" style="--q:${['#ff7ac8','#7ec8ff','#b6ff5c','#ffe14a'][i%4]};--r:${[-1.4,1,-.8,1.3][i%4]}deg" href="${p.links[0][1]}" target="_blank" rel="noopener"><div class="qh"><span>QUEST ${String(i+1).padStart(2,'0')}</span><i>✓ CLEARED</i></div><div class="im">${COVERS[p.name]||`<img src="${p.img}" alt="" loading="lazy">`}</div><div class="qb"><b>${esc(p.name)}</b><small>${esc(p.desc)}</small><div class="qt">${(p.tags||[]).map(t => `<em>${esc(t)}</em>`).join('')}</div><span class="qg">GitHub ↗</span></div></a>`).join('');
 
 /* ---------- leadership as pink TVs ---------- */
 const LM = [
