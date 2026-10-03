@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lan Anh · Purikura Booth</title>
+<link rel="icon" href="/assets/img/avatar.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@500;700;900&family=Yomogi&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/content.css">
+<style>
+:root{--ink:#4a2a68;--pk:#ff7fb8;--pk2:#ffc2de;--lv:#c9b3ff;--sky:#bfe6ff;--ye:#fff0a8;
+  --c-ink:#4a2a68;--c-mute:#8f78b0;--c-accent:#e0489a;--c-line:#f0dcf7;--c-card:#fff;--c-input:#fff;--c-chip-a:#ffd9ee;--c-chip-b:#d9ecff;--c-chip-c:#fff2b8;--c-chip-d:#d8f7e6;--c-chip-e:#eadcff;
+  --c-font-h:'Mochiy Pop One',sans-serif;--c-font-b:'Zen Maru Gothic',sans-serif;--c-btn:#ff7fb8;--c-btn-ink:#fff;--c-radius:16px;--c-bullet:'♡'}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden}
+body{font-family:'Zen Maru Gothic',sans-serif;color:var(--ink);-webkit-user-select:none;user-select:none;
+  background:radial-gradient(700px 500px at 12% 8%,rgba(255,255,255,.9),transparent 60%),radial-gradient(700px 500px at 92% 90%,rgba(255,255,255,.7),transparent 60%),linear-gradient(135deg,#ffd0e8 0%,#e3d4ff 45%,#c8e8ff 100%)}
+button{font:inherit;color:inherit;cursor:pointer}
+#glit{position:fixed;inset:0;pointer-events:none;z-index:0}
+.puffy{font-family:'Mochiy Pop One',sans-serif;color:var(--pk);paint-order:stroke fill;-webkit-text-stroke:7px #fff;text-shadow:0 4px 0 rgba(255,127,184,.35),0 0 18px rgba(255,255,255,.9);letter-spacing:.02em}
+/* top bar */
+header#top{position:fixed;left:0;right:0;top:0;z-index:30;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-size:26px;line-height:1}.logo img{width:30px;height:44px;image-rendering:pixelated;filter:drop-shadow(0 3px 0 rgba(255,255,255,.9)) drop-shadow(0 4px 6px rgba(120,60,160,.3))}.logo small{display:block;font:700 10px 'Zen Maru Gothic';letter-spacing:.35em;color:#9a7fc0;-webkit-text-stroke:0;text-shadow:none;margin-top:2px}
+.tabs{display:flex;gap:6px;padding:5px;border-radius:999px;background:rgba(255,255,255,.65);backdrop-filter:blur(8px);border:2px solid #fff;box-shadow:0 6px 18px rgba(150,90,200,.2)}
+.tab{padding:8px 20px;border-radius:999px;border:0;background:transparent;font:900 14px 'Zen Maru Gothic';color:#9a7fc0;transition:all .2s}.tab.on{background:linear-gradient(180deg,#ff9fcc,#ff6fae);color:#fff;box-shadow:0 3px 0 #d04a92,0 6px 14px rgba(255,111,174,.5)}
+.tools{display:flex;gap:6px}.tl{padding:8px 15px;border-radius:999px;border:2px solid #fff;background:rgba(255,255,255,.65);backdrop-filter:blur(8px);font:900 13px 'Zen Maru Gothic';color:#8a5ab8;white-space:nowrap;text-decoration:none;box-shadow:0 4px 12px rgba(150,90,200,.18)}.tl:hover{background:#fff}
+/* views */
+.view{position:fixed;left:0;right:0;top:62px;bottom:0;z-index:2;transition:opacity .5s,transform .5s}.view.off{opacity:0;pointer-events:none;transform:scale(.97)}
+/* booth */
+#booth{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.8fr);gap:26px;padding:12px 4vw 24px;align-items:center;max-width:1300px;margin:0 auto}
+#cam{position:relative;aspect-ratio:4/3.1;max-height:calc(100dvh - 120px);width:100%;border-radius:36px;background:linear-gradient(160deg,#ff9fcc,#ffc2de 50%,#ffd9ec);border:7px solid #fff;box-shadow:0 0 0 5px #ffb3d9,0 30px 60px rgba(160,70,160,.35),inset 0 0 60px rgba(255,255,255,.6);overflow:hidden}
+#ring{position:absolute;inset:-4%;border-radius:50%;pointer-events:none;background:conic-gradient(from 0deg,rgba(255,255,255,.0),rgba(255,255,255,.9),rgba(255,255,255,0) 30%,rgba(255,255,255,.9) 55%,rgba(255,255,255,0));filter:blur(14px);opacity:.6;animation:spin 7s linear infinite;mix-blend-mode:soft-light}
+@keyframes spin{to{transform:rotate(360deg)}}
+#camBg{position:absolute;inset:0;background-size:36px 36px;transition:background .5s;opacity:.9}
+#stageAv{position:absolute;left:50%;bottom:-1%;transform:translateX(-50%);transition:transform .35s cubic-bezier(.3,1.5,.4,1)}
+#camUI{position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:space-between;padding:16px 20px}
+#camUI .rec{align-self:flex-start;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.85);font:900 12px 'Zen Maru Gothic';letter-spacing:.14em;color:#e0489a;display:flex;align-items:center;gap:7px}#camUI .rec i{width:9px;height:9px;border-radius:50%;background:#ff3d6e;animation:blink 1s infinite}@keyframes blink{50%{opacity:.2}}
+#prompt{position:absolute;left:50%;top:14px;transform:translateX(-50%);white-space:nowrap;padding:8px 22px;border-radius:999px;background:rgba(255,255,255,.88);font:900 16px 'Zen Maru Gothic';color:#8a4ac8;box-shadow:0 6px 16px rgba(160,70,160,.25)}
+#count{position:absolute;inset:0;display:grid;place-items:center;font:400 clamp(100px,26vh,240px) 'Mochiy Pop One';color:var(--pk);paint-order:stroke fill;-webkit-text-stroke:14px #fff;text-shadow:0 8px 0 rgba(255,127,184,.4);opacity:0;pointer-events:none}
+#count.pop{animation:cpop .9s cubic-bezier(.2,1.4,.4,1)}@keyframes cpop{0%{opacity:0;transform:scale(2.2)}25%{opacity:1;transform:scale(1)}80%{opacity:1}100%{opacity:0;transform:scale(.8)}}
+#flash{position:fixed;inset:0;z-index:60;background:#fff;opacity:0;pointer-events:none}#flash.go{animation:fl .5s ease-out}@keyframes fl{0%{opacity:.95}100%{opacity:0}}
+#panel{padding:22px 22px 24px;border-radius:32px;background:rgba(255,255,255,.72);backdrop-filter:blur(12px);border:4px solid #fff;box-shadow:0 0 0 4px #ffc2de,0 24px 50px rgba(160,70,160,.25)}
+#panel h2{margin:0 0 4px;font-size:30px;line-height:1.1;text-align:center}#panel .sub{text-align:center;font:700 13px 'Zen Maru Gothic';color:#9a7fc0;margin-bottom:14px;letter-spacing:.1em}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mi{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:20px;border:3px solid #fff;background:linear-gradient(180deg,var(--a),var(--b));box-shadow:0 5px 0 var(--sh),0 10px 20px rgba(150,80,180,.2);font:900 15px 'Zen Maru Gothic';color:#5a2a78;text-shadow:0 1px 0 rgba(255,255,255,.7);text-align:left;transition:transform .15s,filter .15s;position:relative;overflow:hidden}
+.mi::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.5) 50%,transparent 60%);transform:translateX(-120%);transition:transform .6s}.mi:hover::after{transform:translateX(120%)}
+.mi:hover{transform:translateY(-3px) rotate(-1deg)}.mi:active{transform:translateY(3px);box-shadow:0 1px 0 var(--sh)}.mi i{font-style:normal;font-size:24px;filter:drop-shadow(0 2px 0 rgba(0,0,0,.15))}.mi small{display:block;font:700 10px 'Zen Maru Gothic';opacity:.9;letter-spacing:.08em}.mi.done::before{content:'✓';position:absolute;right:10px;top:6px;width:20px;height:20px;border-radius:50%;background:#fff;color:#5fcf8a;font-size:13px;display:grid;place-items:center;text-shadow:none}
+.theme{display:flex;gap:8px;margin-top:14px;justify-content:center;align-items:center;font:900 12px 'Zen Maru Gothic';color:#9a7fc0}.theme button{width:34px;height:34px;border-radius:50%;border:3px solid #fff;box-shadow:0 3px 8px rgba(150,80,180,.3);transition:transform .15s}.theme button.on{outline:3px solid #ff6fae;transform:scale(1.15)}
+.allbtn{display:block;margin:14px auto 0;padding:9px 20px;border-radius:999px;border:2px dashed #c9b3ff;background:transparent;font:900 13px 'Zen Maru Gothic';color:#8a5ab8}.allbtn:hover{background:#fff}
+/* printer output */
+#printer{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(380px,90vw);z-index:40;pointer-events:none;height:0}
+#slot{position:absolute;left:0;right:0;bottom:0;height:20px;border-radius:12px 12px 0 0;background:linear-gradient(#5a3a78,#2a1a40);box-shadow:0 -4px 20px rgba(60,20,90,.4)}
+#out{position:absolute;left:5%;right:5%;bottom:14px;transform:translateY(100%);transition:transform 2.4s cubic-bezier(.4,.1,.3,1);will-change:transform;display:flex;justify-content:center}
+#out.print{transform:translateY(0)}
+#out .sheet{transform-origin:50% 100%}
+/* wall */
+#wall{overflow:auto;padding:22px 3vw 80px}
+.peg{position:absolute;inset:0;z-index:-1;background:radial-gradient(circle,rgba(255,255,255,.7) 3px,transparent 4px) 0 0/34px 34px,linear-gradient(160deg,rgba(255,255,255,.35),rgba(255,255,255,.1))}
+#wallGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px 22px;max-width:1500px;margin:0 auto;justify-items:center;padding-top:8px}
+.slotWrap{position:relative;width:var(--sw);transition:transform .35s cubic-bezier(.2,1.2,.4,1)}
+.slotWrap.empty{height:calc(var(--sw)*1.2);border-radius:18px;border:4px dashed rgba(255,255,255,.9);background:rgba(255,255,255,.35);display:grid;place-items:center;text-align:center;color:#9a7fc0;font:900 15px 'Zen Maru Gothic'}
+.slotWrap.empty b{display:block;font:400 26px 'Mochiy Pop One';color:#fff;text-shadow:0 3px 0 rgba(200,140,230,.6)}
+.slotWrap:not(.empty){cursor:pointer;transform:rotate(var(--r))}.slotWrap:not(.empty):hover{transform:rotate(0) translateY(-8px) scale(1.03)}
+.new{position:absolute;right:-10px;top:-14px;z-index:5;padding:5px 12px;border-radius:999px;background:#ff3d8b;color:#fff;font:900 13px 'Zen Maru Gothic';border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,.2);animation:nw .8s ease-in-out infinite alternate}@keyframes nw{to{transform:rotate(8deg) scale(1.1)}}
+/* sheet */
+:root{--sw:330px}
+.sheet{position:relative;width:var(--sw);padding:16px 14px 14px;border-radius:14px;background:
+  radial-gradient(circle at 20% 10%,rgba(255,255,255,.9),transparent 40%),
+  linear-gradient(150deg,var(--a),var(--b) 55%,var(--c));
+  box-shadow:0 14px 30px rgba(120,60,160,.3),0 0 0 3px rgba(255,255,255,.9) inset,0 0 0 6px rgba(255,255,255,.25) inset;overflow:hidden;font-size:calc(var(--sw)/22)}
+.sheet::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,#fff 1.2px,transparent 1.8px),radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1.6px);background-size:34px 34px,53px 53px;background-position:0 0,17px 22px;opacity:.7;animation:tw 3s ease-in-out infinite alternate}
+@keyframes tw{to{opacity:.3}}
+.sheet .bn{position:relative;text-align:center;margin-bottom:.9em}.sheet .bn small{display:block;font:900 .6em 'Zen Maru Gothic';letter-spacing:.5em;color:#fff;text-shadow:0 1px 4px rgba(120,60,160,.5)}.sheet .bn b{font-size:2em;line-height:1.05;display:inline-block;transform:rotate(-2deg)}.sheet .bn i{font:900 .8em 'Zen Maru Gothic';font-style:normal;color:#fff;margin-left:.5em;text-shadow:0 1px 4px rgba(120,60,160,.5)}
+.grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:.8em}
+.fr{position:relative;margin:0;border-radius:.9em;background:#fff;padding:.4em;box-shadow:0 .25em .7em rgba(100,40,140,.3);transition:transform .25s cubic-bezier(.2,1.4,.4,1);cursor:pointer}.fr:hover{transform:scale(1.05) rotate(var(--fr,1deg));z-index:3}
+.fr:nth-child(odd){--fr:-1.5deg}.fr:nth-child(even){--fr:1.5deg}
+.ph{position:relative;aspect-ratio:4/4.6;border-radius:.6em;overflow:hidden;background:var(--pat)}
+.ph .av{position:absolute;left:50%;bottom:-1px;transform:translateX(-50%) var(--pt,none);transform-origin:50% 100%}
+.av{position:relative;width:60px;height:120px}.av img{position:absolute;left:0;top:0;width:60px;height:120px;image-rendering:pixelated}.av img.base{filter:drop-shadow(0 2px 0 rgba(255,255,255,.95))}
+.fr figcaption{position:absolute;left:.3em;right:.3em;bottom:.5em;text-align:center;line-height:1.05;pointer-events:none}
+.fr figcaption b{display:block;font:400 1.35em/1.05 'Mochiy Pop One';color:#fff;paint-order:stroke fill;-webkit-text-stroke:.28em var(--k,#ff6fae);text-shadow:0 .1em 0 rgba(0,0,0,.18)}
+.fr figcaption small{display:inline-block;margin-top:.25em;padding:.1em .6em;border-radius:99px;background:rgba(255,255,255,.92);font:900 .62em 'Zen Maru Gothic';color:#7a4ab8;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stat{position:absolute;right:-.3em;top:-.5em;z-index:2;font:400 1em 'Mochiy Pop One';font-style:normal;color:#fff;background:linear-gradient(180deg,#ffb3d9,#ff6fae);padding:.25em .65em;border-radius:99px;border:.2em solid #fff;box-shadow:0 .2em .5em rgba(0,0,0,.2);transform:rotate(8deg)}
+.stk{position:absolute;z-index:2;font-size:1.5em;filter:drop-shadow(0 0 0 #fff) drop-shadow(.06em 0 0 #fff) drop-shadow(-.06em 0 0 #fff) drop-shadow(0 .06em 0 #fff) drop-shadow(0 -.06em 0 #fff);pointer-events:none;animation:wob 3s ease-in-out infinite}@keyframes wob{50%{transform:translateY(-.15em) rotate(6deg)}}
+.sheet .ft{position:relative;margin-top:.9em;text-align:center;font:400 .85em 'Yomogi','Zen Maru Gothic';color:#fff;text-shadow:0 1px 3px rgba(120,60,160,.6);letter-spacing:.06em}
+.tape{position:absolute;width:5em;height:1.4em;background:repeating-linear-gradient(45deg,rgba(255,255,255,.7) 0 .5em,rgba(255,200,230,.7) .5em 1em);box-shadow:0 1px 3px rgba(0,0,0,.15)}.tape.a{left:-1.2em;top:.6em;transform:rotate(-38deg)}.tape.b{right:-1.4em;bottom:.8em;transform:rotate(-38deg)}
+.hm{position:absolute;z-index:1;font:900 .7em 'Yomogi';color:#fff;text-shadow:0 1px 3px rgba(120,60,160,.5);pointer-events:none}
+/* patterns */
+.pt0{--pat:repeating-linear-gradient(45deg,#ffe3f0 0 12px,#fff 12px 24px)}
+.pt1{--pat:radial-gradient(circle,#fff 3px,transparent 4px) 0 0/20px 20px,#bfe6ff}
+.pt2{--pat:linear-gradient(90deg,rgba(255,255,255,.6) 50%,transparent 50%) 0 0/24px 24px,linear-gradient(rgba(255,255,255,.6) 50%,transparent 50%) 0 0/24px 24px,#ffd1e8}
+.pt3{--pat:repeating-linear-gradient(0deg,#fff4b8 0 10px,#fffbe0 10px 20px)}
+.pt4{--pat:radial-gradient(circle at 30% 30%,#fff 0,transparent 30%),radial-gradient(circle at 70% 70%,#fff 0,transparent 30%),linear-gradient(135deg,#d9c8ff,#ffc8f0)}
+.pt5{--pat:repeating-linear-gradient(135deg,#d4f5e4 0 10px,#fff 10px 20px)}
+.pt6{--pat:conic-gradient(from 0deg at 50% 60%,#ffe3f0,#fff,#e0f0ff,#fff,#ffe3f0)}
+.pt7{--pat:linear-gradient(180deg,#bfe6ff,#e6d4ff 60%,#ffd1e8)}
+/* focus + modal */
+#zoom{position:fixed;inset:62px 0 0 0;z-index:35;display:none;place-items:center;background:rgba(120,70,170,.5);backdrop-filter:blur(8px);overflow:auto;padding:20px}#zoom.on{display:grid}
+#zoomIn{position:relative;--sw:min(560px,92vw);animation:zin .5s cubic-bezier(.2,1.2,.4,1)}@keyframes zin{from{opacity:0;transform:scale(.8) rotate(-4deg)}}
+#zoomIn .sheet{--sw:min(540px,92vw)}
+#zbtn{position:absolute;right:-14px;top:-14px;z-index:5;width:42px;height:42px;border-radius:50%;border:3px solid #fff;background:#ff6fae;color:#fff;font:900 18px 'Zen Maru Gothic';box-shadow:0 4px 12px rgba(0,0,0,.3)}
+#zhint{position:fixed;left:0;right:0;bottom:12px;text-align:center;font:900 13px 'Zen Maru Gothic';color:#fff;z-index:36;text-shadow:0 2px 6px rgba(80,30,120,.6);display:none}#zoom.on~#zhint{display:block}
+#dt{position:fixed;inset:0;z-index:55;display:none;place-items:center;padding:20px;background:rgba(90,40,130,.55);backdrop-filter:blur(6px)}#dt.on{display:grid}
+.win{position:relative;width:min(700px,100%);max-height:min(86dvh,760px);display:flex;flex-direction:column;border-radius:30px;background:#fffaff;border:5px solid #fff;box-shadow:0 0 0 4px #ffb3d9,0 28px 70px rgba(60,20,90,.55);overflow:hidden;animation:zin .4s cubic-bezier(.2,1.2,.4,1);-webkit-user-select:text;user-select:text}
+.win header{display:flex;align-items:center;gap:12px;padding:14px 20px;background:linear-gradient(135deg,var(--a,#ffb3d9),var(--b,#c9b3ff));color:#fff}
+.win header .av{width:30px;height:60px;flex:none;margin:-8px 0 -22px}.win header .av img{width:30px;height:60px}
+.win header div{flex:1}.win header small{display:block;font:900 11px 'Zen Maru Gothic';letter-spacing:.3em;opacity:.95}.win header h2{margin:2px 0 0;font:400 26px/1.1 'Mochiy Pop One';text-shadow:0 3px 0 rgba(0,0,0,.18)}.win header button{width:36px;height:36px;border-radius:50%;border:3px solid #fff;background:rgba(255,255,255,.25);color:#fff;font:900 16px 'Zen Maru Gothic'}
+.win .body{overflow:auto;padding:18px 22px 24px;font-size:15px;line-height:1.6;scrollbar-width:thin;scrollbar-color:#f0cfe8 transparent}
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:70;padding:9px 20px;border-radius:99px;background:#fff;font:900 14px 'Zen Maru Gothic';color:#8a4ac8;box-shadow:0 8px 20px rgba(120,60,160,.3);opacity:0;transition:opacity .3s;pointer-events:none}#toast.on{opacity:1}
+@media(max-width:900px){#booth{grid-template-columns:1fr;gap:14px;overflow:auto;height:100%;align-items:start;padding-bottom:40px}#cam{max-height:46dvh;aspect-ratio:4/3}.tabs{order:3;position:fixed;left:50%;transform:translateX(-50%);bottom:10px;z-index:40}header#top .tools .tl.opt{display:none}.logo small{display:none}.menu{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<canvas id="glit"></canvas>
+<header id="top"><div class="logo puffy"><img src="/assets/img/avatar-px.png" alt=""><div>PURIKURA<small>LAN ANH · PHOTO BOOTH</small></div></div>
+  <nav class="tabs"><button class="tab on" data-v="booth">📷 Booth</button><button class="tab" data-v="wall">🖼 Photo wall</button></nav>
+  <div class="tools"><button class="tl opt" id="bSnd">♪ off</button><a class="tl" href="/assets/Lan-Anh-Do-Resume.pdf" download="Lan-Anh-Do-Resume.pdf">⬇ Resume</a></div></header>
+
+<main id="booth" class="view">
+  <div id="cam"><div id="camBg"></div><div id="ring"></div><div id="stageAv"></div><div id="count"></div>
+    <div id="camUI"><div class="rec"><i></i>LIVE</div><div id="prompt">Pick what to shoot today ♡</div></div></div>
+  <aside id="panel"><h2 class="puffy">What shall we shoot?</h2><div class="sub">どれにする？ · TAP A TOPIC</div><div class="menu" id="menu"></div>
+    <div class="theme"><span>THEME</span><span id="themes"></span></div><button class="allbtn" id="printAll">✨ print them all at once</button></aside>
+</main>
+
+<section id="wall" class="view off"><div class="peg"></div><div id="wallGrid"></div></section>
+
+<div id="printer"><div id="out"></div><div id="slot"></div></div>
+<div id="zoom"><div id="zoomIn"><button id="zbtn" aria-label="Close">✕</button><div id="zsheet"></div></div></div><div id="zhint">tap any photo to read the details ✿</div>
+<div id="dt"><div class="win"><header><span class="av" id="dtAv"></span><div><small id="dtK"></small><h2 id="dtT"></h2></div><button id="dtX">✕</button></header><div class="body" id="dtB"></div></div></div>
+<div id="flash"></div><div id="toast"></div>
+
+<script src="/shared/data.js"></script>
+<script src="/shared/content.js"></script>
+<script>
+(() => {
+'use strict';
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)], D = C.D, esc = C.esc, fmt = C.fmt;
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, rnd = (a, b) => a + Math.random() * (b - a);
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+/* ================= pixel accessories drawn to fit the 30x44 sprite (16 rows of headroom) ================= */
+const OFF = 16, CW = 30, CH = 44 + OFF;
+function accCanvas(types) { const c = document.createElement('canvas'); c.width = CW; c.height = CH; const g = c.getContext('2d'); g.imageSmoothingEnabled = false;
+  const P = (x, y, col, w = 1, h = 1) => { g.fillStyle = col; g.fillRect(x, y + OFF, w, h); };
+  const shape = (test, fill, edge, bx0, by0, bx1, by1) => { const inside = (x, y) => test(x + .5, y + .5); for (let y = by0; y <= by1; y++) for (let x = bx0; x <= bx1; x++) if (inside(x, y)) { const border = !inside(x - 1, y) || !inside(x + 1, y) || !inside(x, y - 1) || !inside(x, y + 1); P(x, y, border ? edge : fill); } };
+  const tri = (a, b, c) => (px, py) => { const d = (b[1] - c[1]) * (a[0] - c[0]) + (c[0] - b[0]) * (a[1] - c[1]), l1 = ((b[1] - c[1]) * (px - c[0]) + (c[0] - b[0]) * (py - c[1])) / d, l2 = ((c[1] - a[1]) * (px - c[0]) + (a[0] - c[0]) * (py - c[1])) / d; return l1 >= 0 && l2 >= 0 && 1 - l1 - l2 >= 0; };
+  const ell = (cx, cy, rx, ry) => (px, py) => ((px - cx) / rx) ** 2 + ((py - cy) / ry) ** 2 <= 1;
+  const heart = (cx, cy, col, edge) => { const m = ['.XX.XX.', 'XXXXXXX', 'XXXXXXX', '.XXXXX.', '..XXX..', '...X...']; m.forEach((r, j) => [...r].forEach((ch, i) => { if (ch === 'X') P(cx - 3 + i, cy - 2 + j, col); })); };
+  types.forEach(t => {
+    if (t === 'cat') { shape(tri([6, 5], [9.5, -1], [13.5, 4.5]), '#ffb3cf', '#4a2a3a', 4, -2, 15, 6); shape(tri([16.5, 4.5], [20.5, -1], [24, 5]), '#ffb3cf', '#4a2a3a', 15, -2, 26, 6); P(9, 1, '#ff7fae', 1, 3); P(20, 1, '#ff7fae', 1, 3); P(8, 3, '#ff7fae'); P(21, 3, '#ff7fae'); }
+    if (t === 'bunny') { shape(ell(10.5, -5, 2.8, 8), '#fff', '#4a2a3a', 6, -14, 15, 4); shape(ell(19.5, -6, 2.8, 8), '#fff', '#4a2a3a', 15, -15, 25, 3); P(10, -9, '#ffb3cf', 1, 9); P(11, -9, '#ffb3cf', 1, 9); P(19, -10, '#ffb3cf', 1, 9); P(20, -10, '#ffb3cf', 1, 9); }
+    if (t === 'crown') { const gold = '#ffd45e', ed = '#a86a10'; for (let x = 10; x <= 20; x++) P(x, 2, ed); [[10, 0], [13, -1], [15, -2], [17, -1], [20, 0]].forEach(([x, y]) => { for (let yy = y; yy <= 1; yy++) P(x, yy, yy === y ? ed : gold); }); for (let x = 11; x <= 19; x++) { P(x, 1, gold); } P(15, 1, '#ff6fae'); P(12, 1, '#7fd0ff'); P(18, 1, '#7fd0ff'); [[10, 0], [13, -1], [15, -2], [17, -1], [20, 0]].forEach(([x, y]) => P(x, y - 1, '#fff')); }
+    if (t === 'bow') { const c = '#ff6fae', ed = '#8a1f5a'; shape(tri([21, 4], [26, 1], [26, 8]), c, ed, 20, 0, 27, 9); shape(tri([21, 4], [16, 1], [16, 8]), c, ed, 15, 0, 22, 9); P(20, 3, '#ffd6ec', 2, 3); P(21, 4, '#d0407f'); }
+    if (t === 'halo') { for (let x = 9; x <= 21; x++) { const y = -2 + Math.round(Math.sin((x - 9) / 12 * Math.PI) * -1.5); P(x, y, '#ffe28f'); P(x, y + 1, '#ffc23a'); } }
+    if (t === 'heartglasses') { heart(11.5, 15, 'rgba(255,111,174,.82)'); heart(18.5, 15, 'rgba(255,111,174,.82)'); P(11, 14, '#fff', 1, 1); P(18, 14, '#fff'); }
+    if (t === 'flower') { [[8, 4, '#ffd6ec'], [11, 2, '#fff'], [14, 1, '#ffe28f'], [17, 1, '#fff'], [20, 2, '#ffd6ec'], [23, 4, '#ff9fc4']].forEach(([x, y, col]) => { P(x, y, col, 2, 2); P(x + .0, y - 1, col); P(x + 1, y + 2, col); P(x - 1, y + 1, col); P(x + 2, y, col); P(x, y, '#ff9a2e'); P(x + 1, y + 1, '#ff9a2e'); P(x - 2, y + 2, '#6fd08a'); P(x + 3, y + 2, '#6fd08a'); }); }
+    if (t === 'phones') { const ed = '#8a1f5a'; for (let x = 6; x <= 24; x++) { const y = Math.round(10 - Math.sin((x - 6) / 18 * Math.PI) * 11); P(x, y, '#ff6fae'); P(x, y + 1, ed); } P(3, 11, ed, 3, 8); P(4, 12, '#ff9fc8', 2, 6); P(24, 11, ed, 3, 8); P(24, 12, '#ff9fc8', 2, 6); }
+    if (t === 'blush') { g.fillStyle = 'rgba(255,111,174,.55)'; [[8, 19], [20, 19]].forEach(([x, y]) => { g.fillRect(x, y + OFF, 3, 2); g.fillRect(x + 1, y + OFF - 1, 1, 4); }); }
+    if (t === 'star') { P(24, 18, '#ffe28f'); P(23, 19, '#ffe28f', 3, 1); P(24, 20, '#ffe28f'); P(24, 19, '#fff'); P(6, 19, '#8be9ff'); P(5, 20, '#8be9ff', 3, 1); P(6, 21, '#8be9ff'); }
+    if (t === 'sparkle') { [[2, 8], [27, 6], [3, 28], [27, 30]].forEach(([x, y]) => { P(x, y - 2, '#fff'); P(x, y + 2, '#fff'); P(x - 2, y, '#fff'); P(x + 2, y, '#fff'); P(x, y, '#ffe28f'); P(x - 1, y, '#fff'); P(x + 1, y, '#fff'); P(x, y - 1, '#fff'); P(x, y + 1, '#fff'); }); }
+  });
+  return c.toDataURL(); }
+const POSES = [
+  { acc: ['cat', 'blush'], rot: -4, flip: 0, em: '♡', say: 'nyan~' }, { acc: ['bunny', 'blush', 'star'], rot: 5, flip: 1, em: '✌', say: 'peace!' },
+  { acc: ['crown', 'blush', 'sparkle'], rot: 0, flip: 0, em: '✨', say: 'queen!' }, { acc: ['bow', 'blush'], rot: -6, flip: 1, em: '🎀', say: 'cute' },
+  { acc: ['halo', 'blush', 'sparkle'], rot: 3, flip: 0, em: '😇', say: 'angel' }, { acc: ['heartglasses', 'blush'], rot: 6, flip: 1, em: '💖', say: 'love!' },
+  { acc: ['flower', 'blush'], rot: -3, flip: 0, em: '🌸', say: 'spring' }, { acc: ['phones', 'blush', 'sparkle'], rot: 4, flip: 1, em: '♪', say: 'vibes' },
+  { acc: ['cat', 'star', 'blush'], rot: 5, flip: 1, em: '🐟', say: 'meow' }, { acc: ['bunny', 'blush'], rot: -5, flip: 0, em: '🥕', say: 'hop' }
+];
+const accCache = {}; const accKey = p => p.acc.join('+'); const accURL = p => accCache[accKey(p)] || (accCache[accKey(p)] = accCanvas(p.acc));
+function avatarHTML(pose, scale = 2) { const w = 30 * scale, h = CH * scale; return `<div class="av" style="width:${w}px;height:${h}px;--pt:rotate(${pose.rot}deg) scaleX(${pose.flip ? -1 : 1})"><img class="base" src="/assets/img/avatar-px.png" style="top:${OFF * scale}px;width:${w}px;height:${44 * scale}px" alt=""><img src="${accURL(pose)}" style="width:${w}px;height:${h}px" alt=""></div>`; }
+
+/* ================= the content: sheets (all facts from the resume) ================= */
+const E = D.experience, PR = D.projects, LD = D.leadership;
+const bullets = a => `<ul class="c-bullets">${a.map(b => `<li>${fmt(b)}</li>`).join('')}</ul>`;
+const itemHTML = x => `<article class="c-item"><header><div><h3>${esc(x.role)}</h3><p class="c-org">${esc(x.org)}</p></div><span class="c-date">${esc(x.dates)}</span></header>${x.sub ? `<p class="c-sub">${esc(x.sub)}</p>` : ''}${x.stat ? `<p class="c-stat"><b>${esc(x.stat[0])}</b> ${esc(x.stat[1])}</p>` : ''}${bullets(x.bullets)}</article>`;
+const projHTML = p => `<article class="c-proj">${p.img ? `<img class="c-img" src="${p.img}" alt="" style="height:170px">` : ''}<div class="c-proj-body"><h3>${esc(p.name)}</h3>${p.badge ? `<p class="c-award">${esc(p.badge)}</p>` : ''}${p.role ? `<p class="c-org">${esc(p.role)} · ${esc(p.dates)}</p>` : ''}<p>${esc(p.desc)}</p>${p.points ? bullets(p.points) : ''}<div class="c-chips">${C.chips(p.tags)}</div>${p.links.length ? `<div class="c-links">${p.links.map(([t, u]) => `<a href="${u}" target="_blank" rel="noopener">${esc(t)} ↗</a>`).join('')}</div>` : ''}</div></article>`;
+const SEC = [
+  { id: 'profile', emoji: '🪞', title: 'About', big: 'ABOUT ME', jp: '自己紹介', a: '#ffb3d9', b: '#ffd0e8', c: '#d9c3ff', sh: '#d04a92', sub: 'who is she?', f: [
+    { t: "Hi! I'm Lan Anh", s: 'CompE + Econ @ UF', stat: "'27", d: () => C.get('profile') }, { t: 'GPA 3.94', s: 'Class of 2027', stat: '♡', d: () => C.get('profile') },
+    { t: 'Code + People', s: 'tech meets humans', stat: '✦', d: () => C.get('profile') }, { t: 'Tech Yapper', s: 'professional :D', stat: '☆', d: () => C.get('profile') }] },
+  { id: 'skills', emoji: '🎨', title: 'Skills', big: 'SKILLS', jp: 'スキル', a: '#bfe6ff', b: '#d4f5e4', c: '#e3d4ff', sh: '#4a9ad8', sub: 'her toolbox', f: D.skills.map(g => ({ t: g.name.replace('Developer ', ''), s: g.items.slice(0, 3).join(' · '), stat: g.items.length + '', d: () => `<div class="c-group"><h4>${esc(g.name)}</h4><div class="c-chips">${C.chips(g.items)}</div></div>` })) },
+  { id: 'experience', emoji: '💼', title: 'Experience', big: 'EXPERIENCE', jp: '経験', a: '#d9c3ff', b: '#ffc8f0', c: '#bfe6ff', sh: '#8a5ad6', sub: 'where she worked', f: [
+    ['Intuit', 'Security SWE Intern', '−97%', 0], ['UF TA', '4 courses · since 2024', '+22%', 1], ['Uber', 'SWE Fellow', '2.3%', 2], ['M_Service', 'PM Intern · MoMo', '−80%', 3], ['Fudan', 'Brain research', '85%', 4], ['Nami Tech', 'PM Intern', '−38%', 5]].map(([t, s, st, i]) => ({ t, s, stat: st, d: () => itemHTML(E[i]) })) },
+  { id: 'projects', emoji: '🎮', title: 'Projects', big: 'PROJECTS', jp: '作品', a: '#fff0a8', b: '#ffd0a8', c: '#ffc2de', sh: '#e08a2a', sub: 'things she made', f: [
+    ['transPEAK', '1st place · ShellHacks', '1st', 0], ['ChompCourse', 'course roadmaps', '100+', 1], ['SET Dumpy', 'trash-bot', '90%', 2], ['Moodify', 'mood → music', '♪', 3], ['Ship Detect', 'satellite ML', '⚓', 4], ['Flowers+Cars', 'neural nets', '❀', 5]].map(([t, s, st, i]) => ({ t, s, stat: st, d: () => projHTML(PR[i]) })) },
+  { id: 'leadership', emoji: '👑', title: 'Leadership', big: 'LEADERSHIP', jp: 'リーダー', a: '#ffe08a', b: '#ffc2de', c: '#ffd9a8', sh: '#d09a1a', sub: 'her crew', f: [
+    { t: 'Product Space', s: 'Dir. Prof. Development', stat: '14', d: () => itemHTML(LD[0]) }, { t: 'WiNGHacks', s: 'Dir. of Awards', stat: '120+', d: () => itemHTML(LD[1]) },
+    { t: '40+ Fellows', s: '6 local startups', stat: '✦', d: () => itemHTML(LD[0]) }, { t: '$10K+ Prizes', s: '30+ judges', stat: '★', d: () => itemHTML(LD[1]) }] },
+  { id: 'contact', emoji: '💌', title: 'Contact', big: 'SAY HI', jp: 'お問い合わせ', a: '#bfe6ff', b: '#d9c3ff', c: '#ffd0e8', sh: '#4a8ad8', sub: 'send a letter', f: [
+    { t: 'Email me', s: 'lananhdo2905@gmail.com', stat: '✉', d: () => C.get('contact') }, { t: 'GitHub', s: 'laba-ehehe', stat: '↗', d: () => C.get('contact') },
+    { t: 'LinkedIn', s: 'lananhnguyendo', stat: '↗', d: () => C.get('contact') }, { t: 'Resume', s: 'PDF · Oct 2026', stat: '⬇', d: () => C.get('contact') }] }
+];
+const STK = ['✨', '💖', '🎀', '🍓', '🌸', '⭐', '🧸', '🫧', '💎', '☁️', '🍭', '🦋'];
+const HM = ['ともだち', 'かわいい', 'ずっと♡', 'kirakira', 'BFF', 'ラブ', 'yay!', 'ねこ'];
+function sheetHTML(si, big) { const s = SEC[si], n = s.f.length, sc = big ? 2 : 2;
+  const frames = s.f.map((f, i) => { const pose = POSES[(si * 3 + i * 2) % POSES.length]; const stk = [STK[(si + i * 2) % 12], STK[(si * 2 + i * 3 + 1) % 12]]; return `<figure class="fr" data-s="${si}" data-i="${i}" style="--k:${['#ff6fae', '#8a5ad6', '#4a9ad8', '#e08a2a', '#d06a9a'][(si + i) % 5]}"><div class="ph pt${(si * 2 + i) % 8}"><span class="stk" style="left:6%;top:6%;animation-delay:${-i * .5}s">${stk[0]}</span><span class="stk" style="right:6%;top:28%;font-size:1.2em;animation-delay:${-i * .8}s">${stk[1]}</span><span class="hm" style="left:8%;top:44%;transform:rotate(${i % 2 ? 6 : -6}deg)">${HM[(si + i * 3) % 8]}</span>${avatarHTML(pose, 2)}</div><i class="stat">${esc(f.stat)}</i><figcaption><b>${esc(f.t)}</b><small>${esc(f.s)}</small></figcaption></figure>`; }).join('');
+  return `<article class="sheet" style="--a:${s.a};--b:${s.b};--c:${s.c}"><span class="tape a"></span><span class="tape b"></span><div class="bn"><small>LAN ANH ✿ ${s.sub.toUpperCase()}</small><b class="puffy">${s.big}</b><i>${s.jp}</i></div><div class="grid">${frames}</div><div class="ft">'26.10.01 ✿ PURIKURA No.${String(si + 1).padStart(3, '0')} ✿ ♡ ♡ ♡</div></article>`; }
+
+/* ================= sparkles + glitter ================= */
+const gc = $('#glit'), gx = gc.getContext('2d'); let gw, gh, gl = [];
+function gsz() { gw = gc.width = innerWidth; gh = gc.height = innerHeight; gl = Array.from({ length: Math.min(70, gw / 20) }, () => ({ x: Math.random() * gw, y: Math.random() * gh, r: Math.random() * 3 + 1, p: Math.random() * 6, v: Math.random() * .3 + .08, h: Math.random() * 360 })); } gsz(); addEventListener('resize', gsz);
+function star(g, x, y, r) { g.beginPath(); for (let i = 0; i < 8; i++) { const R = i % 2 ? r * .3 : r, a = i * Math.PI / 4; g.lineTo(x + Math.sin(a) * R, y - Math.cos(a) * R); } g.closePath(); g.fill(); }
+(function gl2(t) { gx.clearRect(0, 0, gw, gh); if (!reduce) gl.forEach(p => { p.y -= p.v; if (p.y < -6) { p.y = gh + 6; p.x = Math.random() * gw; } const a = .25 + .65 * Math.abs(Math.sin(t / 700 + p.p)); gx.fillStyle = `hsla(${p.h},100%,92%,${a})`; star(gx, p.x, p.y, p.r * 2.2); }); requestAnimationFrame(gl2); })(0);
+
+/* ================= sound ================= */
+let ac = null, snd = false; function aud() { if (snd && !ac) try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch { } return ac; }
+function tone(f, d = .1, type = 'sine', v = .06, delay = 0) { if (!snd || !aud()) return; const o = ac.createOscillator(), g = ac.createGain(); o.type = type; o.frequency.value = f; const t = ac.currentTime + delay; g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(v, t + .01); g.gain.exponentialRampToValueAtTime(.0001, t + d); o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + d + .02); }
+function shutter() { if (!snd || !aud()) return; const n = ac.sampleRate * .12, b = ac.createBuffer(1, n, ac.sampleRate), d = b.getChannelData(0); for (let i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / n, 3); const s = ac.createBufferSource(); s.buffer = b; const g = ac.createGain(); g.gain.value = .25; s.connect(g); g.connect(ac.destination); s.start(); tone(1800, .04, 'square', .03); }
+const chime = () => [1047, 1319, 1568, 2093].forEach((f, i) => tone(f, .35, 'sine', .05, i * .08));
+$('#bSnd').onclick = () => { snd = !snd; $('#bSnd').textContent = snd ? '♪ on' : '♪ off'; aud(); chime(); };
+function toast(t) { const el = $('#toast'); el.textContent = t; el.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('on'), 2000); }
+
+/* ================= booth ================= */
+const THEMES = [['Strawberry', 'linear-gradient(160deg,#ff9fcc,#ffc2de 50%,#ffd9ec)', 'radial-gradient(circle,#fff 3px,transparent 4px)', '#ff9fcc'], ['Soda Pop', 'linear-gradient(160deg,#8fd3ff,#bfe6ff 50%,#e0f4ff)', 'repeating-linear-gradient(45deg,rgba(255,255,255,.7) 0 8px,transparent 8px 16px)', '#8fd3ff'], ['Lavender', 'linear-gradient(160deg,#c9b3ff,#e0d0ff 50%,#f0e6ff)', 'radial-gradient(circle at 50% 50%,#fff 2px,transparent 3px),radial-gradient(circle at 0 0,#fff 2px,transparent 3px)', '#c9b3ff']];
+let theme = 0; function applyTheme() { const t = THEMES[theme]; $('#cam').style.background = t[1]; $('#camBg').style.backgroundImage = t[2]; $$('#themes button').forEach((b, i) => b.classList.toggle('on', i === theme)); }
+$('#themes').innerHTML = THEMES.map((t, i) => `<button title="${t[0]}" style="background:${t[3]}" data-i="${i}"></button>`).join(''); $$('#themes button').forEach(b => b.onclick = () => { theme = +b.dataset.i; applyTheme(); chime(); });
+$('#menu').innerHTML = SEC.map((s, i) => `<button class="mi" data-i="${i}" style="--a:${s.a};--b:${s.b};--sh:${s.sh}"><i>${s.emoji}</i><span>${s.title}<small>${s.jp}</small></span></button>`).join('');
+function setStageAv(p) { const sc = Math.max(4, Math.min(9, Math.floor($('#cam').clientHeight / 70))); $('#stageAv').innerHTML = avatarHTML(p, sc); const a = $('#stageAv .av'); a.style.transform = `rotate(${p.rot}deg) scaleX(${p.flip ? -1 : 1})`; a.style.transformOrigin = '50% 100%'; a.style.transition = 'transform .3s cubic-bezier(.3,1.5,.4,1)'; }
+let idleI = 0; setStageAv(POSES[0]); const idleTimer = setInterval(() => { if (busy || document.hidden) return; idleI = (idleI + 1) % POSES.length; setStageAv(POSES[idleI]); }, 1800); applyTheme();
+let busy = false; const printed = new Set();
+async function shoot(si) { if (busy) return; busy = true; const s = SEC[si], n = s.f.length; $$('.mi').forEach(b => b.disabled = true); aud();
+  $('#prompt').textContent = `Get ready… ${s.emoji} ${s.title}!`; chime(); await sleep(700);
+  for (let k = 3; k >= 1; k--) { $('#count').textContent = k; $('#count').classList.remove('pop'); void $('#count').offsetWidth; $('#count').classList.add('pop'); tone(660 + (3 - k) * 160, .12, 'triangle', .07); $('#prompt').textContent = ['Strike a pose!', 'Smile ♡', 'Ready…'][3 - k]; setStageAv(POSES[(si * 3 + k) % POSES.length]); await sleep(reduce ? 200 : 820); }
+  for (let i = 0; i < n; i++) { const p = POSES[(si * 3 + i * 2) % POSES.length]; setStageAv(p); $('#prompt').textContent = `${p.say}  ${i + 1}/${n}`; await sleep(reduce ? 120 : 340); $('#flash').classList.remove('go'); void $('#flash').offsetWidth; $('#flash').classList.add('go'); shutter(); await sleep(reduce ? 120 : 380); }
+  $('#prompt').textContent = 'Decorating… ✨'; await sleep(reduce ? 100 : 700);
+  printSheet(si); $('#prompt').textContent = 'Printing… 🖨️'; await sleep(reduce ? 200 : 2600); chime();
+  await sleep(500); printed.add(si); $$('.mi')[si].classList.add('done'); buildWall(si); $$('.mi').forEach(b => b.disabled = false); busy = false; $('#prompt').textContent = 'Pick what to shoot today ♡'; $('#out').classList.remove('print'); $('#out').innerHTML = ''; setView('wall'); }
+function printSheet(si) { const out = $('#out'); out.classList.remove('print'); out.style.transition = 'none'; out.innerHTML = sheetHTML(si); out.querySelector('.sheet').style.setProperty('--sw', 'min(340px,84vw)'); void out.offsetWidth; out.style.transition = ''; out.classList.add('print'); [...Array(5)].forEach((_, i) => setTimeout(() => tone(500 + i * 40, .2, 'sawtooth', .015), i * 420)); }
+$$('.mi').forEach(b => b.onclick = () => shoot(+b.dataset.i));
+$('#printAll').onclick = () => { SEC.forEach((_, i) => { printed.add(i); $$('.mi')[i].classList.add('done'); }); buildWall(-1); setView('wall'); chime(); toast('All sheets printed ✨'); };
+
+/* ================= wall ================= */
+function buildWall(fresh) { $('#wallGrid').innerHTML = SEC.map((s, i) => printed.has(i) ? `<div class="slotWrap" data-i="${i}" style="--r:${[-2.5, 1.8, -1.2, 2.4, -2, 1.4][i]}deg"><div class="peg-top"></div>${i === fresh ? '<span class="new">NEW!</span>' : ''}${sheetHTML(i)}</div>` : `<div class="slotWrap empty" style="--sw:330px"><div><b>${s.emoji}</b>${s.title}<br><small>not printed yet</small></div></div>`).join(''); $$('#wallGrid .slotWrap:not(.empty)').forEach(w => w.addEventListener('click', e => { if (e.target.closest('.fr')) { const f = e.target.closest('.fr'); openFrame(+f.dataset.s, +f.dataset.i); return; } focusSheet(+w.dataset.i); })); }
+function focusSheet(i) { $('#zsheet').innerHTML = sheetHTML(i); $('#zoom').classList.add('on'); $$('#zsheet .fr').forEach(f => f.onclick = e => { e.stopPropagation(); openFrame(+f.dataset.s, +f.dataset.i); }); chime(); }
+$('#zbtn').onclick = () => $('#zoom').classList.remove('on'); $('#zoom').addEventListener('pointerdown', e => { if (e.target.id === 'zoom') $('#zoom').classList.remove('on'); });
+function openFrame(si, i) { const s = SEC[si], f = s.f[i]; $('#dtK').textContent = `${s.jp} · ${s.title.toUpperCase()}`; $('#dtT').textContent = f.t; $('#dtB').innerHTML = f.d(); C.wire($('#dtB')); $('#dtAv').innerHTML = avatarHTML(POSES[(si * 3 + i * 2) % POSES.length], 1); document.querySelector('#dt .win header').style.setProperty('--a', s.a); document.querySelector('#dt .win header').style.setProperty('--b', '#c9b3ff'); $('#dt').classList.add('on'); $('#dtB').scrollTop = 0; tone(880, .1, 'triangle'); }
+$('#dtX').onclick = () => $('#dt').classList.remove('on'); $('#dt').addEventListener('pointerdown', e => { if (e.target.id === 'dt') $('#dt').classList.remove('on'); });
+addEventListener('keydown', e => { if (e.key === 'Escape') { $('#dt').classList.remove('on'); $('#zoom').classList.remove('on'); } });
+function setView(v) { $$('.tab').forEach(t => t.classList.toggle('on', t.dataset.v === v)); $('#booth').classList.toggle('off', v !== 'booth'); $('#wall').classList.toggle('off', v !== 'wall'); }
+$$('.tab').forEach(t => t.onclick = () => setView(t.dataset.v));
+buildWall(-2);
+const h = location.hash.slice(1); const hi = SEC.findIndex(s => s.id === h); if (hi >= 0) { SEC.forEach((_, i) => printed.add(i)); buildWall(-1); setView('wall'); setTimeout(() => focusSheet(hi), 300); }
+})();
+</script>
+</body>
+</html>

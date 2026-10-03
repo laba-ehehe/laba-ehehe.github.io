@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lan Anh Do · Software Engineer</title>
+  <meta name="description" content="Lan Anh Do: Computer Engineering & Economics at UF. Software engineer and product builder. Portfolio, projects and resume.">
+  <meta name="theme-color" content="#fff8ee">
+  <meta property="og:title" content="Lan Anh Do · Software Engineer">
+  <meta property="og:description" content="Computer Engineering & Economics at UF. Come say hi to the cats and see what I've built.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://laba-ehehe.github.io/">
+  <meta property="og:image" content="https://laba-ehehe.github.io/assets/img/laba.png">
+  <link rel="icon" href="/assets/img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="bg" id="bg" aria-hidden="true"></div>
+
+  <!-- boot -->
+  <div class="boot" id="boot" role="status" aria-live="polite">
+    <div class="boot-card">
+      <div class="boot-cat" id="bootCat"></div>
+      <h1 class="boot-title">laba<span>.ehehe</span></h1>
+      <p class="boot-sub" id="bootMsg">waking up mochi…</p>
+      <div class="boot-paws" id="bootPaws" aria-hidden="true"></div>
+      <div class="boot-pct" id="bootPct">0%</div>
+      <p class="boot-skip">tap anywhere to skip</p>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="#" id="brand" aria-label="Home"><span class="brand-cat" id="brandCat"></span>laba<em>.ehehe</em></a>
+    <div class="clock" aria-label="Local time in Gainesville">
+      <span class="clock-label">gainesville time</span>
+      <time id="clock">--:--</time>
+    </div>
+    <div class="top-right">
+      <span class="status"><i></i>online</span>
+      <button class="btn-ghost" id="themeBtn" type="button" aria-label="Switch to night theme">
+        <span id="themeIcon">☾</span><span id="themeText">night</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="hud" id="hud">
+
+    <!-- profile card -->
+    <aside class="card profile-card">
+      <div class="peek peek-card" id="peekCard"></div>
+      <div class="avatar"><img src="/assets/img/laba.png" alt="Memoji of Lan Anh Do" width="120" height="120"></div>
+      <h2 class="p-name">Lan Anh Do</h2>
+      <p class="p-role" id="pRole"></p>
+      <dl class="p-facts" id="pFacts"></dl>
+      <p class="p-motto" id="pMotto"></p>
+      <div class="p-actions">
+        <a class="btn" id="resumeBtn" href="/assets/Lan-Anh-Do-Resume.pdf" download="Lan-Anh-Do-Resume.pdf">⬇ resume</a>
+        <button class="btn-ghost" type="button" data-open="contact">✉ contact</button>
+      </div>
+    </aside>
+
+    <!-- cat dial -->
+    <section class="stage" id="stage" aria-label="Sections">
+      <div class="dial" id="dial">
+        <div class="rug rug1" aria-hidden="true"></div>
+        <div class="rug rug2" aria-hidden="true"></div>
+        <div class="ring" id="ring"></div>
+        <div class="center" id="center">
+          <div class="cushion" aria-hidden="true"></div>
+          <button class="mascot" id="mascot" type="button" aria-label="Pet mochi the cat"></button>
+          <div class="center-label"><span id="cLabel">pick a friend</span></div>
+        </div>
+      </div>
+      <p class="stage-hint" id="stageHint">tap a cat · or scroll · or use ← →</p>
+    </section>
+
+    <!-- section panel -->
+    <section class="panel card" id="panel" aria-hidden="true" inert aria-labelledby="panelTitle">
+      <div class="peek peek-panel" id="peekPanel"></div>
+      <header class="panel-head">
+        <div class="panel-icon" id="panelIcon"></div>
+        <div class="panel-titles">
+          <span class="kicker" id="panelKicker"></span>
+          <h2 id="panelTitle"></h2>
+        </div>
+        <div class="panel-meta">
+          <span class="code" id="panelCode"></span>
+          <span class="tag" id="panelTag"></span>
+        </div>
+        <button class="btn-ghost back" id="backBtn" type="button" aria-label="Close section">back ✕</button>
+      </header>
+      <div class="panel-body" id="panelBody" tabindex="-1"></div>
+    </section>
+
+  </main>
+
+  <footer class="console" aria-live="polite">
+    <span class="console-who"><span class="console-cat" id="consoleCat"></span>mochi</span>
+    <span class="console-text" id="consoleText"></span><span class="caret">▍</span>
+  </footer>
+
+  <noscript><p class="nojs">This site is a little interactive cat house and needs JavaScript. Resume: <a href="/assets/Lan-Anh-Do-Resume.pdf">PDF</a> · <a href="mailto:lananhdo2905@gmail.com">email me</a></p></noscript>
+
+  <script src="js/data.js"></script>
+  <script src="js/cats.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

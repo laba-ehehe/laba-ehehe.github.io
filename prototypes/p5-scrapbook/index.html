@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scrapbook · Prototype 5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/content.css">
+<style>
+:root{--ink:#4a3a35;--c-ink:#4a3a35;--c-mute:#8f7c74;--c-accent:#e0568a;--c-line:#e8d8c8;--c-card:#fffdf8;--c-input:#fff;
+  --c-chip-a:#ffd9e6;--c-chip-b:#d4ebff;--c-chip-c:#fff1b3;--c-chip-d:#d6f5dd;--c-chip-e:#e8dcff;--c-font-h:'Caveat',cursive;--c-font-b:'Nunito',sans-serif;
+  --c-btn:#ff9ec0;--c-btn-ink:#4a2a35;--c-radius:12px;--c-bullet:'♡'}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;overscroll-behavior:none}
+body{font-family:'Nunito',sans-serif;color:var(--ink);touch-action:none;user-select:none;-webkit-user-select:none;
+  background:
+   radial-gradient(circle,rgba(190,150,120,.22) 1.4px,transparent 1.8px) 0 0/26px 26px,
+   radial-gradient(900px 600px at 10% 0,rgba(255,200,220,.55),transparent 60%),
+   radial-gradient(900px 600px at 100% 100%,rgba(190,225,255,.6),transparent 60%),#fff6e8}
+/* table cloth */
+#cloth{position:fixed;left:0;right:0;bottom:0;height:64px;z-index:1;
+  background:linear-gradient(90deg,rgba(255,140,170,.35) 50%,transparent 50%) 0 0/48px 48px,linear-gradient(rgba(255,140,170,.35) 50%,transparent 50%) 0 0/48px 48px,#fff;border-top:3px solid #ffb3c9;box-shadow:0 -6px 14px rgba(150,90,60,.15)}
+.tape{position:fixed;width:130px;height:34px;opacity:.8;z-index:2;pointer-events:none;background:repeating-linear-gradient(45deg,#ffd3e2 0 9px,#fff3f7 9px 18px)}
+.tape.a{left:-30px;top:30px;transform:rotate(-38deg)}.tape.b{right:-34px;top:200px;transform:rotate(42deg);background:repeating-linear-gradient(45deg,#cfe8ff 0 9px,#f3faff 9px 18px)}.tape.c{left:34%;bottom:60px;display:none}
+#head{position:fixed;left:34px;top:22px;z-index:3;pointer-events:none;max-width:min(560px,56vw)}
+#head h1{margin:0;font:700 clamp(54px,8vw,104px)/.9 'Caveat';color:#4a3a35;transform:rotate(-3deg);text-shadow:3px 3px 0 #ffd0e0}
+#head h1 span{color:#e0568a}
+#head p{margin:12px 0 0;font:700 clamp(22px,2.4vw,30px)/1.15 'Caveat';color:#8f6f63;transform:rotate(-1.5deg)}
+#ctrl{position:fixed;left:34px;top:min(250px,34vh);z-index:6;display:flex;gap:10px;flex-wrap:wrap}
+.btn{pointer-events:auto;padding:10px 18px;border-radius:999px;border:2.5px dashed #e0568a;background:#fff;font:800 14px 'Nunito';color:#4a2a35;cursor:pointer;text-decoration:none;box-shadow:0 5px 0 rgba(224,86,138,.25);transition:transform .15s}
+.btn:hover{transform:translateY(-2px) rotate(-1deg)}
+#hint{position:fixed;right:24px;top:18px;z-index:6;font:700 24px 'Caveat';color:#a58476;transform:rotate(3deg);pointer-events:none;text-align:right;line-height:1}
+#hint b{display:block;font-size:34px;color:#e0568a}
+/* stickers */
+.stk{position:absolute;left:0;top:0;pointer-events:none;will-change:transform;z-index:4}
+.stk .in{position:absolute;display:grid;place-items:center;text-align:center;filter:drop-shadow(2.5px 0 0 #fff) drop-shadow(-2.5px 0 0 #fff) drop-shadow(0 2.5px 0 #fff) drop-shadow(0 -2.5px 0 #fff) drop-shadow(0 7px 7px rgba(110,70,50,.3))}
+.stk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.stk .lab{position:relative;z-index:1;font:700 26px/1 'Caveat';color:#4a3a35;margin-top:4px}
+.stk .em{position:relative;z-index:1;font-size:44px;line-height:1}
+.stk.mini .in{font-size:28px}
+.stk.sec .in{animation:wob 4s ease-in-out infinite}.stk.sec:nth-child(2n) .in{animation-delay:-1.3s}
+@keyframes wob{50%{filter:drop-shadow(2.5px 0 0 #fff) drop-shadow(-2.5px 0 0 #fff) drop-shadow(0 2.5px 0 #fff) drop-shadow(0 -2.5px 0 #fff) drop-shadow(0 10px 8px rgba(110,70,50,.25))}}
+#polaroid{position:absolute;left:0;top:0;z-index:4;pointer-events:none;width:150px;height:186px;margin:-93px 0 0 -75px;padding:10px 10px 0;background:#fff;box-shadow:0 10px 22px rgba(110,70,50,.3);border-radius:4px}
+#polaroid img{width:130px;height:130px;object-fit:cover;background:linear-gradient(160deg,#ffd6ec,#d9ecff);display:block}
+#polaroid span{display:block;text-align:center;font:700 22px/1.7 'Caveat';color:#6a5248}
+#polaroid::before{content:'';position:absolute;left:50%;top:-10px;width:56px;height:20px;transform:translateX(-50%) rotate(-3deg);background:rgba(255,211,226,.9)}
+#string{position:fixed;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+/* notebook modal */
+#modal{position:fixed;inset:0;z-index:30;display:none;place-items:center;padding:20px;background:rgba(90,50,50,.35);backdrop-filter:blur(3px);touch-action:auto}
+#modal.on{display:grid}
+.nb{position:relative;width:min(860px,100%);height:min(86dvh,760px);display:flex;flex-direction:column;border-radius:6px 20px 20px 6px;background:#fffdf6;box-shadow:0 30px 70px rgba(70,30,30,.45),inset 0 0 0 1px #eadfc9;transform-origin:left center;transform:perspective(1800px) rotateY(-100deg);opacity:0;transition:transform .8s cubic-bezier(.2,.9,.25,1),opacity .4s;user-select:text;-webkit-user-select:text}
+#modal.open .nb{transform:none;opacity:1}
+.nb::before{content:'';position:absolute;left:62px;top:0;bottom:0;width:2px;background:rgba(235,110,140,.45)}
+.holes{position:absolute;left:18px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-around;padding:40px 0}.holes i{width:22px;height:22px;border-radius:50%;background:#e9dccb;box-shadow:inset 2px 2px 4px rgba(0,0,0,.25)}
+.nb header{display:flex;align-items:center;gap:12px;padding:22px 26px 6px 84px}
+.nb h2{margin:0;flex:1;font:700 54px/1 'Caveat';color:#4a3a35}
+.nb .x{border:0;background:#ffe3ee;width:42px;height:42px;border-radius:50%;font:800 17px 'Nunito';color:#4a3a35;cursor:pointer}
+.nbody{flex:1;overflow:auto;padding:8px 28px 30px 84px;font-size:15px;line-height:1.55;scrollbar-width:thin;scrollbar-color:#e8d8c8 transparent;background:repeating-linear-gradient(transparent 0 30px,rgba(150,190,230,.25) 30px 31px) 0 6px}
+.nbody .c-item,.nbody .c-proj,.nbody .c-edu{background:#fff;box-shadow:0 3px 10px rgba(120,80,60,.1);border:1.5px solid #f0e2d2}
+.nbody .c-item h3,.nbody .c-proj h3,.nbody .c-edu h3{font-size:1.55em;line-height:1.05}.c-big{font-size:2.2em!important}.c-stat-box b{font-size:2.3em!important}
+@media(max-width:720px){#head{max-width:92vw}#ctrl{top:176px}#hint{display:none}.nb header{padding-left:62px}.nbody{padding-left:62px;padding-right:16px}.nb::before{left:44px}.nb h2{font-size:42px}.holes{left:8px}}
+</style>
+</head>
+<body>
+<div class="tape a"></div><div class="tape b"></div>
+<svg id="string"><line id="sl" stroke="#c9a98f" stroke-width="2.5" stroke-linecap="round"/><circle id="pin" r="7" fill="#ff6f8f" stroke="#fff" stroke-width="2"/></svg>
+<div id="polaroid"><img src="/assets/img/laba.png" alt="Lan Anh Do"><span>me, 2026 ♡</span></div>
+<div id="head"><h1>Lan Anh <span>Do</span></h1><p>software engineer · product builder · professional tech yapper :D</p></div>
+<div id="ctrl"><a class="btn" href="/assets/Lan-Anh-Do-Resume.pdf" download="Lan-Anh-Do-Resume.pdf">⬇ resume</a><button class="btn" id="shake">✿ shake the table</button></div>
+<div id="hint"><b>drag the stickers!</b>click one to open it</div>
+<div id="cloth"></div>
+<div id="modal"><div class="nb" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="holes"><i></i><i></i><i></i><i></i><i></i></div><header><h2 id="mt"></h2><button class="x" id="mx" aria-label="Close">✕</button></header><div class="nbody" id="mb"></div></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
+<script src="/shared/data.js"></script>
+<script src="/shared/content.js"></script>
+<script>
+(() => {
+  const { Engine, World, Bodies, Body, Mouse, MouseConstraint, Constraint, Query, Events } = Matter;
+  const $ = s => document.querySelector(s);
+  const engine = Engine.create({ gravity: { y: 1.1 } }), world = engine.world;
+  let W = innerWidth, H = innerHeight; const small = () => W < 720, K = () => small() ? .72 : 1;
+  const FLOOR = 64;
+
+  /* walls */
+  let walls = [];
+  function makeWalls() { walls.forEach(w => World.remove(world, w)); const t = 400, o = { isStatic: true, friction: .6, restitution: .2 };
+    walls = [Bodies.rectangle(W / 2, H - FLOOR + t / 2, W * 2, t, o), Bodies.rectangle(-t / 2, H / 2, t, H * 6, o), Bodies.rectangle(W + t / 2, H / 2, t, H * 6, o)]; World.add(world, walls); }
+  makeWalls();
+
+  /* sticker definitions */
+  const SEC = [
+    { id: 'profile', lab: 'about me', em: '', shape: 'circle', w: 150, fill: '#ffc2d6', img: true },
+    { id: 'skills', lab: 'skills', em: '🎨', shape: 'star', w: 160, fill: '#ffe27a' },
+    { id: 'experience', lab: 'experience', em: '💼', shape: 'note', w: 150, h: 150, fill: '#fff29c' },
+    { id: 'projects', lab: 'projects', em: '🎮', shape: 'cloud', w: 200, h: 130, fill: '#bfe3ff' },
+    { id: 'leadership', lab: 'leadership', em: '👑', shape: 'badge', w: 150, fill: '#d9c8ff' },
+    { id: 'contact', lab: 'contact', em: '💌', shape: 'env', w: 170, h: 116, fill: '#ffffff' }
+  ];
+  const MINI = ['🐾', '🐟', '⭐', '💖', '☁️', '🌸', '🍓', '✨', '🧋', '🐱', '🎀', '🍥', '🌈', '🦋'];
+  const SHAPES = {
+    star: (w, f) => `<svg viewBox="0 0 100 100"><path d="M50 4 L62 36 L96 38 L69 59 L79 92 L50 73 L21 92 L31 59 L4 38 L38 36Z" fill="${f}" stroke="#f0b93a" stroke-width="2" stroke-linejoin="round"/></svg>`,
+    note: (w, f) => `<svg viewBox="0 0 100 100"><path d="M4 4 H96 V70 L70 96 H4Z" fill="${f}"/><path d="M70 96 V70 H96Z" fill="#f2d66b"/><rect x="4" y="4" width="92" height="12" fill="rgba(0,0,0,.05)"/></svg>`,
+    cloud: (w, f) => `<svg viewBox="0 0 200 130"><path d="M50 118 C14 118 6 78 38 72 C34 40 78 30 92 54 C104 22 158 28 160 66 C192 66 198 112 160 118Z" fill="${f}" stroke="#7fb6e8" stroke-width="2.5" stroke-linejoin="round"/></svg>`,
+    badge: (w, f) => `<svg viewBox="0 0 100 100"><path d="${scallop()}" fill="${f}" stroke="#a88bf0" stroke-width="2"/></svg>`,
+    env: (w, f) => `<svg viewBox="0 0 170 116"><rect x="2" y="2" width="166" height="112" rx="8" fill="${f}" stroke="#ff9bb8" stroke-width="3"/><path d="M4 6 L85 66 L166 6" fill="none" stroke="#ff9bb8" stroke-width="3" stroke-linejoin="round"/><path d="M4 112 L62 56 M166 112 L108 56" stroke="#ffd0de" stroke-width="2.5"/></svg>`,
+    circle: (w, f) => `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="${f}" stroke="#ff8fb2" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/></svg>`
+  };
+  function scallop() { let d = ''; const n = 14; for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2, r = 46; d += (i ? 'L' : 'M') + (50 + Math.cos(a) * r).toFixed(1) + ' ' + (50 + Math.sin(a) * r).toFixed(1); } return d + 'Z'; }
+
+  const stickers = [];
+  function addSticker(def, x, y, mini) {
+    const k = K(), el = document.createElement('div'); el.className = 'stk ' + (mini ? 'mini' : 'sec');
+    const w = (def.w || 62) * (mini ? 1 : k), h = (def.h || def.w || 62) * (mini ? 1 : k);
+    const inner = document.createElement('div'); inner.className = 'in'; inner.style.cssText = `width:${w}px;height:${h}px;left:${-w / 2}px;top:${-h / 2}px`;
+    if (mini) { inner.innerHTML = `<div style="width:100%;height:100%;border-radius:50%;background:#fff;display:grid;place-items:center;border:3px dashed ${['#ffb3cc', '#b9dcff', '#ffe27a', '#c9f0d6'][Math.random() * 4 | 0]}">${def}</div>`; }
+    else {
+      inner.innerHTML = SHAPES[def.shape](w, def.fill) + (def.img ? `<img src="/assets/img/laba.png" alt="" style="position:absolute;left:12%;top:8%;width:76%;height:76%;object-fit:cover;border-radius:50%">` : `<span class="em">${def.em}</span>`) + `<span class="lab" style="position:absolute;bottom:${def.shape === 'cloud' ? 14 : def.shape === 'env' ? 14 : def.img ? -6 : 10}%;left:0;right:0;${def.img ? 'background:#fff;border-radius:999px;width:max-content;margin:0 auto;padding:3px 12px;font-size:24px' : ''}">${def.lab}</span>`;
+      if (def.shape !== 'circle' && !def.img) inner.style.paddingBottom = '10px';
+    }
+    el.appendChild(inner); document.body.appendChild(el);
+    const o = { restitution: .35, friction: .5, frictionAir: .012, density: .0016 };
+    let body = (def.shape === 'circle' || def.shape === 'star' || def.shape === 'badge' || mini) ? Bodies.circle(x, y, w / 2.2, o) : def.shape === 'cloud' ? Bodies.rectangle(x, y, w * .88, h * .78, { ...o, chamfer: { radius: 24 } }) : Bodies.rectangle(x, y, w * .92, h * .9, { ...o, chamfer: { radius: 8 } });
+    Body.setAngle(body, (Math.random() - .5) * 1.2); Body.setAngularVelocity(body, (Math.random() - .5) * .15);
+    World.add(world, body); stickers.push({ el, body, def, mini }); body.sticker = stickers[stickers.length - 1]; return body;
+  }
+  function drop() { stickers.forEach(s => { World.remove(world, s.body); s.el.remove(); }); stickers.length = 0; SEC.forEach((d, i) => setTimeout(() => addSticker(d, W * (.18 + .13 * i) + Math.random() * 60, -80 - i * 20), 250 + i * 260));
+    const n = small() ? 8 : 14; for (let i = 0; i < n; i++) setTimeout(() => addSticker(MINI[i % MINI.length], Math.random() * (W - 120) + 60, -60), 900 + i * 140); }
+
+  /* hanging polaroid */
+  const ax = () => W - (small() ? 100 : 240), ay = () => small() ? 250 : 24;
+  const pol = Bodies.rectangle(ax() + 40, ay() + 200, 150, 186, { restitution: .3, frictionAir: .02, density: .001, chamfer: { radius: 4 } }); World.add(world, pol);
+  let rope = Constraint.create({ pointA: { x: ax(), y: ay() }, bodyB: pol, pointB: { x: 0, y: -93 }, length: 130, stiffness: .85, damping: .05 }); World.add(world, rope);
+
+  /* mouse */
+  const mouse = Mouse.create(document.body); mouse.element.removeEventListener('mousewheel', mouse.mousewheel); mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel);
+  const mc = MouseConstraint.create(engine, { mouse, constraint: { stiffness: .22, damping: .1, render: { visible: false } } }); World.add(world, mc);
+  let down = null; const modalOpen = () => $('#modal').classList.contains('on');
+  addEventListener('pointerdown', e => { if (modalOpen() || e.target.closest('.btn')) return; down = { x: e.clientX, y: e.clientY, t: performance.now() }; });
+  addEventListener('pointerup', e => { if (!down || modalOpen()) return; const d = Math.hypot(e.clientX - down.x, e.clientY - down.y), dt = performance.now() - down.t; down = null; if (d > 8 || dt > 450) return;
+    const hit = Query.point(stickers.filter(s => !s.mini).map(s => s.body), { x: e.clientX, y: e.clientY })[0]; if (hit) openNote(hit.sticker.def.id); });
+  addEventListener('pointermove', e => { if (modalOpen()) return; const hit = Query.point(stickers.map(s => s.body), { x: e.clientX, y: e.clientY })[0]; document.body.style.cursor = hit ? (mc.body ? 'grabbing' : 'grab') : 'default'; });
+
+  /* modal */
+  const modal = $('#modal');
+  function openNote(id) { const m = C.D.modules.find(x => x.id === id); $('#mt').textContent = m.title; $('#mb').innerHTML = C.get(id); $('#mb').scrollTop = 0; C.wire($('#mb')); modal.classList.add('on'); setTimeout(() => modal.classList.add('open'), 40); history.replaceState(null, '', '#' + id); mouse.element.style.touchAction = 'auto'; }
+  function closeNote() { modal.classList.remove('open'); setTimeout(() => modal.classList.remove('on'), 650); history.replaceState(null, '', location.pathname); }
+  $('#mx').onclick = closeNote; modal.addEventListener('pointerdown', e => { if (e.target === modal) closeNote(); }); addEventListener('keydown', e => { if (e.key === 'Escape') closeNote(); });
+  $('#shake').onclick = () => { stickers.forEach(s => Body.applyForce(s.body, s.body.position, { x: (Math.random() - .5) * .06, y: -.07 - Math.random() * .05 })); Body.applyForce(pol, pol.position, { x: (Math.random() - .5) * .05, y: -.03 }); };
+
+  /* render loop */
+  const sl = $('#sl'), pin = $('#pin'), polEl = $('#polaroid');
+  Events.on(engine, 'afterUpdate', () => {
+    stickers.forEach(s => { const p = s.body.position; s.el.style.transform = `translate(${p.x}px,${p.y}px) rotate(${s.body.angle}rad)`; });
+    const p = pol.position, a = pol.angle; polEl.style.transform = `translate(${p.x}px,${p.y}px) rotate(${a}rad)`;
+    const tx = p.x + Math.sin(a) * 93, ty = p.y - Math.cos(a) * 93; sl.setAttribute('x1', ax()); sl.setAttribute('y1', ay()); sl.setAttribute('x2', tx); sl.setAttribute('y2', ty); pin.setAttribute('cx', ax()); pin.setAttribute('cy', ay());
+  });
+  let last = performance.now(); (function loop(t) { Engine.update(engine, Math.min(32, t - last)); last = t; requestAnimationFrame(loop); })(last);
+
+  addEventListener('resize', () => { W = innerWidth; H = innerHeight; makeWalls(); rope.pointA.x = ax(); rope.pointA.y = ay(); });
+  drop();
+  const h = location.hash.slice(1); if (SEC.some(s => s.id === h)) setTimeout(() => openNote(h), 1500);
+})();
+</script>
+</body>
+</html>

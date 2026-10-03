@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#cdb8ff">
+<title>Lan Anh · Phone</title>
+<link rel="icon" href="/assets/img/avatar.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/content.css">
+<style>
+:root{--ink:#3a2c52;--mute:#8a7aa6;--glass:rgba(255,255,255,.55);--glass2:rgba(255,255,255,.78);--line:rgba(255,255,255,.7);--sh:0 8px 24px rgba(70,40,120,.18);--acc:#e0577a;
+  --c-ink:#3a2c52;--c-mute:#8a7aa6;--c-accent:var(--acc);--c-line:rgba(120,90,170,.18);--c-card:rgba(255,255,255,.8);--c-input:#fff;--c-chip-a:#ffe0ea;--c-chip-b:#d9efe9;--c-chip-c:#fff1b8;--c-chip-d:#dbe8ff;--c-chip-e:#eadfff;
+  --c-font-h:'Mochiy Pop One',sans-serif;--c-font-b:'Zen Maru Gothic',sans-serif;--c-btn:var(--acc);--c-btn-ink:#fff;--c-radius:16px;--c-bullet:'✦'}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{font-family:'Zen Maru Gothic',sans-serif;color:var(--ink);background:radial-gradient(circle at 15% 20%,#ffd2e6,transparent 40%),radial-gradient(circle at 85% 80%,#cfd8ff,transparent 45%),radial-gradient(circle at 70% 10%,#fff0c9,transparent 35%),linear-gradient(160deg,#fde7f1,#e8e3ff 60%,#d9f1ff);overflow:hidden;-webkit-user-select:none;user-select:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
+#stage{height:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;justify-items:center;gap:20px;padding:12px}
+.side{max-width:290px;font-weight:700;line-height:1.55}
+.side.l{justify-self:end;text-align:right}.side.r{justify-self:start}
+.side h1{margin:0 0 6px;font:400 38px/1.05 'Mochiy Pop One';letter-spacing:.01em}
+.side h1 i{font-style:normal;color:#ff6f9f}
+.side small{display:block;font:900 11px 'Zen Maru Gothic';letter-spacing:.22em;color:var(--mute);text-transform:uppercase;margin-bottom:8px}
+.side p{margin:0 0 12px;color:#6a5a86;font-size:14px}
+.keys{display:grid;gap:9px;font-size:13px;color:#6a5a86}
+.keys div{display:flex;gap:10px;align-items:center}
+kbd{flex:none;min-width:34px;text-align:center;font:900 12px 'Zen Maru Gothic';background:#fff;border:2px solid #e0d6f7;border-bottom-width:4px;border-radius:9px;padding:4px 8px;color:var(--ink)}
+.pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.85);border:2px solid #fff;border-radius:999px;padding:8px 14px;font-weight:900;font-size:13px;color:var(--ink);text-decoration:none;box-shadow:0 3px 0 rgba(58,44,82,.14)}
+
+/* phone */
+#phone{position:relative;width:min(398px,100vw);height:min(838px,calc(100vh - 24px));padding:10px;border-radius:62px;background:linear-gradient(145deg,#2d2540,#14101f);box-shadow:0 0 0 2px #4a3f66,0 0 0 5px #1a1428,0 40px 80px rgba(70,40,140,.45),inset 0 0 0 2px rgba(255,255,255,.08)}
+#phone::before,#phone::after{content:'';position:absolute;width:4px;border-radius:2px;background:#2d2540;left:-7px}
+#phone::before{top:150px;height:34px;box-shadow:0 56px 0 #2d2540,0 112px 0 #2d2540}#phone::after{left:auto;right:-7px;top:210px;height:70px}
+#screen{position:relative;width:100%;height:100%;border-radius:52px;overflow:hidden;background:#cdb8ff;isolation:isolate;transform:translateZ(0)}
+#wall{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;object-fit:cover;z-index:0;transition:filter .5s}
+#screen.home #wall{filter:saturate(1.05)}
+#dim{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;z-index:60}
+#island{position:absolute;left:50%;top:10px;width:106px;height:30px;margin-left:-53px;border-radius:18px;background:#0b0813;z-index:50}
+#island::after{content:'';position:absolute;right:12px;top:10px;width:10px;height:10px;border-radius:50%;background:radial-gradient(#2c3a6a,#0b0813 70%)}
+#sb{position:absolute;left:0;right:0;top:0;height:50px;z-index:49;display:flex;justify-content:space-between;align-items:center;padding:6px 32px 0 36px;font:900 15px 'Zen Maru Gothic';color:#fff;text-shadow:0 1px 4px rgba(60,30,110,.35);pointer-events:none}
+#sb .r{display:flex;gap:6px;align-items:center;pointer-events:auto;cursor:pointer;padding:6px}
+#sb svg{display:block}
+.batt{position:relative;width:26px;height:12px;border:2px solid #fff;border-radius:4px;opacity:.95}
+.batt i{position:absolute;left:1px;top:1px;bottom:1px;width:94%;background:#fff;border-radius:1.5px}.batt::after{content:'';position:absolute;right:-5px;top:2px;width:2px;height:4px;background:#fff;border-radius:0 2px 2px 0}
+#screen.light-bar:not(.dark) #sb{color:#3a2c52;text-shadow:none}#screen.light-bar:not(.dark) .batt{border-color:#3a2c52}#screen.light-bar:not(.dark) .batt i{background:#3a2c52}#screen.light-bar:not(.dark) #sb svg{fill:#3a2c52;stroke:none}#screen.light-bar:not(.dark) #sb svg:nth-of-type(2){fill:none;stroke:#3a2c52}
+#bar{position:absolute;left:50%;bottom:7px;width:134px;height:5px;margin-left:-67px;border-radius:3px;background:#fff;z-index:55;box-shadow:0 0 6px rgba(60,30,110,.35);cursor:pointer}
+#bar::before{content:'';position:absolute;inset:-14px -20px}
+#screen.in-app:not(.dark) #bar{background:#3a2c52;box-shadow:none}
+
+/* lock */
+#lock{position:absolute;inset:0;z-index:30;color:#fff;transition:transform .55s cubic-bezier(.3,.9,.2,1),opacity .4s;text-align:center;touch-action:none}
+#screen:not(.locked) #lock{transform:translateY(-102%);opacity:.4;pointer-events:none}
+#lock .date{margin-top:70px;font:900 19px 'Zen Maru Gothic';text-shadow:0 2px 8px rgba(70,30,120,.35);letter-spacing:.02em}
+#lock .time{font:400 92px/1 'Mochiy Pop One';letter-spacing:-.02em;text-shadow:0 4px 0 rgba(255,255,255,.25),0 6px 24px rgba(70,30,120,.35);margin-top:2px}
+#lock .hello{margin-top:8px;font-weight:900;font-size:14px;opacity:.95;text-shadow:0 2px 8px rgba(70,30,120,.4)}
+#notifs{position:absolute;left:14px;right:14px;top:276px;display:grid;gap:9px}
+.nt{display:flex;gap:11px;align-items:flex-start;text-align:left;background:var(--glass2);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1.5px solid var(--line);border-radius:22px;padding:11px 14px;color:var(--ink);box-shadow:var(--sh);animation:nin .6s cubic-bezier(.3,1.4,.5,1) both;width:100%}
+.nt:active{transform:scale(.98)}
+@keyframes nin{from{transform:translateY(24px) scale(.96);opacity:0}}
+.nt .ic{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center}
+.nt .ic svg{width:19px;height:19px}
+.nt b{display:block;font-size:13px;line-height:1.2}.nt span{display:block;font-size:12.5px;color:#5c4d78;line-height:1.35;margin-top:2px;font-weight:700}
+.nt time{margin-left:auto;font-size:11px;color:var(--mute);font-weight:700;flex:none}
+#unlock{position:absolute;left:0;right:0;bottom:46px;font:900 14px 'Zen Maru Gothic';letter-spacing:.06em;opacity:.95;text-shadow:0 2px 8px rgba(70,30,120,.5);animation:shim 2s ease-in-out infinite;cursor:pointer;padding:12px}
+#unlock::before{content:'';display:block;width:6px;height:6px;margin:0 auto 8px;border-left:3px solid #fff;border-top:3px solid #fff;transform:rotate(45deg)}
+@keyframes shim{50%{opacity:.5;transform:translateY(-4px)}}
+.lbtn{position:absolute;bottom:50px;width:46px;height:46px;border-radius:50%;background:var(--glass);backdrop-filter:blur(12px);display:grid;place-items:center;border:1.5px solid var(--line)}
+.lbtn svg{width:20px;height:20px}
+
+/* home */
+#home{position:absolute;inset:0;z-index:10;opacity:0;transform:scale(.92);transition:transform .55s cubic-bezier(.3,.9,.2,1),opacity .45s,filter .45s;pointer-events:none}
+#screen.home:not(.locked) #home{opacity:1;transform:none;pointer-events:auto}
+#screen.in-app #home{transform:scale(.9);filter:blur(5px);opacity:.6}
+#pages{display:flex;height:100%;width:100%;transition:transform .45s cubic-bezier(.3,.9,.2,1);touch-action:pan-y}
+#pages.drag{transition:none}
+.pg{flex:none;width:100%;height:100%;padding:58px 18px 150px;display:flex;flex-direction:column;gap:14px;overflow:hidden}.pg>*{flex-shrink:0}
+.row{display:grid;gap:14px}.row.two{grid-template-columns:1fr 1fr}
+.wd{position:relative;border-radius:26px;background:var(--glass);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);border:1.5px solid var(--line);box-shadow:var(--sh);overflow:hidden;text-align:left;transition:transform .15s}
+.wd:active{transform:scale(.97)}
+.wd.sq{height:162px}#wSkill{height:140px!important}#wProj{height:206px!important}.wd.wide{height:84px}.wd.tall{height:168px}
+.wd .lb{position:absolute;left:14px;bottom:10px;font:900 11px 'Zen Maru Gothic';letter-spacing:.1em;color:var(--ink);text-transform:uppercase;opacity:.75}
+.wd.av{background:linear-gradient(160deg,rgba(255,226,239,.9),rgba(222,214,255,.85))}
+#avw{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);image-rendering:pixelated;width:60px;height:88px;animation:abob 1.4s steps(1) infinite;transition:transform .3s}
+#avw.hop{animation:ahop .6s cubic-bezier(.3,.9,.4,1)}
+@keyframes abob{50%{transform:translateX(-50%) translateY(-2px)}}
+@keyframes ahop{40%{transform:translateX(-50%) translateY(-26px)}}
+#avb{position:absolute;left:10px;top:10px;right:10px;background:#fff;border-radius:14px;padding:6px 9px;font-weight:900;font-size:11.5px;line-height:1.25;box-shadow:0 3px 0 rgba(70,40,120,.12);transition:opacity .3s,transform .3s}
+#avb::after{content:'';position:absolute;left:46%;bottom:-6px;width:10px;height:10px;background:#fff;transform:rotate(45deg)}
+.gpa{display:grid;place-items:center;height:100%;padding-bottom:18px}
+.ring{position:relative;width:104px;height:104px}.ring svg{transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font:400 25px 'Mochiy Pop One';padding-bottom:12px}
+.ring span{position:absolute;left:0;right:0;top:60%;text-align:center;font:900 10px 'Zen Maru Gothic';color:var(--mute);letter-spacing:.1em}
+.status{display:flex;align-items:center;gap:12px;height:100%;padding:0 16px}
+.status .dot{width:12px;height:12px;border-radius:50%;background:#4fd08a;box-shadow:0 0 0 4px rgba(79,208,138,.25);animation:pulse 2s ease-in-out infinite;flex:none}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(79,208,138,.05)}}
+.status b{display:block;font-size:14px}.status span{font-size:12px;color:#6a5a86;font-weight:700}
+.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 6px;margin-top:2px}
+.app{display:flex;flex-direction:column;align-items:center;gap:6px;font-weight:900;font-size:11.5px;color:#fff;text-shadow:0 1px 6px rgba(60,30,110,.5);transition:transform .15s}
+.app:active{transform:scale(.9)}
+.sq-ic{width:62px;height:62px;border-radius:19px;display:grid;place-items:center;box-shadow:0 6px 14px rgba(70,40,120,.28),inset 0 2px 0 rgba(255,255,255,.55),inset 0 -3px 0 rgba(0,0,0,.1);position:relative}
+.sq-ic svg{width:31px;height:31px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.18))}
+.sq-ic .bd{position:absolute;right:-5px;top:-5px;min-width:20px;height:20px;border-radius:10px;background:#ff4f6a;color:#fff;font:900 11px/20px 'Zen Maru Gothic';text-align:center;padding:0 5px;box-shadow:0 0 0 2px #fff;text-shadow:none;animation:bd 2s ease-in-out infinite}
+@keyframes bd{50%{transform:scale(1.15)}}
+#dots{position:absolute;left:0;right:0;bottom:124px;display:flex;justify-content:center;gap:7px}
+#dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55);transition:.25s}#dots i.on{background:#fff;transform:scale(1.25)}
+#dock{position:absolute;left:12px;right:12px;bottom:22px;height:92px;border-radius:34px;background:var(--glass);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border:1.5px solid var(--line);display:flex;justify-content:space-around;align-items:center;padding:0 8px;box-shadow:var(--sh)}
+#dock .app{font-size:0}
+.skillcloud{display:flex;flex-wrap:wrap;gap:6px;padding:14px;align-content:flex-start;height:100%}
+.skillcloud span{padding:4px 10px;border-radius:999px;font-weight:900;font-size:11.5px;background:#fff;color:var(--ink)}
+.proj-st{padding:12px 14px 34px;display:grid;gap:7px}
+.proj-st .it{display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.85);border-radius:16px;padding:9px 12px;font-weight:900;font-size:13px}
+.proj-st .it small{display:block;font-weight:700;color:var(--mute);font-size:11px}
+.proj-st .em{font-size:20px}
+.resumew{display:flex;gap:12px;align-items:center;height:100%;padding:0 16px}
+.doc{width:44px;height:58px;background:#fff;border-radius:6px;position:relative;box-shadow:0 4px 10px rgba(70,40,120,.18);flex:none;padding:8px 6px;display:grid;gap:4px;align-content:start}
+.doc i{display:block;height:3px;border-radius:2px;background:#e4daf6}.doc i:first-child{width:60%;background:#ff9fbf}
+
+/* control center */
+#cc{position:absolute;left:12px;right:12px;top:54px;z-index:58;border-radius:34px;padding:16px;background:rgba(255,255,255,.7);backdrop-filter:blur(30px) saturate(1.5);-webkit-backdrop-filter:blur(30px) saturate(1.5);border:1.5px solid var(--line);box-shadow:0 20px 50px rgba(50,20,100,.35);transform:translateY(-130%) scale(.9);opacity:0;pointer-events:none;transition:transform .45s cubic-bezier(.3,1.2,.4,1),opacity .3s;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#cc.on{transform:none;opacity:1;pointer-events:auto}
+.tile{display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.85);border-radius:22px;padding:12px 14px;font-weight:900;font-size:13px;text-align:left;transition:.2s}
+.tile .ti{width:34px;height:34px;border-radius:50%;background:#e9e2fa;display:grid;place-items:center;font-size:16px;flex:none;transition:.2s}
+.tile.on .ti{background:var(--acc);color:#fff}.tile small{display:block;color:var(--mute);font-weight:700;font-size:11px}
+.slider{grid-column:1/-1;background:rgba(255,255,255,.85);border-radius:22px;padding:12px 16px;display:flex;gap:12px;align-items:center;font-weight:900;font-size:13px}
+.slider input{flex:1;accent-color:#ff6f9f}
+#cc .hd{grid-column:1/-1;display:flex;align-items:center;gap:10px;font:900 12px 'Zen Maru Gothic';letter-spacing:.14em;color:var(--mute);text-transform:uppercase}
+#veil2{position:absolute;inset:0;z-index:57;display:none}#veil2.on{display:block}
+
+/* banner */
+#banner{position:absolute;left:12px;right:12px;top:14px;z-index:59;display:flex;gap:11px;align-items:center;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-radius:26px;padding:10px 14px;box-shadow:0 12px 30px rgba(50,20,100,.3);transform:translateY(-140%);transition:transform .55s cubic-bezier(.3,1.3,.4,1);text-align:left;width:calc(100% - 24px)}
+#banner.on{transform:none}
+#banner img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:top;background:#ffe0ea;image-rendering:pixelated;flex:none}
+#banner b{font-size:13px;display:block}#banner span{font-size:12px;color:#6a5a86;font-weight:700}
+
+/* app */
+#app{position:absolute;inset:0;z-index:40;background:#fff9fd;overflow:hidden;transform-origin:0 0;opacity:0;pointer-events:none;transition:transform .5s cubic-bezier(.25,.95,.2,1),border-radius .5s,opacity .3s;display:flex;flex-direction:column;--ac:#e0577a}
+#app.on{pointer-events:auto}
+#app.open{opacity:1}
+.ah{position:relative;flex:none;padding:56px 22px 14px;background:linear-gradient(160deg,color-mix(in srgb,var(--ac) 22%,#fff),#fff9fd);z-index:3;transition:box-shadow .25s}
+#app.scrolled .ah{box-shadow:0 6px 18px rgba(70,40,120,.12)}
+.ah .back{display:inline-flex;align-items:center;gap:3px;font-weight:900;font-size:14px;color:var(--ac);padding:6px 4px;margin-left:-4px}
+.ah h2{margin:6px 0 0;font:400 30px/1.1 'Mochiy Pop One';transition:.25s;transform-origin:left top}
+.ah p{margin:3px 0 0;color:var(--mute);font-weight:700;font-size:13px}
+#app.scrolled .ah h2{font-size:19px}#app.scrolled .ah p{display:none}
+.ab{flex:1;overflow:auto;padding:14px 20px 88px;font-size:14.5px;line-height:1.55;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.ab::-webkit-scrollbar{width:0}
+.ab .c-btn{font-family:inherit}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:6px 0 18px}
+.hero .big{width:118px;height:118px;border-radius:50%;background:linear-gradient(160deg,#ffd0e2,#d7cdff);display:grid;place-items:end center;overflow:hidden;box-shadow:0 8px 20px rgba(120,70,170,.25),inset 0 0 0 4px #fff}
+.hero .big img{width:90px;height:132px;image-rendering:pixelated;margin-bottom:-52px;animation:abob2 1.4s steps(1) infinite}
+@keyframes abob2{50%{transform:translateY(-2px)}}
+.hero h3{margin:12px 0 0;font:400 25px 'Mochiy Pop One'}.hero p{margin:3px 0 0;color:var(--mute);font-weight:700;font-size:13px}
+.acts{display:flex;gap:14px;justify-content:center;margin:14px 0 0}
+.act{text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:5px;font-weight:900;font-size:11px;color:var(--ac)}
+.act i{width:48px;height:48px;border-radius:50%;background:color-mix(in srgb,var(--ac) 14%,#fff);display:grid;place-items:center;transition:.15s;box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--ac) 22%,transparent)}
+.act i svg{width:22px;height:22px}.act:active i{transform:scale(.9)}
+.search{display:flex;gap:8px;align-items:center;background:#f0eaff;border-radius:14px;padding:10px 14px;margin:0 0 16px;font-weight:700;color:var(--mute)}
+.search input{flex:1;border:0;background:none;outline:0;font:700 15px 'Zen Maru Gothic';color:var(--ink);min-width:0;-webkit-user-select:text;user-select:text}
+.seg{display:flex;gap:4px;background:#efe9fb;border-radius:13px;padding:3px;margin:0 0 16px;overflow:auto}
+.seg button{flex:1;white-space:nowrap;padding:8px 12px;border-radius:10px;font-weight:900;font-size:12.5px;color:var(--mute);transition:.2s}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 2px 6px rgba(70,40,120,.15)}
+.empty{text-align:center;color:var(--mute);font-weight:700;padding:30px 0}
+.note-h{font:400 20px 'Mochiy Pop One';margin:26px 0 12px;color:var(--ac)}.note-h:first-child{margin-top:4px}
+
+/* chat */
+#app.chat .ab{display:flex;flex-direction:column;padding:10px 14px 0;overflow:hidden}
+.msgs{flex:1;overflow:auto;display:flex;flex-direction:column;gap:6px;padding:8px 2px 12px;scroll-behavior:smooth;overscroll-behavior:contain}.msgs::-webkit-scrollbar{width:0}
+.bub{max-width:80%;padding:9px 14px;border-radius:20px;font-weight:700;font-size:14.5px;line-height:1.4;animation:bin .35s cubic-bezier(.3,1.5,.5,1) both;-webkit-user-select:text;user-select:text;word-wrap:break-word}
+@keyframes bin{from{transform:scale(.7) translateY(10px);opacity:0}}
+.bub.them{align-self:flex-start;background:#eee8fb;border-bottom-left-radius:6px;transform-origin:left bottom}
+.bub.me{align-self:flex-end;background:linear-gradient(160deg,#ff8fb4,#e0577a);color:#fff;border-bottom-right-radius:6px;transform-origin:right bottom}
+.bub.typing{display:flex;gap:4px;padding:13px 16px}.bub.typing i{width:7px;height:7px;border-radius:50%;background:#a99cc8;animation:ty 1s infinite}.bub.typing i:nth-child(2){animation-delay:.15s}.bub.typing i:nth-child(3){animation-delay:.3s}
+@keyframes ty{40%{transform:translateY(-5px);background:#7c6aa8}}
+.dl{align-self:flex-end;font-size:11px;color:var(--mute);font-weight:700;margin:-2px 6px 4px}
+.qr{display:flex;gap:7px;flex-wrap:wrap;padding:4px 0 10px}.qr button{background:#fff;border:2px solid #e3d9f8;border-radius:999px;padding:7px 14px;font-weight:900;font-size:13px;color:var(--ac);transition:.15s}.qr button:active{transform:scale(.95)}
+.comp{flex:none;display:flex;gap:8px;align-items:flex-end;padding:8px 0 86px}
+.comp textarea,.comp input{flex:1;resize:none;border:2px solid #e3d9f8;background:#fff;border-radius:22px;padding:10px 16px;font:700 15px 'Zen Maru Gothic';color:var(--ink);outline:0;max-height:100px;-webkit-user-select:text;user-select:text;min-width:0}
+.comp textarea:focus,.comp input:focus{border-color:var(--ac)}
+.comp .send{flex:none;width:42px;height:42px;border-radius:50%;background:var(--ac);color:#fff;display:grid;place-items:center;transition:.15s;box-shadow:0 3px 0 rgba(0,0,0,.15)}.comp .send:active{transform:scale(.9)}.comp .send:disabled{opacity:.4}
+.mailalt{text-align:center;font-weight:700;font-size:12px;color:var(--mute);padding:0 0 4px}.mailalt a{color:var(--ac);font-weight:900}
+.chead{display:flex;align-items:center;gap:10px}.chead .big{width:44px;height:44px;border-radius:50%;background:linear-gradient(160deg,#ffd0e2,#d7cdff);overflow:hidden;display:grid;place-items:end center;flex:none;box-shadow:inset 0 0 0 2px #fff}.chead .big img{width:34px;height:50px;image-rendering:pixelated;margin-bottom:-20px}
+.chead h2{font-size:21px!important}.chead p{display:flex;align-items:center;gap:5px}.chead p::before{content:'';width:8px;height:8px;border-radius:50%;background:#4fd08a}
+
+/* dark */
+#screen.dark{--glass:rgba(40,30,80,.55);--glass2:rgba(40,32,84,.78);--line:rgba(255,255,255,.14);--ink:#f4eeff;--mute:#b4a6d8}
+#screen.dark .nt span{color:#cdbfef}
+#screen.dark #app{background:#17122c;color:#f4eeff;--c-ink:#f4eeff;--c-mute:#b4a6d8;--c-card:rgba(255,255,255,.07);--c-line:rgba(255,255,255,.14);--c-input:#241d44;--c-chip-a:#5a2f4e;--c-chip-b:#2c4a49;--c-chip-c:#574a22;--c-chip-d:#2d3f6e;--c-chip-e:#44347a}
+#screen.dark .ah{background:linear-gradient(160deg,color-mix(in srgb,var(--ac) 30%,#17122c),#17122c)}
+#screen.dark .search,#screen.dark .seg{background:#241d44}#screen.dark .seg button.on{background:#3a2f66;color:#fff}
+#screen.dark .bub.them{background:#2c2452}#screen.dark .comp textarea,#screen.dark .comp input,#screen.dark .qr button{background:#241d44;border-color:#3a2f66;color:#f4eeff}
+#screen.dark .wd .lb{color:#f4eeff}#screen.dark #avb,#screen.dark .proj-st .it,#screen.dark .skillcloud span{background:#2c2452;color:#f4eeff}#screen.dark #avb::after{background:#2c2452}
+#screen.dark .tile,#screen.dark .slider{background:rgba(60,48,110,.8)}#screen.dark #cc{background:rgba(30,24,64,.8)}#screen.dark .tile .ti{background:#3a2f66}
+#screen.dark .hero .big,#screen.dark .chead .big{background:linear-gradient(160deg,#5a3a7e,#2e2a6e)}
+#screen.dark .c-item .c-sub,#screen.dark .c-edu{border-color:rgba(255,255,255,.14)}
+#screen.dark .c-bullets strong{background:linear-gradient(transparent 62%,rgba(255,200,90,.28) 62%)}
+
+@media(max-width:1100px){.side{display:none}#stage{grid-template-columns:auto}}
+@media(max-width:480px){#stage{padding:0}#phone{width:100vw;height:100dvh;height:100vh;padding:0;border-radius:0;box-shadow:none;background:#000}#phone::before,#phone::after{display:none}#screen{border-radius:0}#island{top:8px}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<div id="stage">
+  <aside class="side l">
+    <small>portfolio.app · class of 2027</small>
+    <h1>Lan Anh<br><i>Do</i></h1>
+    <p>Computer Engineering + Economics at UF. I like building where data, product and people meet.</p>
+    <a class="pill" href="/assets/Lan-Anh-Do-Resume.pdf" download="Lan-Anh-Do-Resume.pdf">⬇ resume (pdf)</a>
+  </aside>
+
+  <div id="phone">
+    <div id="screen" class="locked">
+      <canvas id="wall" width="78" height="170"></canvas>
+      <div id="island"></div>
+      <div id="sb"><span id="sbt">9:41</span><span class="r" id="sbr" aria-label="Control center">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="#fff"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+        <svg width="17" height="12" viewBox="0 0 17 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M1.5 4.2a10 10 0 0 1 14 0"/><path d="M4 7a6.5 6.5 0 0 1 9 0"/><circle cx="8.5" cy="10" r="1" fill="#fff"/></svg>
+        <span class="batt" title="94% (GPA 3.94)"><i></i></span></span></div>
+
+      <section id="lock" aria-label="Lock screen">
+        <div class="date" id="ldate">Wednesday, October 1</div>
+        <div class="time" id="ltime">9:41</div>
+        <div class="hello">Lan Anh's phone ♡</div>
+        <div id="notifs"></div>
+        <button class="lbtn" style="left:38px" aria-hidden="true" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l-1 6h-4zM10 9v3l-2 3v6h8v-6l-2-3V9"/></svg></button>
+        <button class="lbtn" style="right:38px" aria-hidden="true" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></button>
+        <button id="unlock">swipe up to open</button>
+      </section>
+
+      <section id="home" aria-label="Home screen">
+        <div id="pages">
+          <div class="pg" id="pg0">
+            <div class="row two">
+              <button class="wd sq av" id="wAv" aria-label="Lan Anh avatar: tap to say hi"><div id="avb">hi! I'm Lan Anh ♡</div><img id="avw" src="/assets/img/avatar-px.png" alt=""><span class="lb">Lan Anh</span></button>
+              <button class="wd sq" id="wGpa" aria-label="GPA 3.94, tap for profile"><div class="gpa"><div class="ring"><svg width="104" height="104"><circle cx="52" cy="52" r="44" fill="none" stroke="rgba(150,120,200,.25)" stroke-width="10"/><circle id="ringc" cx="52" cy="52" r="44" fill="none" stroke="url(#gg)" stroke-width="10" stroke-linecap="round" stroke-dasharray="276.5" stroke-dashoffset="276.5" style="transition:stroke-dashoffset 1.4s cubic-bezier(.3,.9,.3,1) .5s"/><defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8fb4"/><stop offset="1" stop-color="#8f6fe0"/></linearGradient></defs></svg><b>3.94</b><span>GPA</span></div></div><span class="lb">UF · CpE + Econ</span></button>
+            </div>
+            <button class="wd wide" id="wStatus"><div class="status"><span class="dot"></span><div><b>Open to internships &amp; collabs</b><span>tap to send me a message ✉</span></div></div></button>
+            <div class="apps" id="apps"></div>
+          </div>
+          <div class="pg" id="pg1">
+            <button class="wd tall" id="wSkill" aria-label="Skills, tap to open"><div class="skillcloud" id="cloud"></div><span class="lb">Skills</span></button>
+            <button class="wd tall" id="wProj" aria-label="Projects, tap to open"><div class="proj-st" id="projst"></div><span class="lb">Studio</span></button>
+            <a class="wd wide" id="wRes" href="/assets/Lan-Anh-Do-Resume.pdf" download="Lan-Anh-Do-Resume.pdf" style="text-decoration:none;color:inherit"><div class="resumew"><div class="doc"><i></i><i></i><i></i><i></i><i></i></div><div class="status" style="padding:0"><div><b>Resume.pdf</b><span>tap to download ⬇</span></div></div></div></a>
+          </div>
+        </div>
+        <div id="dots"><i class="on"></i><i></i></div>
+        <div id="dock"></div>
+      </section>
+
+      <section id="app" aria-live="polite"></section>
+      <div id="veil2"></div>
+      <div id="cc" role="dialog" aria-label="Control center">
+        <div class="hd">control center</div>
+        <button class="tile" id="tDark"><span class="ti">☾</span><span>Dark mode<small>off</small></span></button>
+        <button class="tile" id="tSnd"><span class="ti">♪</span><span>Sound<small>off</small></span></button>
+        <button class="tile on" id="tWifi"><span class="ti">⌁</span><span>Wi-Fi<small>portfolio.net</small></span></button>
+        <button class="tile" id="tFocus"><span class="ti">☁</span><span>Focus<small>off</small></span></button>
+        <label class="slider">☀<input type="range" id="bright" min="0" max="60" value="0" aria-label="Dim the screen"></label>
+      </div>
+      <div id="banner"><img src="/assets/img/avatar-px.png" alt=""><div><b>Lan Anh</b><span id="bantxt">welcome to my phone! tap an app ♡</span></div></div>
+      <div id="dim"></div>
+      <div id="bar" role="button" aria-label="Home"></div>
+    </div>
+  </div>
+
+  <aside class="side r">
+    <small>how to use</small>
+    <div class="keys">
+      <div><kbd>↑</kbd><span>swipe up (or press Enter) to unlock</span></div>
+      <div><kbd>← →</kbd><span>flip between home pages</span></div>
+      <div><kbd>tap</kbd><span>open an app: each one is a part of my story</span></div>
+      <div><kbd>▁</kbd><span>click the bar at the bottom to go home (or Esc)</span></div>
+      <div><kbd>⌄</kbd><span>click the status icons for control center, with dark mode</span></div>
+    </div>
+  </aside>
+</div>
+
+<script src="/shared/data.js"></script>
+<script src="/shared/content.js"></script>
+<script>
+(() => {
+'use strict';
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const D = window.PORTFOLIO, C = window.C;
+const screen = $('#screen');
+const clamp = (v,a,b) => Math.min(b,Math.max(a,v));
+
+/* ---------- icons ---------- */
+const SV = (p,extra='') => `<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" ${extra}>${p}</svg>`;
+const IC = {
+  me: SV('<circle cx="12" cy="8" r="4"/><path d="M4.5 20c.8-4 3.6-6 7.5-6s6.7 2 7.5 6"/>'),
+  skills: SV('<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/>'),
+  work: SV('<rect x="3" y="7.5" width="18" height="12" rx="3"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5M3 13h18"/>'),
+  studio: SV('<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12.5l9 5 9-5M3 16.5l9 5 9-5"/>'),
+  clubs: SV('<path d="M4 18l-1-10 5 4 4-7 4 7 5-4-1 10z"/><path d="M4 21h16"/>'),
+  notes: SV('<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7M9 16h7"/>'),
+  msg: SV('<path d="M21 12a8 8 0 0 1-11.7 7L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/><path d="M9 11h.01M12 11h.01M15 11h.01" stroke-width="3"/>'),
+  doc: SV('<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M12 11v6m-2.5-2.5L12 17l2.5-2.5"/>'),
+  code: SV('<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14"/>'),
+  inn: `<svg viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-family="Zen Maru Gothic" font-weight="900" font-size="15" fill="#fff">in</text></svg>`,
+  send: SV('<path d="M12 19V5M5 12l7-7 7 7"/>')
+};
+const APPS = [
+  { id:'profile',    label:'Me',     ic:IC.me,     g:['#ff9fbf','#ff6f9f'], ac:'#e0577a', sub:'contact card' },
+  { id:'skills',     label:'Skills', ic:IC.skills, g:['#ffd96a','#f0a928'], ac:'#c98a10', sub:'search my toolbox' },
+  { id:'experience', label:'Work',   ic:IC.work,   g:['#7fe0c4','#34a58f'], ac:'#2a8f7b', sub:'six places · filter by type' },
+  { id:'projects',   label:'Studio', ic:IC.studio, g:['#9bc2ff','#5a8ee8'], ac:'#4f86e0', sub:'things I built' },
+  { id:'leadership', label:'Clubs',  ic:IC.clubs,  g:['#ffa0b5','#e0577a'], ac:'#d94a70', sub:'leading with people' },
+  { id:'notes',      label:'Notes',  ic:IC.notes,  g:['#ffe48a','#ffc23a'], ac:'#c98a10', sub:'everything on one page' }
+];
+const DOCK = [
+  { id:'contact', label:'Messages', ic:IC.msg,  g:['#8fe39a','#3fbf6a'], ac:'#2fa65a' },
+  { href:'/assets/Lan-Anh-Do-Resume.pdf', dl:true, label:'Resume', ic:IC.doc, g:['#ffb48a','#ff7a5a'] },
+  { href:D.github, label:'GitHub', ic:IC.code, g:['#6b5a96','#3a2c52'] },
+  { href:D.linkedin, label:'LinkedIn', ic:IC.inn, g:['#7fb6ff','#3f7fe0'] }
+];
+function iconHTML(a,badge){ return `<span class="sq-ic" style="background:linear-gradient(160deg,${a.g[0]},${a.g[1]})">${a.ic}${badge?`<span class="bd">${badge}</span>`:''}</span>`; }
+
+/* ---------- wallpaper (pixel art) ---------- */
+const BAYER = [[0,8,2,10],[12,4,14,6],[3,11,1,9],[15,7,13,5]];
+function paintWall(dark){
+  const cv = $('#wall'), g = cv.getContext('2d'), W = 78, H = 170; g.imageSmoothingEnabled = false;
+  const hex = h => [1,3,5].map(i => parseInt(h.slice(i,i+2),16));
+  const stops = dark ? ['#17123a','#2b2268','#5a3a8a','#c46a9a','#ffb48a'] : ['#c9b6ff','#e3b9f2','#ffc0dc','#ffd9c4','#fff0cf'];
+  const cs = stops.map(hex);
+  const px = (x,y,c) => { g.fillStyle = c; g.fillRect(x,y,1,1); };
+  for (let y=0;y<112;y++){
+    const t = y/112*(cs.length-1), i = Math.min(cs.length-2,Math.floor(t)), f = t-i;
+    for (let x=0;x<W;x++){ const th = (BAYER[y&3][x&3]+.5)/16, k = f+(th-.5)*.32, c = k>.5?cs[i+1]:cs[i]; g.fillStyle = `rgb(${c[0]},${c[1]},${c[2]})`; g.fillRect(x,y,1,1); }
+  }
+  const rnd = n => { n = Math.sin(n*127.1+311.7)*43758.5453; return n-Math.floor(n); };
+  if (dark){ for (let i=0;i<60;i++) px(Math.floor(rnd(i)*W),Math.floor(rnd(i*3)*86),rnd(i*7)>.8?'#fff':'#c9bff0');
+    const mx = 52, my = 34; for (let y=-8;y<=8;y++) for (let x=-8;x<=8;x++){ const d = x*x+y*y; if (d<=64 && ((x+3)*(x+3)+(y-1)*(y-1))>52) px(mx+x,my+y,'#fff4d0'); } }
+  else {
+    const cx = 54, cy = 98; for (let y=-12;y<=12;y++) for (let x=-12;x<=12;x++){ const d = x*x+y*y; if (d<=36) px(cx+x,cy+y,'#fff6d6'); else if (d<=100 && BAYER[(cy+y)&3][(cx+x)&3]<5) px(cx+x,cy+y,'#fff0d0'); }
+    const cloud = (x,y,w) => { g.fillStyle = 'rgba(255,255,255,.85)'; g.fillRect(x+2,y,w-4,2); g.fillRect(x,y+2,w,2); g.fillRect(x+3,y-2,w/3|0,2); g.fillRect(x+w/2|0,y-1,w/4|0,2); };
+    cloud(6,9,18); cloud(54,13,14); cloud(46,66,22); cloud(6,84,16);
+  }
+  const hills = dark ? ['#2d2a6a','#241f58','#1a1745'] : ['#cbb4ee','#b8c8ea','#a8d2c4'];
+  [[112,7,3,.4],[122,9,2,1.9],[134,8,3,3.2]].forEach(([base,amp,k,ph],li) => {
+    for (let x=0;x<W;x++){ const y = Math.round(base-amp*(.5+.5*Math.sin(x/W*Math.PI*2*k+ph)*.7+.3*Math.sin(x/W*Math.PI*2*(k*2.7)+ph*2))); g.fillStyle = hills[li]; g.fillRect(x,y,1,H-y); if (li===2){ g.fillStyle = dark?'#2d2a6a':'#bfe3d3'; g.fillRect(x,y,1,1); } }
+  });
+  // tiny house + trees
+  const house = (x,y,wall,roof,win) => { g.fillStyle = wall; g.fillRect(x,y-6,9,6); g.fillStyle = roof; for (let i=0;i<5;i++) g.fillRect(x-1+i,y-11+i,11-i*2,1); g.fillStyle = win; g.fillRect(x+5,y-5,2,2); g.fillStyle = '#7a5a4a'; g.fillRect(x+2,y-4,2,4); };
+  house(10,146,dark?'#3a3470':'#fff6ee',dark?'#5a2a5a':'#ff9fbf',dark?'#ffd978':'#bfe3ff');
+  const tr = (x,y,c) => { g.fillStyle = '#7a5a4a'; g.fillRect(x+2,y-3,1,3); g.fillStyle = c; g.fillRect(x,y-8,5,6); g.fillRect(x+1,y-10,3,2); };
+  tr(26,148,dark?'#2f6a5a':'#8fd0a8'); tr(62,142,dark?'#2a5a6a':'#ffb0c8'); tr(68,150,dark?'#2f6a5a':'#8fd0a8'); tr(36,152,dark?'#3a6a7a':'#ffc8d8');
+  g.fillStyle = dark?'#17143a':'#9fcdb6'; g.fillRect(0,155,W,15);
+  for (let x=0;x<W;x+=3){ g.fillStyle = dark?'#241f58':'#b8dcc8'; g.fillRect(x,155+((x*7)%3),1,1); }
+}
+
+/* ---------- time ---------- */
+function tick(){
+  const d = new Date(), hh = d.getHours()%12||12, mm = String(d.getMinutes()).padStart(2,'0');
+  $('#sbt').textContent = `${hh}:${mm}`; $('#ltime').textContent = `${hh}:${mm}`;
+  $('#ldate').textContent = d.toLocaleDateString('en-US',{ weekday:'long', month:'long', day:'numeric' });
+}
+tick(); setInterval(tick,15000);
+
+/* ---------- sound ---------- */
+let sound = false, actx = null;
+function tone(f,d=.08,v=.05,t0=0,type='sine'){ if (!sound) return; try { actx = actx||new (window.AudioContext||window.webkitAudioContext)(); const o = actx.createOscillator(), g = actx.createGain(), t = actx.currentTime+t0; o.type = type; o.frequency.value = f; g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(v,t+.01); g.gain.exponentialRampToValueAtTime(.0001,t+d); o.connect(g).connect(actx.destination); o.start(t); o.stop(t+d+.05); } catch(e){} }
+const sTap = () => tone(740,.06,.04), sOpen = () => { tone(520,.07); tone(780,.1,.04,.06); }, sBack = () => tone(420,.08,.04), sUnlock = () => { tone(660,.08); tone(990,.14,.05,.08); };
+
+/* ---------- lock screen ---------- */
+const NOTES = [
+  { app:'experience', ic:IC.work, g:['#7fe0c4','#34a58f'], who:'Intuit', t:'now', txt:'Security SWE intern: shipped an AI identity-lookup platform that cut investigation time by 97%.' },
+  { app:'projects', ic:IC.studio, g:['#9bc2ff','#5a8ee8'], who:'ShellHacks', t:'2m', txt:'🏆 1st place: transPEAKtation, event-aware routing with a PPO traffic balancer.' },
+  { app:'profile', ic:IC.me, g:['#ff9fbf','#ff6f9f'], who:'University of Florida', t:'9m', txt:'Computer Engineering + Economics · GPA 3.94 · class of 2027.' }
+];
+$('#notifs').innerHTML = NOTES.map((n,i) => `<button class="nt" data-app="${n.app}" style="animation-delay:${.15+i*.12}s"><span class="ic" style="background:linear-gradient(160deg,${n.g[0]},${n.g[1]})">${n.ic}</span><div style="flex:1;min-width:0"><b>${n.who}</b><span>${n.txt}</span></div><time>${n.t}</time></button>`).join('');
+let bannered = false;
+function unlock(openId){
+  if (!screen.classList.contains('locked')) return;
+  screen.classList.remove('locked'); screen.classList.add('home'); sUnlock();
+  setTimeout(() => { $('#ringc').style.strokeDashoffset = 276.5*(1-3.94/4); },100);
+  if (openId) setTimeout(() => openApp(openId,null),420);
+  else if (!bannered){ bannered = true; setTimeout(() => { $('#banner').classList.add('on'); setTimeout(() => $('#banner').classList.remove('on'),3800); },900); }
+}
+function lockPhone(){ closeApp(true); screen.classList.add('locked'); screen.classList.remove('home','in-app'); }
+$('#notifs').addEventListener('click',e => { const b = e.target.closest('.nt'); if (b){ e.stopPropagation(); unlock(b.dataset.app); } });
+$('#unlock').addEventListener('click',() => unlock());
+(() => { let y0 = null; const l = $('#lock');
+  l.addEventListener('pointerdown',e => { if (e.target.closest('.nt')) return; y0 = e.clientY; });
+  addEventListener('pointerup',e => { if (y0!==null && screen.classList.contains('locked') && y0-e.clientY>70) unlock(); y0 = null; });
+  l.addEventListener('wheel',e => { if (e.deltaY>30) unlock(); },{ passive:true });
+})();
+
+/* ---------- home ---------- */
+$('#apps').innerHTML = APPS.map(a => `<button class="app" data-app="${a.id}" aria-label="${a.label}">${iconHTML(a)}<span>${a.label}</span></button>`).join('');
+$('#dock').innerHTML = DOCK.map(a => a.id ? `<button class="app" data-app="${a.id}" aria-label="${a.label}">${iconHTML(a,'1')}</button>` : `<a class="app" href="${a.href}" ${a.dl?'download="Lan-Anh-Do-Resume.pdf"':'target="_blank" rel="noopener"'} aria-label="${a.label}">${iconHTML(a)}</a>`).join('');
+$('#cloud').innerHTML = ['Python','C++','Java','TypeScript','React','FastAPI','PyTorch','Docker','Kubernetes','Kafka','SQL','AWS','MCP','Swift'].map((t,i) => `<span style="background:${['#ffe0ea','#d9efe9','#fff1b8','#dbe8ff','#eadfff'][i%5]};color:#3a2c52">${t}</span>`).join('');
+$('#projst').innerHTML = D.projects.filter(p => !p.side).map(p => `<div class="it"><span class="em">${p.emoji||(p.name==='ChompCourse'?'🐊':'🤖')}</span><div>${p.name}<small>${p.badge?p.badge.replace('🏆 ',''):p.role}</small></div></div>`).join('');
+
+let page = 0;
+function setPage(i,anim=true){ page = clamp(i,0,1); const p = $('#pages'); p.classList.remove('drag'); p.style.transform = `translateX(${-page*100}%)`; $$('#dots i').forEach((d,k) => d.classList.toggle('on',k===page)); }
+(() => { const p = $('#pages'); let x0 = null, dx = 0, moved = false;
+  p.addEventListener('pointerdown',e => { x0 = e.clientX; dx = 0; moved = false; });
+  addEventListener('pointermove',e => { if (x0===null) return; dx = e.clientX-x0; if (Math.abs(dx)>8){ moved = true; p.classList.add('drag'); p.style.transform = `translateX(calc(${-page*100}% + ${dx}px))`; } });
+  addEventListener('pointerup',() => { if (x0===null) return; if (moved){ if (dx<-45) page = 1; else if (dx>45) page = 0; setPage(page); suppress = true; setTimeout(() => suppress = false,60); } x0 = null; });
+})();
+let suppress = false;
+$('#home').addEventListener('click',e => {
+  if (suppress) return;
+  const a = e.target.closest('[data-app]'); if (a){ openApp(a.dataset.app,a); return; }
+  if (e.target.closest('#wGpa')) openApp('profile',e.target.closest('#wGpa'));
+  else if (e.target.closest('#wStatus')) openApp('contact',e.target.closest('#wStatus'));
+  else if (e.target.closest('#wSkill')) openApp('skills',e.target.closest('#wSkill'));
+  else if (e.target.closest('#wProj')) openApp('projects',e.target.closest('#wProj'));
+  else if (e.target.closest('#wAv')) { const im = $('#avw'); im.classList.remove('hop'); void im.offsetWidth; im.classList.add('hop'); sayAv(); sTap(); }
+});
+const QUIPS = ["hi! I'm Lan Anh ♡","tap an app to explore!","have you seen my projects?","psst, try dark mode ☾","professional tech yapper :D","coffee? code? both!","open to internships ✉"];
+let qi = 0; function sayAv(){ qi = (qi+1)%QUIPS.length; const b = $('#avb'); b.style.opacity = 0; b.style.transform = 'translateY(4px)'; setTimeout(() => { b.textContent = QUIPS[qi]; b.style.opacity = 1; b.style.transform = ''; },180); }
+setInterval(() => { if (screen.classList.contains('home') && !screen.classList.contains('in-app')) sayAv(); },5200);
+
+/* ---------- apps ---------- */
+const app = $('#app'); let curApp = null;
+function originFor(el){
+  const sr = screen.getBoundingClientRect();
+  const r = el ? el.getBoundingClientRect() : { left:sr.left+sr.width/2-30, top:sr.top+sr.height/2-30, width:60, height:60 };
+  const s = Math.max(.08,r.width/sr.width);
+  return { s, dx:r.left-sr.left, dy:r.top-sr.top, rad:16/s };
+}
+function openApp(id,el){
+  if (curApp) return; curApp = id; sOpen();
+  const meta = id==='contact' ? { id:'contact', label:'Messages', ac:'#2fa65a', sub:'say hi to Lan Anh' } : APPS.find(a => a.id===id);
+  buildApp(meta);
+  const o = originFor(el); const st = app.style;
+  st.transition = 'none'; st.transform = `translate(${o.dx}px,${o.dy}px) scale(${o.s})`; st.borderRadius = o.rad+'px'; st.opacity = 0; app.classList.add('on'); app.classList.remove('open');
+  void app.offsetWidth; st.transition = '';
+  requestAnimationFrame(() => { st.transform = 'none'; st.borderRadius = '0px'; st.opacity = 1; app.classList.add('open'); });
+  app._el = el; screen.classList.add('in-app','light-bar'); updateBar();
+}
+function closeApp(instant){
+  if (!curApp) return; sBack(); curApp = null;
+  const el = app._el && document.body.contains(app._el) ? app._el : null, o = originFor(el), st = app.style;
+  if (instant){ st.transition = 'none'; st.opacity = 0; app.classList.remove('on','open'); }
+  else { st.transform = `translate(${o.dx}px,${o.dy}px) scale(${o.s})`; st.borderRadius = o.rad+'px'; st.opacity = 0; app.classList.remove('open'); setTimeout(() => { if (!curApp) app.classList.remove('on'); },480); }
+  screen.classList.remove('in-app','light-bar'); updateBar();
+}
+function updateBar(){}
+function buildApp(m){
+  app.style.setProperty('--ac',m.ac); app.className = ''; app.id = 'app';
+  const body = bodyFor(m.id);
+  const head = m.id==='contact'
+    ? `<div class="ah"><button class="back" data-back>‹ Home</button><div class="chead"><span class="big"><img src="/assets/img/avatar-px.png" alt=""></span><div><h2>Lan Anh Do</h2><p>Active now</p></div></div></div>`
+    : `<div class="ah"><button class="back" data-back>‹ Home</button><h2>${m.id==='notes'?'Notes':D.modules.find(x => x.id===m.id).title}</h2><p>${m.sub}</p></div>`;
+  app.innerHTML = head+`<div class="ab" id="ab"></div>`;
+  $('#ab').appendChild(body);
+  if (m.id==='contact') app.classList.add('chat');
+  $('#ab').addEventListener('scroll',e => app.classList.toggle('scrolled',e.target.scrollTop>24));
+  app.querySelector('[data-back]').addEventListener('click',() => closeApp());
+  C.wire(app);
+}
+function bodyFor(id){
+  const wrap = document.createElement('div');
+  if (id==='profile'){
+    wrap.innerHTML = `<div class="hero"><span class="big"><img src="/assets/img/avatar-px.png" alt="Pixel avatar of Lan Anh"></span><h3>Lan Anh Do</h3><p>${D.profile.role}</p>
+      <div class="acts"><button class="act" data-go="contact"><i>${IC.msg}</i>message</button><a class="act" href="/assets/Lan-Anh-Do-Resume.pdf" download="Lan-Anh-Do-Resume.pdf"><i>${IC.doc}</i>resume</a><a class="act" href="${D.github}" target="_blank" rel="noopener"><i>${IC.code}</i>github</a><a class="act" href="${D.linkedin}" target="_blank" rel="noopener"><i style="font:900 19px 'Zen Maru Gothic'">in</i>linkedin</a></div></div>${C.get('profile')}`;
+    wrap.querySelectorAll('.act i svg').forEach(s => s.setAttribute('stroke','currentColor'));
+    wrap.querySelectorAll('.act i svg text').forEach(t => t.setAttribute('fill','currentColor'));
+  } else if (id==='skills'){
+    wrap.innerHTML = `<label class="search">⌕ <input id="sq" type="search" placeholder="search skills, e.g. python" autocomplete="off"></label><div id="sbody">${C.get('skills')}</div><p class="empty" id="sempty" hidden>no skills match that… yet ✦</p>`;
+    const inp = wrap.querySelector('#sq');
+    inp.addEventListener('input',() => { const q = inp.value.trim().toLowerCase(); let any = false;
+      wrap.querySelectorAll('.c-group').forEach(gp => { let n = 0; gp.querySelectorAll('.chip').forEach(c => { const m = !q || c.textContent.toLowerCase().includes(q); c.style.display = m?'':'none'; if (m) n++; }); gp.style.display = n?'':'none'; if (n) any = true; });
+      wrap.querySelector('#sempty').hidden = any; });
+  } else if (id==='experience'){
+    const TAG = [['eng'],['teach'],['eng'],['product'],['research'],['product']];
+    wrap.innerHTML = `<div class="seg" role="tablist">${[['all','All'],['eng','Engineering'],['product','Product'],['research','Research'],['teach','Teaching']].map(([k,l],i) => `<button data-f="${k}" class="${i?'':'on'}">${l}</button>`).join('')}</div><div id="ebody">${C.get('experience')}</div>`;
+    const items = [...wrap.querySelectorAll('.c-item')];
+    wrap.querySelector('.seg').addEventListener('click',e => { const b = e.target.closest('button'); if (!b) return; wrap.querySelectorAll('.seg button').forEach(x => x.classList.toggle('on',x===b)); items.forEach((it,i) => it.style.display = (b.dataset.f==='all'||TAG[i].includes(b.dataset.f))?'':'none'); sTap(); });
+  } else if (id==='notes'){
+    wrap.innerHTML = D.modules.map((m,i) => `<h3 class="note-h">${String(i+1).padStart(2,'0')} · ${m.title}</h3>${C.get(m.id)}`).join('');
+  } else if (id==='contact') return chat(wrap);
+  else wrap.innerHTML = C.get(id);
+  wrap.addEventListener('click',e => { const go = e.target.closest('[data-go]'); if (go){ const el = null; closeApp(true); setTimeout(() => openApp(go.dataset.go,null),60); } });
+  return wrap;
+}
+
+/* ---------- chat (Formspree) ---------- */
+function chat(wrap){
+  wrap.style.cssText = 'display:flex;flex-direction:column;height:100%;min-height:0';
+  wrap.innerHTML = `<div class="msgs" id="msgs"></div><div class="qr" id="qr"></div><div class="mailalt">or email <a href="mailto:${D.email}">${D.email}</a> · <a href="${D.linkedin}" target="_blank" rel="noopener">LinkedIn</a></div><form class="comp" id="comp" autocomplete="off"><input id="ci" placeholder="iMessage" aria-label="Message"><button class="send" id="cs" aria-label="Send" type="submit">${IC.send}</button></form>`;
+  const msgs = wrap.querySelector('#msgs'), ci = wrap.querySelector('#ci'), qr = wrap.querySelector('#qr'), form = wrap.querySelector('#comp'), send = wrap.querySelector('#cs');
+  const data = { name:'', email:'', message:'' }; let step = 0, busy = false;
+  const scroll = () => { msgs.scrollTop = msgs.scrollHeight; };
+  const add = (t,who) => { const b = document.createElement('div'); b.className = 'bub '+who; b.textContent = t; msgs.appendChild(b); scroll(); return b; };
+  const say = async (lines,ph) => { busy = true; send.disabled = true; for (const l of lines){ const ty = document.createElement('div'); ty.className = 'bub them typing'; ty.innerHTML = '<i></i><i></i><i></i>'; msgs.appendChild(ty); scroll(); await new Promise(r => setTimeout(r,550+Math.min(900,l.length*14))); ty.remove(); add(l,'them'); tone(880,.05,.03); } busy = false; send.disabled = false; if (ph){ ci.placeholder = ph; } };
+  const quick = opts => { qr.innerHTML = opts.map(o => `<button type="button">${o}</button>`).join(''); };
+  const types = { name:'text', email:'email', message:'text' };
+  say(["hi!! 👋 I'm Lan Anh.","thanks for stopping by! got an internship, a collab idea, or just a hello?","leave me a note here and it goes straight to my inbox. first, what's your name?"],'your name').then(() => ci.focus({ preventScroll:true }));
+  async function submit(e){
+    e.preventDefault(); if (busy) return; const v = ci.value.trim(); if (!v) return;
+    add(v,'me'); ci.value = ''; sTap();
+    if (step===0){ data.name = v; step = 1; ci.type = 'email'; await say([`nice to meet you, ${v.split(' ')[0]}! ✨`,"what's the best email to reach you at?"],'you@email.com'); }
+    else if (step===1){
+      if (!/^\S+@\S+\.\S+$/.test(v)){ await say(["hmm, that doesn't look like an email. try again?"]); return; }
+      data.email = v; step = 2; ci.type = 'text'; quick(['I have an internship for you','Collab idea','Just saying hi']); await say(['perfect. and what would you like to say?'],'write a message…');
+    } else if (step===2){
+      data.message = v; step = 3; qr.innerHTML = '';
+      busy = true; send.disabled = true;
+      const fd = new FormData(); fd.append('fullname',data.name); fd.append('email',data.email); fd.append('message',data.message); fd.append('_gotcha','');
+      const ty = document.createElement('div'); ty.className = 'bub them typing'; ty.innerHTML = '<i></i><i></i><i></i>'; msgs.appendChild(ty); scroll();
+      try {
+        const r = await fetch('https://formspree.io/f/myznprrw',{ method:'POST', body:fd, headers:{ Accept:'application/json' } });
+        ty.remove(); if (!r.ok) throw 0;
+        const d = document.createElement('div'); d.className = 'dl'; d.textContent = 'Delivered'; msgs.appendChild(d);
+        await say(['sent! ♡ thank you, I read everything and will reply soon.','(you can also grab my resume from the home screen!)']); tone(988,.1,.05); tone(1319,.2,.05,.1);
+        step = 4; ci.placeholder = 'message sent ✓'; ci.disabled = true; send.disabled = true;
+      } catch { ty.remove(); step = 2; await say(["oops, that didn't send 😢",`you can email me directly at ${D.email}, or try again!`],'try sending again…'); }
+    }
+  }
+  form.addEventListener('submit',submit);
+  qr.addEventListener('click',e => { const b = e.target.closest('button'); if (b && step===2 && !busy){ ci.value = b.textContent==='Just saying hi' ? 'Just saying hi!' : b.textContent+'!'; ci.focus(); } });
+  return wrap;
+}
+
+/* ---------- control center ---------- */
+const cc = $('#cc');
+function toggleCC(on){ cc.classList.toggle('on',on); $('#veil2').classList.toggle('on',on); sTap(); }
+$('#sbr').addEventListener('click',e => { e.stopPropagation(); toggleCC(!cc.classList.contains('on')); });
+$('#veil2').addEventListener('click',() => toggleCC(false));
+function setTile(id,on,label){ const t = $('#'+id); t.classList.toggle('on',on); t.querySelector('small').textContent = label; }
+$('#tDark').addEventListener('click',() => { const d = !screen.classList.contains('dark'); screen.classList.toggle('dark',d); paintWall(d); setTile('tDark',d,d?'on':'off'); sTap(); });
+$('#tSnd').addEventListener('click',() => { sound = !sound; setTile('tSnd',sound,sound?'on':'off'); sTap(); });
+$('#tWifi').addEventListener('click',() => { const on = !$('#tWifi').classList.contains('on'); setTile('tWifi',on,on?'portfolio.net':'off'); });
+$('#tFocus').addEventListener('click',() => { const on = !$('#tFocus').classList.contains('on'); setTile('tFocus',on,on?'doing code':'off'); });
+$('#bright').addEventListener('input',e => { $('#dim').style.opacity = e.target.value/100; });
+let ty0 = null; screen.addEventListener('pointerdown',e => { if (e.clientY-screen.getBoundingClientRect().top<46) ty0 = e.clientY; });
+addEventListener('pointerup',e => { if (ty0!==null && e.clientY-ty0>50 && !screen.classList.contains('locked')) toggleCC(true); ty0 = null; });
+
+/* ---------- home bar + keys ---------- */
+$('#bar').addEventListener('click',() => { if (cc.classList.contains('on')) toggleCC(false); else if (curApp) closeApp(); else if (!screen.classList.contains('locked')) lockPhone(); else unlock(); });
+(() => { let y0 = null; $('#bar').addEventListener('pointerdown',e => { y0 = e.clientY; }); addEventListener('pointerup',e => { if (y0!==null && y0-e.clientY>40){ if (curApp) closeApp(); else if (screen.classList.contains('locked')) unlock(); } y0 = null; }); })();
+addEventListener('keydown',e => {
+  if (e.target.matches('input,textarea')) { if (e.key==='Escape') e.target.blur(); return; }
+  if (e.key==='Escape'){ if (cc.classList.contains('on')) toggleCC(false); else if (curApp) closeApp(); }
+  else if ((e.key==='Enter'||e.key==='ArrowUp'||e.key===' ') && screen.classList.contains('locked')){ e.preventDefault(); unlock(); }
+  else if (!screen.classList.contains('locked') && !curApp){ if (e.key==='ArrowRight') setPage(1); else if (e.key==='ArrowLeft') setPage(0); }
+});
+
+/* ---------- boot ---------- */
+paintWall(false);
+const qs = new URLSearchParams(location.search);
+if (qs.has('dark')){ screen.classList.add('dark'); paintWall(true); setTile('tDark',true,'on'); }
+if (qs.has('home')){ bannered = true; unlock(); }
+if (qs.has('app')){ bannered = true; unlock(); setTimeout(() => openApp(qs.get('app'),null),600); }
+if (qs.has('page')) setTimeout(() => setPage(+qs.get('page')),50);
+window.__t = { unlock, openApp, closeApp, setPage };
+})();
+</script>
+</body>
+</html>
