@@ -10,7 +10,7 @@
 <title>Lan Anh Do ✦ portal to my portfolio</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23ffe14a' stroke='%231b1030' stroke-width='2.4'/%3E%3Cellipse cx='11.2' cy='13' rx='2' ry='2.8' fill='%231b1030'/%3E%3Cellipse cx='20.8' cy='13' rx='2' ry='2.8' fill='%231b1030'/%3E%3Cpath d='M8.5 18.5q7.5 8 15 0' fill='none' stroke='%231b1030' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='7.4' cy='18' r='2.2' fill='%23ff8fd2' opacity='.8'/%3E%3Ccircle cx='24.6' cy='18' r='2.2' fill='%23ff8fd2' opacity='.8'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Pixelify+Sans:wght@500;700&family=Yellowtail&family=Rubik:wght@400;500;600;700&family=Caveat:wght@600;700&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Pixelify+Sans:wght@500;700&family=Silkscreen:wght@400;700&family=Yellowtail&family=Rubik:wght@400;500;600;700&family=Caveat:wght@600;700&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#1b1030;--pink:#ff4fb4;--hot:#ff2bd6;--lime:#b6ff5c;--green:#3df04a;--peri:#7a8cff;--sky:#7ec8ff;--lilac:#d9a8ff;--chrome:#dfe3ea;--xp:#0b49e0;--yel:#ffe14a;
   --f-wide:'Unbounded',sans-serif;--f-pix:'Pixelify Sans',monospace;--f-script:'Yellowtail',cursive;--f-body:'Rubik',sans-serif;--f-hand:'Caveat',cursive;
@@ -870,6 +870,17 @@ button.burst:hover .sbx{transform:translate(-50%,-50%) rotate(-12deg) scale(1.06
 @media(max-width:960px){.tvx{margin-bottom:70px}.tvx .lcd3{margin-left:0}}
 #mq{margin-left:calc(50% - 56vw);width:112vw}
 #mq span{font:700 15px var(--f-wide);letter-spacing:.04em}
+
+/* ---------- v23 review fixes ---------- */
+.banner .t .st5{animation:none;opacity:1}
+.hd .px{font-family:'Silkscreen','Pixelify Sans',monospace;font-size:clamp(46px,8.6vw,118px);letter-spacing:-.06em}
+.ex{max-width:none}
+.tvx{margin-bottom:112px}.tvx:last-child{margin-bottom:60px}
+.C .big3{font-size:clamp(20px,2.05vw,28px)}
+.stu::after{background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.45) 48%,transparent 60%)}
+@media(max-width:960px){.tvx{margin-bottom:80px}}
+#smenu{box-sizing:border-box;width:min(440px,calc(100vw - 12px))}
+#smenu .sh,#smenu .smb,#smenu .sf{min-width:0}#smenu .r a{min-width:0;font-size:13px}
 </style>
 </head>
 <body>
@@ -951,7 +962,7 @@ button.burst:hover .sbx{transform:translate(-50%,-50%) rotate(-12deg) scale(1.06
 </section>
 
 <section class="sec" id="mail" data-name="contact">
-  <span class="ghost" style="left:2%;top:6%;--r:-10deg">say hi say hi say hi</span><span class="ghost" style="right:1%;top:30%;--r:8deg">internships ✦ collabs</span><span class="ghost" style="left:6%;bottom:8%;--r:-6deg">lan anh was here</span><span class="ghost" style="right:8%;bottom:4%;--r:5deg">write me!!</span>
+  <span class="ghost" style="left:2%;top:6%;--r:-10deg">say hi say hi say hi</span><span class="ghost" style="right:8%;bottom:4%;--r:5deg">write me!!</span>
   <div class="wrap">
     <h2 class="hd"><span class="px">Contact</span><span class="sc">me</span></h2>
     <div class="mg">
@@ -1163,8 +1174,8 @@ PUT.forEach(([sel,html,st]) => { const d = document.createElement('div'); d.clas
 const charm = (c) => `<svg viewBox="0 0 44 120"><path d="M30 0 Q8 20 22 44 Q36 66 22 86" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>${[[18,18],[12,32],[16,48],[24,62],[22,76]].map(([x,y],i) => `<circle cx="${x}" cy="${y}" r="5" fill="${['#ff4fb4','#ffe14a','#7ec8ff','#b6ff5c','#c3a6ff'][(i+c)%5]}" stroke="#1b1030" stroke-width="2"/>`).join('')}<path d="M22 86 l5 7 -5 7 -5 -7z" fill="#ff4fb4" stroke="#1b1030" stroke-width="2.5" stroke-linejoin="round"/><circle cx="22" cy="108" r="8" fill="#ffe14a" stroke="#1b1030" stroke-width="2.5"/><circle cx="19" cy="106" r="1.5" fill="#1b1030"/><circle cx="25" cy="106" r="1.5" fill="#1b1030"/><path d="M18 111 q4 4 8 0" stroke="#1b1030" stroke-width="1.6" fill="none"/></svg>`;
 const flutter = () => `<svg viewBox="0 0 64 48"><g stroke="#1b1030" stroke-width="2.4" stroke-linejoin="round"><path d="M31 24C19 3 1 4 3 18c1 8 12 10 28 6z" fill="#ff9ccf"/><path d="M31 26C21 40 7 46 9 34c1-6 10-8 22-8z" fill="#c9a8ff"/><path d="M33 24C45 3 63 4 61 18c-1 8-12 10-28 6z" fill="#ff9ccf"/><path d="M33 26C43 40 57 46 55 34c-1-6-10-8-22-8z" fill="#c9a8ff"/></g><rect x="30" y="14" width="4" height="24" rx="2" fill="#1b1030"/></svg>`;
 const put3 = (el,html,st) => { const d = document.createElement('div'); d.className = 'stk3'; d.style.cssText = st; d.innerHTML = html; el.appendChild(d); };
-$$('.tvx').forEach((t,i) => { put3(t,pixHeart(),i?'left:-20px;top:18px;width:54px;rotate:-12deg':'right:-20px;top:18px;width:54px;rotate:12deg'); put3(t,star5(),i?'right:-16px;bottom:96px;width:44px;rotate:14deg':'left:-16px;bottom:96px;width:44px;rotate:-14deg'); });
-$$('.cam2').forEach((c,i) => { put3(c,smile(),'right:-22px;bottom:-14px;width:50px;rotate:12deg'); put3(c,star5(),'left:30%;bottom:-16px;width:40px;rotate:-14deg'); put3(c,pixHeart(),'right:18%;top:-22px;width:38px;rotate:8deg'); put3(c,charm(i),'left:-34px;top:36%;width:40px'); });
+$$('.tvx').forEach((t,i) => { put3(t,pixHeart(),i?'left:-20px;top:18px;width:54px;rotate:-12deg':'right:-20px;top:18px;width:54px;rotate:12deg'); put3(t,star5(),i?'right:-16px;bottom:150px;width:44px;rotate:14deg':'left:-16px;bottom:150px;width:44px;rotate:-14deg'); });
+$$('.cam2').forEach((c,i) => { put3(c,smile(),'right:-22px;bottom:-14px;width:50px;rotate:12deg'); put3(c,star5(),'left:30%;bottom:-16px;width:40px;rotate:-14deg'); put3(c,pixHeart(),i===0?'right:44%;top:-26px;width:38px;rotate:8deg':'right:18%;top:-22px;width:38px;rotate:8deg'); put3(c,charm(i),'left:-34px;top:36%;width:40px'); });
 const CHR = `<svg viewBox="0 0 24 24" style="fill:url(#cg);stroke:${O};stroke-width:.7"><use href="#sp"/></svg>`;
 [['#top','left:46%;top:84px;width:44px',0],['#about','left:30%;bottom:60px;width:52px',1],['#skills','left:44%;top:50px;width:46px',1],['#exp','left:40%;bottom:50px;width:50px',0],['#proj','right:30%;bottom:60px;width:56px',1],['#lead','left:44%;top:60px;width:50px',1]].forEach(([sel,st,tw]) => { const d = document.createElement('div'); d.className = 'spark'+(tw?' tw':''); d.style.cssText = st+';position:absolute'; d.innerHTML = CHR; $(sel).appendChild(d); });
 
