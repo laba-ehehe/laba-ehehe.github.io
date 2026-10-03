@@ -17,7 +17,7 @@
   --cur:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='28'%3E%3Cpath d='M3 2 3 21 8 16 12 25 15.5 23.6 11.4 14.8 18 14.6Z' fill='white' stroke='%231b1030' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2,auto;
   --cur-p:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='28'%3E%3Cpath d='M3 2 3 21 8 16 12 25 15.5 23.6 11.4 14.8 18 14.6Z' fill='%23ff4fb4' stroke='%231b1030' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2,pointer}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
 body{margin:0;font:400 16px/1.55 var(--f-body);color:var(--ink);background:#d8c8ff;overflow-x:hidden;cursor:var(--cur);-webkit-font-smoothing:antialiased}
 a,button,.xp .tt,.stk,[role=button],summary,.row{cursor:var(--cur-p)}
 a{color:inherit}button{font:inherit;color:inherit;border:0;background:none;padding:0}
@@ -71,7 +71,7 @@ svg.defs{position:absolute;width:0;height:0}
 #nav .cta{font:700 13px var(--f-wide);text-decoration:none;color:var(--ink);background:var(--lime);border:2.5px solid var(--ink);border-radius:999px;padding:8px 16px;box-shadow:2px 2px 0 var(--ink);white-space:nowrap;text-transform:uppercase}
 
 /* ---------- hero ---------- */
-#top{position:relative;padding:96px 0 60px;background:linear-gradient(115deg,#ffb6e8 0%,#d9b8ff 28%,#9fc6ff 52%,#a8f0e4 76%,#d8ffb0 100%);overflow:hidden}
+#top{position:relative;padding:44px 0 70px;background:linear-gradient(115deg,#ffb6e8 0%,#d9b8ff 28%,#9fc6ff 52%,#a8f0e4 76%,#d8ffb0 100%);overflow:hidden}
 #top::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.7),transparent 30%),radial-gradient(circle at 86% 70%,rgba(255,255,255,.55),transparent 34%);pointer-events:none}
 .orb{position:absolute;border-radius:50%;background:radial-gradient(circle at 36% 28%,#fff 0 6%,rgba(255,255,255,.2) 10%,transparent 14%),linear-gradient(180deg,#fff 0%,#c3cde6 30%,#6f7ca5 46%,#1e2547 50%,#7686b2 54%,#d9e2ff 78%,#fff 100%);box-shadow:inset 0 -14px 30px rgba(40,50,120,.5),0 24px 40px rgba(60,30,140,.35);pointer-events:none;z-index:1}
 .banner{position:relative;height:150px;border-radius:30px;overflow:hidden;border:4px solid #fff;box-shadow:0 12px 30px rgba(40,30,140,.35);background:
@@ -605,22 +605,52 @@ body{padding-bottom:50px}
 #dock .tabs button{border-radius:999px;background:linear-gradient(180deg,#e8f2ff,#9cc4ff 50%,#4f94ff 52%,#7db4ff);border-color:#0b3a9a;color:var(--ink);font-weight:600;box-shadow:inset 0 1px 0 #fff,0 2px 0 #0b3a9a}
 #dock .tabs button.on{background:linear-gradient(180deg,#ffd0ee,#ff7ac8 50%,#ff4fb4 52%,#ff8fd2);border-color:var(--ink);box-shadow:inset 0 1px 0 #fff,2px 2px 0 var(--ink);color:var(--ink)}
 
-/* ---------- v13 tv frame ---------- */
-.tv2{background:linear-gradient(180deg,#fff4fb 0%,#ffc2ea 7%,#ff7ac8 34%,#ff4fb4 78%,#d42b94 100%);border:0;border-radius:64px 64px 44px 44px/72px 72px 44px 44px;padding:34px 24px 54px 34px;box-shadow:0 0 0 5px #fff,0 0 0 9px #c4cadc,0 0 0 11px #7f88aa,0 0 0 13px #fff,inset 0 6px 0 rgba(255,255,255,.8),inset 0 -16px 22px rgba(150,0,100,.45),0 34px 50px rgba(10,0,20,.7)}
-.tv2::before{left:60px;right:230px;top:12px;height:12px;background:linear-gradient(rgba(255,255,255,.95),rgba(255,255,255,0))}
-.tv2::after{content:'✦ XP·VISION STEREO ✦';position:absolute;left:34px;right:190px;bottom:14px;height:26px;display:grid;place-items:center;font:700 12px var(--f-pix);letter-spacing:.3em;color:#b6ff5c;text-shadow:0 0 8px rgba(182,255,92,.8);background:linear-gradient(180deg,#3a2552,#1a0f2a);border:2px solid #fff;border-radius:999px;box-shadow:inset 0 2px 4px rgba(0,0,0,.6),0 0 0 3px #c4cadc}
-.scn2{border:14px solid #1a0f2a;border-radius:46px/40px;box-shadow:0 0 0 3px #ff9ad8,0 0 0 6px #fff,0 0 0 8px #c4cadc,0 0 0 11px #ff4fb4,inset 0 0 80px rgba(0,0,0,.95),inset 0 0 0 3px #5a3a82,0 0 36px rgba(182,255,92,.3)}
-.scn2::after{left:5%;right:46%;top:2.5%;height:20%;border-radius:50%/60%;background:linear-gradient(165deg,rgba(255,255,255,.4),rgba(255,255,255,0) 85%)}
-.side2{background:linear-gradient(160deg,#fdfdff,#c9cfe2 40%,#f4f6fc 60%,#aab2cc);border-radius:26px;padding:16px 10px;box-shadow:inset 0 0 0 3px #fff,inset 0 0 0 5px #98a2c0,0 4px 10px rgba(120,0,80,.35);position:relative}
-.side2 .ch{color:#b6ff5c;background:#1a0f2a;border-color:#98a2c0}
-.side2 .led{border-color:#98a2c0}
-.grill2{height:110px;background:radial-gradient(#7a84a8 2.2px,transparent 2.8px) 0 0/11px 11px,#e4e8f4;border-radius:14px;box-shadow:inset 0 0 0 3px #98a2c0,inset 0 3px 8px rgba(0,0,0,.25);opacity:1}
-.knob2{background:radial-gradient(circle at 35% 28%,#fff 0 8%,#ffe0f4 14%,#ff9ad8 48%,#d4189f);border:3px solid #fff;box-shadow:0 5px 8px rgba(120,0,80,.5),0 0 0 6px #e4e8f4,0 0 0 8px #98a2c0}
-.knob2::before{content:'';position:absolute;inset:-17px;border-radius:50%;background:repeating-conic-gradient(from -130deg,#5a4a82 0 2.5deg,transparent 2.5deg 22deg);-webkit-mask:radial-gradient(circle,transparent 58%,#000 60% 74%,transparent 76%);mask:radial-gradient(circle,transparent 58%,#000 60% 74%,transparent 76%);opacity:.7}
+
+/* ---------- v14 ---------- */
+/* banner: glass-block lobby */
+.banner{height:118px;background:
+ radial-gradient(circle at 16% 78%,rgba(255,150,225,.6) 0 26px,rgba(255,150,225,0) 70px),
+ radial-gradient(circle at 58% 24%,rgba(255,190,240,.5) 0 22px,rgba(255,190,240,0) 64px),
+ radial-gradient(circle at 88% 70%,rgba(190,160,255,.55) 0 26px,rgba(190,160,255,0) 72px),
+ linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0) 55%) 0 0/72px 72px,
+ linear-gradient(rgba(255,255,255,.22) 2px,transparent 2px) 0 0/72px 72px,linear-gradient(90deg,rgba(255,255,255,.22) 2px,transparent 2px) 0 0/72px 72px,
+ linear-gradient(90deg,#0a38b0,#2a82f0 42%,#62b4ff 68%,#2a6cf0)}
+.banner .bk{display:none}
+.banner .t{gap:clamp(10px,2.4vw,30px);padding:0 14px;font:500 clamp(19px,3.5vw,44px)/1.15 var(--f-body);letter-spacing:.005em;color:#fff;text-shadow:0 0 18px rgba(255,255,255,.85),0 2px 8px rgba(8,28,140,.6)}
+.banner .t span{flex:0 1 auto;min-width:0}
+.banner .st5{width:clamp(26px,4vw,52px);flex:none;filter:drop-shadow(0 3px 0 rgba(8,28,140,.45));animation:none}
+/* hire me */
+.card.D{overflow:visible;background:transparent;box-shadow:none}
+.D .xp{border-radius:22px;overflow:hidden}.D .xp .tt{border-radius:0}
+.D .xp .bd{border-radius:0}
+button.burst{border:0;padding:0;width:100%;font:inherit;color:inherit;cursor:pointer;min-height:300px}
+.burst .sbx{width:74%;max-width:250px;height:auto;aspect-ratio:1/1;top:46%;transition:transform .25s}
+button.burst:hover .sbx{transform:translate(-50%,-50%) rotate(-12deg) scale(1.06)}
+.burst b.chr{margin-top:-14px}
+.burst em{display:block;position:absolute;bottom:14px;left:0;right:0;text-align:center;font:600 13px var(--f-pix);letter-spacing:.1em;color:var(--ink);font-style:normal;z-index:3;text-shadow:0 1px 0 rgba(255,255,255,.8)}
+/* tv frame v2: candy toy */
+.tv2{display:grid;grid-template-columns:1fr 172px;gap:20px;padding:30px 26px 66px 30px;border:4px solid #fff;border-radius:64px 64px 46px 46px/76px 76px 46px 46px;background:linear-gradient(180deg,#ffdcf2 0%,#ff9fdc 14%,#ff63c4 55%,#ee3aa6 100%);box-shadow:inset 0 0 0 3px rgba(255,255,255,.35),inset 0 -10px 0 rgba(176,20,120,.3),0 14px 0 #a8126f,0 36px 44px rgba(10,0,20,.6)}
+.tv2::before{content:'';position:absolute;left:54px;top:11px;width:34%;height:14px;border-radius:99px;background:linear-gradient(rgba(255,255,255,.95),rgba(255,255,255,.35));pointer-events:none}
+.tv2::after{content:'✦ XP·VISION ✦';position:absolute;left:34px;bottom:20px;right:auto;height:auto;padding:7px 20px;display:block;font:900 11px var(--f-wide);letter-spacing:.22em;color:var(--ink);text-shadow:none;background:linear-gradient(180deg,#fff,#dfe6f8 46%,#9aa8d0 52%,#e8eefc);border:2px solid #fff;border-radius:999px;box-shadow:0 3px 0 rgba(150,0,100,.5)}
+.scn2{border:12px solid #1c1030;border-radius:40px/36px;box-shadow:0 0 0 4px #fff,0 0 0 8px #e0399c,0 0 0 10px rgba(255,255,255,.7),inset 0 0 70px rgba(0,0,0,.92),inset 0 0 0 2px #4b2d75,0 0 30px rgba(182,255,92,.22)}
+.scn2::after{left:5%;right:46%;top:2.5%;height:20%;border-radius:50%/60%;background:linear-gradient(165deg,rgba(255,255,255,.34),rgba(255,255,255,0) 85%)}
+.side2{padding:16px 12px 18px;gap:14px;background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,.22));border-radius:36px;box-shadow:inset 0 0 0 3px #fff,inset 0 -8px 14px rgba(176,20,120,.22)}
+.side2 .ch{background:#1c1030;border:2px solid #fff;color:#b6ff5c}
+.side2 .led{border-color:#fff}
+.grill2{width:78%;height:92px;border-radius:16px;background:repeating-linear-gradient(0deg,rgba(150,10,100,.75) 0 6px,transparent 6px 15px);box-shadow:inset 0 0 0 3px rgba(255,255,255,.7);opacity:1}
+.knob2{--cc:#d8ff8a;--cd:#52c92a;width:58px;height:58px;border:3px solid #fff;background:radial-gradient(circle at 32% 24%,#fff 0 8%,rgba(255,255,255,.4) 9% 20%,transparent 21%),radial-gradient(circle at 50% 70%,var(--cc),var(--cd));box-shadow:0 5px 0 var(--cd),0 9px 10px rgba(0,0,0,.28)}
+.knob2+.knob2{--cc:#a6efff;--cd:#1a9fe0}
+.knob2::before{content:none}
+.knob2::after{background:rgba(27,16,48,.55);height:14px;top:7px;transform-origin:50% 22px}
 .side2 .brand{color:var(--ink);text-shadow:0 1px 0 #fff}
-.side2 .pwr{border-color:#98a2c0;box-shadow:0 0 0 4px #e4e8f4,0 4px 6px rgba(120,0,80,.45),inset 0 -3px 4px rgba(150,80,0,.4)}
-.tv2 .foot{width:110px;height:34px;bottom:-34px;background:linear-gradient(180deg,#c9cfe2,#7f88aa);border-radius:0 0 22px 22px}
-.tv2 .ant{background:linear-gradient(90deg,#fff,#98a2c0 60%,#fff);width:7px}
+.side2 .pwr{width:36px;height:36px;border:3px solid #fff;background:radial-gradient(circle at 32% 24%,#fff 0 9%,rgba(255,255,255,.4) 10% 22%,transparent 23%),radial-gradient(circle at 50% 70%,#fff0a0,#ffb400);box-shadow:0 4px 0 #d98a00,0 7px 8px rgba(0,0,0,.28)}
+.tv2 .foot{width:120px;height:30px;bottom:-30px;background:linear-gradient(180deg,#ff63c4,#b81a86);border:4px solid #fff;border-top:0;border-radius:0 0 26px 26px;box-shadow:0 8px 12px rgba(10,0,20,.45)}
+.tv2 .ant{background:linear-gradient(90deg,#fff,#aab4d4 60%,#fff);width:7px}
+/* dock: resume + y2k polish */
+#dock .rz{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 14px;font:700 13px var(--f-wide);text-decoration:none;color:var(--ink);background:linear-gradient(180deg,#f3ffd0,#c9ff7a 50%,#a8f03a 52%,#c9ff7a);border:2px solid var(--ink);border-radius:999px;box-shadow:2px 2px 0 var(--ink);white-space:nowrap;text-transform:uppercase;flex:none}
+#dock .rz:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
+#dock .tray{background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,.08));border-left:2px solid rgba(255,255,255,.6);box-shadow:inset 2px 0 4px rgba(0,0,40,.25)}
+#dock .tray #clk2{font:600 13px var(--f-pix);background:#0b1a4a;color:#7ee8ff;border-radius:6px;padding:2px 8px;letter-spacing:.06em;box-shadow:inset 0 1px 3px rgba(0,0,0,.6)}
 @media(max-width:960px){
   .bento{grid-template-columns:1fr 1fr}.A{grid-column:span 2;grid-row:auto;min-height:480px}.F{grid-column:span 2}.G{grid-column:span 2}.G .xp .bd{grid-template-columns:1fr}
   .ab-g,.mg{grid-template-columns:1fr}.polas{height:400px;max-width:360px;margin:0 auto}
@@ -632,6 +662,49 @@ body{padding-bottom:50px}
 }
 @media(max-width:600px){.bento{grid-template-columns:1fr}.A,.F,.G{grid-column:auto}.sg{grid-template-columns:1fr}.icons{grid-template-columns:1fr 1fr}#nav .cta{display:none}.A .dlg{width:200px}.stu{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* ---------- v15 fixes + mobile ---------- */
+.h2c .mm span{display:block;line-height:1.3}
+#dock .tray{margin-top:0;border-radius:0;padding:0 12px 0 14px;gap:10px;position:relative;z-index:2}
+#dock .rz b{font-weight:700}
+.D button.burst{min-height:300px}
+@media(max-width:960px){
+  .tv2{grid-template-columns:1fr;gap:0;padding:26px 14px 68px;border-radius:46px 46px 34px 34px/54px 54px 34px 34px}
+  .tv2::before{left:36px;width:40%}
+  .tv2::after{left:50%;transform:translateX(-50%);bottom:22px;white-space:nowrap;padding:6px 16px;font-size:10px}
+  .side2{display:none}
+  .scn2{min-height:0;border-width:9px;border-radius:30px/28px;box-shadow:0 0 0 3px #fff,0 0 0 6px #e0399c,0 0 0 8px rgba(255,255,255,.7),inset 0 0 50px rgba(0,0,0,.9),inset 0 0 0 2px #4b2d75}
+  .g2{grid-template-columns:1fr}
+  .h2c{border-right:0;border-bottom:1px dashed rgba(182,255,92,.35);padding:16px 16px 18px}
+  .h2c .m{font-size:clamp(64px,22vw,100px)}
+  .b2c{padding:18px 16px 22px}.b2c h3{font-size:clamp(22px,7vw,30px)}.b2c ul{font-size:15px}
+  .osd{padding:10px 14px 0;font-size:11px;gap:6px}
+  .tv2 .foot{width:84px}
+  .scn2::after{display:none}
+  .h2c .mm span{display:block;line-height:1.3}
+  .h2c .mm div{min-width:0}.h2c .mm b{font-size:clamp(17px,5.4vw,22px);overflow-wrap:anywhere}
+  .jm .mt:last-child:nth-child(odd),.mtiles .mt:last-child:nth-child(odd){grid-column:1/-1}
+}
+.ico small{word-break:normal;overflow-wrap:anywhere}
+@media(max-width:960px){.cams{grid-template-columns:minmax(0,1fr)}.cm,.cam2{min-width:0;max-width:100%}.cb2{grid-template-columns:minmax(0,1fr) 84px}.aw3{right:-6px}.aw3 span{font-size:10px;white-space:nowrap}}
+@media(max-width:960px){.ex .bd{grid-template-columns:minmax(0,1fr)}.ex .side{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.ex .side .fold{min-width:0}.ex .main{padding:14px}}
+@media(max-width:400px){.ex .side{grid-template-columns:minmax(0,1fr)}.ex .side h5{grid-column:1}.ex .main{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){.spk{display:none}.ctl3{gap:14px}.jh .x{margin-right:-4px}}
+@media(max-width:700px){
+  .ghost{display:none}
+  #dock .tray #trk,#dock .tray #clk2{display:none}
+  #dock .tray{padding:0 8px}
+  #dock .start{padding:0 14px 0 8px}
+}
+@media(max-width:600px){.icons .ico:nth-child(4){grid-column:1/-1}}
+@media(max-width:480px){
+  #dock .rz{width:34px;height:34px;padding:0;justify-content:center;border-radius:50%}
+  #dock .rz span{display:none}
+  #dock{gap:4px}
+  #dock .start{font-size:16px;margin-right:2px}
+  #dock .tabs{gap:3px}
+  #dock .tabs button{padding:0 5px;height:32px}
+}
 </style>
 </head>
 <body>
@@ -643,26 +716,20 @@ body{padding-bottom:50px}
   <symbol id="folder" viewBox="0 0 32 28"><path d="M2 6c0-1.5 1-2.5 2.5-2.5h7l3 3.5H28c1.5 0 2.5 1 2.5 2.5V24c0 1.5-1 2.5-2.5 2.5H4.5C3 26.5 2 25.5 2 24Z" fill="#ffd84a" stroke="#1b1030" stroke-width="2" stroke-linejoin="round"/><path d="M2.5 11H30" stroke="#1b1030" stroke-width="2"/><path d="M5 13.5h22" stroke="#fff6b8" stroke-width="2"/></symbol>
 </defs></svg>
 
-<nav id="nav" aria-label="Main"><div class="in">
-  <a class="logo chr" href="#top">Lan Anh</a>
-  <div class="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#exp">Experience</a><a href="#proj">Projects</a><a href="#lead">Leadership</a><a href="#mail">Contact</a></div>
-  <a class="cta" href="/assets/Lan-Anh-Do-Resume.pdf" download="Lan-Anh-Do-Resume.pdf">⬇ Resume</a>
-</div></nav>
-
 <header id="top" data-name="home">
   <span class="orb" style="width:210px;height:210px;left:-80px;top:260px"></span><span class="orb" style="width:120px;height:120px;right:-30px;top:150px"></span><span class="orb" style="width:80px;height:80px;left:6%;bottom:40px"></span>
   <div class="wrap">
-    <div class="banner"><div class="t"><svg fill="#ffe14a" stroke="#1b1030" stroke-width="1"><use href="#sp"/></svg><span>Welcome to your portal to my portfolio</span><svg fill="#ffe14a" stroke="#1b1030" stroke-width="1"><use href="#sp"/></svg></div></div>
+    <div class="banner"><i class="bk b1"></i><i class="bk b2"></i><i class="bk b3"></i><div class="t"><svg class="st5" viewBox="0 0 40 40"><defs><linearGradient id="gst" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6a8"/><stop offset=".5" stop-color="#ffd23a"/><stop offset="1" stop-color="#ff9a1f"/></linearGradient></defs><path d="M20 3l5.2 10.9 12 1.6-8.8 8.3 2.2 11.9L20 29.9l-10.6 5.8 2.2-11.9-8.8-8.3 12-1.6z" fill="url(#gst)" stroke="#1b1030" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 8l3 6.4" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".9"/></svg><span>Welcome to your portal to my portfolio</span><svg class="st5" viewBox="0 0 40 40"><defs><linearGradient id="gst2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6a8"/><stop offset=".5" stop-color="#ffd23a"/><stop offset="1" stop-color="#ff9a1f"/></linearGradient></defs><path d="M20 3l5.2 10.9 12 1.6-8.8 8.3 2.2 11.9L20 29.9l-10.6 5.8 2.2-11.9-8.8-8.3 12-1.6z" fill="url(#gst2)" stroke="#1b1030" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 8l3 6.4" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".9"/></svg></div></div>
     <div class="tray">
       <div class="bento">
         <div class="card A reveal">
-          <div class="xp dlg"><div class="tt"><span class="ti">Error</span><span class="bs"><i>×</i></span></div><div class="bd"><svg><use href="#warn"/></svg><span>Unable to load: way too amazing for one screen. (0x2027LA)</span></div><button class="ok" type="button">OK</button></div>
+          <div class="xp dlg"><div class="tt"><span class="ti">Error</span><span class="bs"><i>×</i></span></div><div class="bd"><svg><use href="#warn"/></svg><span>Unable to load: way too cute &amp; too amazing for one screen. (0x2027LA)</span></div><button class="ok" type="button">OK</button></div>
           <svg class="cursors" viewBox="0 0 70 40"><use href="#cur" x="0" y="0" width="26" height="28"/><use href="#cur" x="14" y="4" width="26" height="28"/><use href="#cur" x="28" y="8" width="26" height="28"/></svg>
           <img id="av" src="/assets/img/avatar-px.png" alt="Pixel avatar of Lan Anh">
         </div>
         <div class="card B reveal"><div class="wm chr">Lan Anh<br>Do</div><div class="sm">✦ PORTFOLIO 2026 ✦</div></div>
         <div class="card C reveal"><div class="i">i</div><p class="ct"><b>Hi, I'm Lan Anh,</b> a Computer Engineering + Economics student at UF (class of 2027) who loves where <b>technology, systems &amp; people</b> collide. The best technology in the world is useless if nobody uses it and nobody understands why it matters.</p><div class="tgs"><span>📍 Gainesville, FL</span><span>🎓 UF '27</span><span>🐊 Go Gators</span></div><div class="stt"><i></i>status: open to internships &amp; new grad opportunities</div></div>
-        <div class="card D reveal"><div class="xp"><div class="tt"><span class="ti">2027</span><span class="bs"><i>×</i></span></div><div class="bd"><div class="burst"><svg class="sbx" viewBox="0 0 100 100"><polygon points="98.0,50.0 85.1,58.0 93.2,70.8 78.1,72.4 79.9,87.5 65.6,82.4 60.7,96.8 50.0,86.0 39.3,96.8 34.4,82.4 20.1,87.5 21.9,72.4 6.8,70.8 14.9,58.0 2.0,50.0 14.9,42.0 6.8,29.2 21.9,27.6 20.1,12.5 34.4,17.6 39.3,3.2 50.0,14.0 60.7,3.2 65.6,17.6 79.9,12.5 78.1,27.6 93.2,29.2 85.1,42.0" fill="#ffe14a" stroke="#1b1030" stroke-width="2.2" stroke-linejoin="round" transform="translate(2 3)" opacity=".35"/><polygon points="98.0,50.0 85.1,58.0 93.2,70.8 78.1,72.4 79.9,87.5 65.6,82.4 60.7,96.8 50.0,86.0 39.3,96.8 34.4,82.4 20.1,87.5 21.9,72.4 6.8,70.8 14.9,58.0 2.0,50.0 14.9,42.0 6.8,29.2 21.9,27.6 20.1,12.5 34.4,17.6 39.3,3.2 50.0,14.0 60.7,3.2 65.6,17.6 79.9,12.5 78.1,27.6 93.2,29.2 85.1,42.0" fill="#ffe14a" stroke="#1b1030" stroke-width="2.2" stroke-linejoin="round"/><polygon points="98.0,50.0 85.1,58.0 93.2,70.8 78.1,72.4 79.9,87.5 65.6,82.4 60.7,96.8 50.0,86.0 39.3,96.8 34.4,82.4 20.1,87.5 21.9,72.4 6.8,70.8 14.9,58.0 2.0,50.0 14.9,42.0 6.8,29.2 21.9,27.6 20.1,12.5 34.4,17.6 39.3,3.2 50.0,14.0 60.7,3.2 65.6,17.6 79.9,12.5 78.1,27.6 93.2,29.2 85.1,42.0" fill="none" stroke="#fff" stroke-width="1.4" transform="translate(50 50) scale(.86) translate(-50 -50)" stroke-dasharray="2 3"/></svg><b class="chr">HIRE<br>ME?</b><a class="cta2" href="#mail">✉ click me!</a><svg class="sx x1" viewBox="0 0 32 32" fill="#fff" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg><svg class="sx x2" viewBox="0 0 32 32" fill="#ff8fd2" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg><svg class="sx x3" viewBox="0 0 32 32" fill="#b6ff5c" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg></div><div class="cap">Class of 2027 · CpE + Econ @ UF</div></div></div></div>
+        <div class="card D reveal"><div class="xp"><div class="tt"><span class="ti">2027</span><span class="bs"><i>×</i></span></div><div class="bd"><button class="burst" type="button" data-go="fm" aria-label="Hire me: jump to the contact form"><svg class="sbx" viewBox="0 0 100 100"><polygon points="98.0,50.0 85.1,58.0 93.2,70.8 78.1,72.4 79.9,87.5 65.6,82.4 60.7,96.8 50.0,86.0 39.3,96.8 34.4,82.4 20.1,87.5 21.9,72.4 6.8,70.8 14.9,58.0 2.0,50.0 14.9,42.0 6.8,29.2 21.9,27.6 20.1,12.5 34.4,17.6 39.3,3.2 50.0,14.0 60.7,3.2 65.6,17.6 79.9,12.5 78.1,27.6 93.2,29.2 85.1,42.0" fill="#ffe14a" stroke="#1b1030" stroke-width="2.2" stroke-linejoin="round" transform="translate(2 3)" opacity=".35"/><polygon points="98.0,50.0 85.1,58.0 93.2,70.8 78.1,72.4 79.9,87.5 65.6,82.4 60.7,96.8 50.0,86.0 39.3,96.8 34.4,82.4 20.1,87.5 21.9,72.4 6.8,70.8 14.9,58.0 2.0,50.0 14.9,42.0 6.8,29.2 21.9,27.6 20.1,12.5 34.4,17.6 39.3,3.2 50.0,14.0 60.7,3.2 65.6,17.6 79.9,12.5 78.1,27.6 93.2,29.2 85.1,42.0" fill="#ffe14a" stroke="#1b1030" stroke-width="2.2" stroke-linejoin="round"/><polygon points="98.0,50.0 85.1,58.0 93.2,70.8 78.1,72.4 79.9,87.5 65.6,82.4 60.7,96.8 50.0,86.0 39.3,96.8 34.4,82.4 20.1,87.5 21.9,72.4 6.8,70.8 14.9,58.0 2.0,50.0 14.9,42.0 6.8,29.2 21.9,27.6 20.1,12.5 34.4,17.6 39.3,3.2 50.0,14.0 60.7,3.2 65.6,17.6 79.9,12.5 78.1,27.6 93.2,29.2 85.1,42.0" fill="none" stroke="#fff" stroke-width="1.4" transform="translate(50 50) scale(.86) translate(-50 -50)" stroke-dasharray="2 3"/></svg><b class="chr">HIRE<br>ME?</b><em>(pls &amp; thx)</em><svg class="sx x1" viewBox="0 0 32 32" fill="#fff" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg><svg class="sx x2" viewBox="0 0 32 32" fill="#ff8fd2" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg><svg class="sx x3" viewBox="0 0 32 32" fill="#b6ff5c" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg></button><div class="cap">Class of 2027 · CpE + Econ @ UF</div></div></div></div>
       </div>
     </div>
     <div id="mq" aria-hidden="true"><div class="tr" id="tick"></div></div>
@@ -744,7 +811,7 @@ body{padding-bottom:50px}
 </div>
 <div id="dock" role="navigation" aria-label="Sections"><i class="prog" id="prog"></i>
   <button class="start" id="startb" type="button" aria-expanded="false" aria-controls="smenu"><span class="wf"><b></b><b></b><b></b><b></b></span>start</button>
-  <div class="tabs" id="tabs"></div><div class="tray"><span id="trk"></span><span id="clk2"></span></div></div>
+  <div class="tabs" id="tabs"></div><div class="tray"><span id="trk"></span><span id="clk2"></span><a class="rz" href="/assets/Lan-Anh-Do-Resume.pdf" download="Lan-Anh-Do-Resume.pdf" aria-label="Download resume"><b>⬇</b><span>Resume</span></a></div></div>
 <canvas id="trail" aria-hidden="true"></canvas>
 
 <script src="/shared/data.js"></script>
@@ -949,7 +1016,7 @@ $('#tabs').innerHTML = TABS.map(([h,l,i,c]) => `<button type="button" data-h="${
 $('#sml').innerHTML = TABS.map(([h,l,i,c]) => `<a href="${h}" style="--ic:${c}"><i>${i}</i>${l}</a>`).join('');
 let cur = -1;
 function spy(){ const y = scrollY+innerHeight*.4; let k = 0; SECS.forEach(([id],i) => { const el = $(id); if (el && el.offsetTop<=y) k = i; });
-  if (k!==cur){ cur = k; $('#trk').textContent = SECS[k][1]; $$('#nav .links a').forEach(a => a.classList.toggle('on',a.getAttribute('href')===SECS[k][0])); $$('#tabs button').forEach(b => b.classList.toggle('on',b.dataset.h===SECS[k][0])); const on = $('#tabs button.on'); if (on) on.scrollIntoView({ inline:'nearest',block:'nearest' }); }
+  if (k!==cur){ cur = k; $('#trk').textContent = SECS[k][1]; $$('#tabs button').forEach(b => b.classList.toggle('on',b.dataset.h===SECS[k][0])); { const ab = $('#tabs button.on'); if (ab) $('#tabs').scrollTo({ left: ab.offsetLeft - 70, behavior: 'smooth' }); } const on = $('#tabs button.on'); if (on) on.scrollIntoView({ inline:'nearest',block:'nearest' }); }
   $('#prog').style.width = (scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+'%'; }
 addEventListener('scroll',spy,{ passive:true }); spy();
 $('#tabs').addEventListener('click',e => { const b = e.target.closest('button'); if (b) $(b.dataset.h).scrollIntoView({ behavior:'smooth' }); });
