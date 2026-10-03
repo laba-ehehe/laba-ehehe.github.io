@@ -875,6 +875,7 @@ button.burst:hover .sbx{transform:translate(-50%,-50%) rotate(-12deg) scale(1.06
 .hd .px{font-size:clamp(46px,8.6vw,118px);letter-spacing:-.06em}
 .px,.sm,.ch b{letter-spacing:.02em}
 @media(max-width:600px){.xp .tt .ti,.xp .tt{font-size:11px}.big span,.jh .big span{font-size:9px}}
+.file i{font-size:9px;line-height:52px;overflow:hidden;white-space:nowrap;text-overflow:clip;padding:0 3px;box-sizing:border-box;text-align:center}
 </style>
 </head>
 <body>
@@ -995,7 +996,7 @@ const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const INK = '#1b1030';
 
 /* ---------- ticker ---------- */
-const T = ['LAN ANH DO','CPE + ECON @ UF','GPA 3.94','SHELLHACKS 1ST + AWS + TIGER DATA','−97% INVESTIGATION TIME','100+ STUDENTS TAUGHT','OPEN TO INTERNSHIPS','CLASS OF 2027'];
+const T = ['LAN ANH DO','CPE + ECON @ UF','GPA 3.94','SHELLHACKS 1ST + AWS + TIGER DATA','−97% INVESTIGATION TIME','100+ STUDENTS TAUGHT','OPEN TO INTERNSHIPS','OPEN TO NEW GRAD OPPORTUNITIES','CLASS OF 2027'];
 $('#tick').innerHTML = [...T,...T,...T,...T].map(t => `<span>✦ ${t}</span>`).join('');
 
 /* ---------- hero bits ---------- */
