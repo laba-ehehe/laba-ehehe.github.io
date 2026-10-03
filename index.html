@@ -859,6 +859,15 @@ button.burst:hover .sbx{transform:translate(-50%,-50%) rotate(-12deg) scale(1.06
 .rd .chk li:last-child>i{background:#ffe9a0}
 @media(max-width:480px){.tvx .chb{flex:1 1 140px;justify-content:center}.tvx .chs{flex-wrap:wrap}}
 @media(max-width:360px){.jh{grid-template-columns:46px minmax(0,1fr) 20px;gap:8px}.jh .x{margin-right:0}.lgo{width:46px;height:46px}}
+
+/* ---------- v21 two tvs ---------- */
+.tvx{margin-bottom:84px}.tvx:last-child{margin-bottom:40px}
+.tvx .lcd3{margin-left:auto;display:flex;align-items:center;gap:10px;font:600 13px var(--f-body);color:#2a2150;padding:6px 16px 6px 8px;border-radius:999px;background:linear-gradient(180deg,#fff,#eaf0ff 50%,#c4d3f7 52%,#eef3ff);border:2px solid #7f8fd0;box-shadow:0 3px 0 #7f8fd0;white-space:nowrap}
+.tvx .lcd3 b{font:700 11px var(--f-pix);letter-spacing:.1em;background:#1c1030;color:#b6ff5c;border-radius:999px;padding:3px 9px}
+.tvx.alt .shell{background:radial-gradient(90% 60% at 82% 0%,rgba(255,255,255,.85),rgba(255,255,255,0) 55%),repeating-linear-gradient(65deg,rgba(255,255,255,.07) 0 14px,rgba(255,255,255,0) 14px 40px),linear-gradient(200deg,#ffd9f1 0%,#ffa8de 34%,#d8a8ff 70%,#a8d8ff 100%);box-shadow:inset 0 0 0 7px rgba(255,255,255,.22),inset 0 -26px 46px rgba(200,40,150,.34),inset 0 26px 40px rgba(255,255,255,.3),0 44px 60px rgba(8,0,30,.65),0 0 70px rgba(255,120,200,.4)}
+.tvx.alt .hdl{border-color:rgba(255,196,232,.92)}
+.tvx.alt .ft{background:linear-gradient(180deg,#ff9ad8,#d84aa8)}
+@media(max-width:960px){.tvx{margin-bottom:70px}.tvx .lcd3{margin-left:0}}
 </style>
 </head>
 <body>
@@ -1095,13 +1104,12 @@ const LM = [
   { hero:['14','projects delivered'], m:[['40+','fellows matched'],['6','local startups'],['100+','members trained'],['100%','completion rate']] },
   { hero:['120+','hackers'], m:[['$10,000+','prize funding'],['30+','judges recruited'],['15','committee heads'],['+28%','satisfaction']] }
 ];
-$('#tvs').innerHTML = `<div class="tvx reveal"><i class="hdl"></i><div class="shell"><div class="bezel"><div class="scn2 glass"><div class="chans">${D.leadership.map((x,i) => { const M = LM[i]; return `
-  <section class="chan${i?'':' on'}" data-ch="${i}" aria-label="Channel ${i+3}: ${esc(x.org)}"><div class="osd"><span>CH ${String(i+3).padStart(2,'0')}</span><span>${esc(x.dates)}</span><span>● LIVE</span></div>
+$('#tvs').innerHTML = D.leadership.map((x,i) => { const M = LM[i]; return `<div class="tvx${i?' alt':''} reveal"><i class="hdl"></i><div class="shell"><div class="bezel"><div class="scn2 glass"><div class="chans">
+  <section class="chan on" aria-label="${esc(x.org)}"><div class="osd"><span>CH ${String(i+3).padStart(2,'0')}</span><span>${esc(x.dates)}</span><span>● LIVE</span></div>
     <div class="g2"><div class="h2c"><div><b class="m">${esc(M.hero[0])}</b><div class="ml">${esc(M.hero[1])}</div></div><div class="mm">${M.m.map(([n,l]) => `<div><b>${esc(n)}</b><span>${esc(l)}</span></div>`).join('')}</div></div>
-    <div class="b2c"><h3>${esc(x.org)}</h3><div class="rl">${esc(x.role)}</div><ul>${x.bullets.map(b => `<li>${emph(fmt(b))}</li>`).join('')}</ul></div></div></section>`; }).join('')}</div><div class="bars2"></div><i class="static"></i></div></div>
-  <div class="ctrl"><span class="bd2">✦ XP·VISION ✦</span><div class="chs" role="group" aria-label="Choose channel">${D.leadership.map((x,i) => `<button type="button" class="chb${i?'':' on'}" data-ch="${i}" aria-pressed="${i?'false':'true'}"><b>CH ${String(i+3).padStart(2,'0')}</b><span>${esc(shortOrg(x.org).replace('UF ',''))}</span></button>`).join('')}</div><span class="dots3"></span><span class="led"></span><span class="pwr"></span></div></div>
-  <i class="ft f1"></i><i class="ft f2"></i></div>`;
-$('#tvs').addEventListener('click',e => { const b = e.target.closest('.chb'); if (!b || b.classList.contains('on')) return; const g = $('#tvs .glass'); $$('#tvs .chb').forEach(x => { const on = x===b; x.classList.toggle('on',on); x.setAttribute('aria-pressed',on); }); $$('#tvs .chan').forEach(c => c.classList.toggle('on',c.dataset.ch===b.dataset.ch)); g.classList.remove('fx'); void g.offsetWidth; g.classList.add('fx'); });
+    <div class="b2c"><h3>${esc(x.org)}</h3><div class="rl">${esc(x.role)}</div><ul>${x.bullets.map(b => `<li>${emph(fmt(b))}</li>`).join('')}</ul></div></div></section></div><div class="bars2"></div></div></div>
+  <div class="ctrl"><span class="bd2">✦ XP·VISION ✦</span><span class="lcd3"><b>CH ${String(i+3).padStart(2,'0')}</b>${esc(shortOrg(x.org))}</span><span class="dots3"></span><span class="led"></span><span class="pwr"></span></div></div>
+  <i class="ft f1"></i><i class="ft f2"></i></div>`; }).join('');
 
 /* ---------- contact icons ---------- */
 const IC = {
@@ -1153,7 +1161,7 @@ PUT.forEach(([sel,html,st]) => { const d = document.createElement('div'); d.clas
 const charm = (c) => `<svg viewBox="0 0 44 120"><path d="M30 0 Q8 20 22 44 Q36 66 22 86" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>${[[18,18],[12,32],[16,48],[24,62],[22,76]].map(([x,y],i) => `<circle cx="${x}" cy="${y}" r="5" fill="${['#ff4fb4','#ffe14a','#7ec8ff','#b6ff5c','#c3a6ff'][(i+c)%5]}" stroke="#1b1030" stroke-width="2"/>`).join('')}<path d="M22 86 l5 7 -5 7 -5 -7z" fill="#ff4fb4" stroke="#1b1030" stroke-width="2.5" stroke-linejoin="round"/><circle cx="22" cy="108" r="8" fill="#ffe14a" stroke="#1b1030" stroke-width="2.5"/><circle cx="19" cy="106" r="1.5" fill="#1b1030"/><circle cx="25" cy="106" r="1.5" fill="#1b1030"/><path d="M18 111 q4 4 8 0" stroke="#1b1030" stroke-width="1.6" fill="none"/></svg>`;
 const flutter = () => `<svg viewBox="0 0 64 48"><g stroke="#1b1030" stroke-width="2.4" stroke-linejoin="round"><path d="M31 24C19 3 1 4 3 18c1 8 12 10 28 6z" fill="#ff9ccf"/><path d="M31 26C21 40 7 46 9 34c1-6 10-8 22-8z" fill="#c9a8ff"/><path d="M33 24C45 3 63 4 61 18c-1 8-12 10-28 6z" fill="#ff9ccf"/><path d="M33 26C43 40 57 46 55 34c-1-6-10-8-22-8z" fill="#c9a8ff"/></g><rect x="30" y="14" width="4" height="24" rx="2" fill="#1b1030"/></svg>`;
 const put3 = (el,html,st) => { const d = document.createElement('div'); d.className = 'stk3'; d.style.cssText = st; d.innerHTML = html; el.appendChild(d); };
-$$('.tvx').forEach(t => { put3(t,pixHeart(),'right:-20px;top:18px;width:54px;rotate:12deg'); put3(t,star5(),'left:-16px;bottom:96px;width:44px;rotate:-14deg'); });
+$$('.tvx').forEach((t,i) => { put3(t,pixHeart(),i?'left:-20px;top:18px;width:54px;rotate:-12deg':'right:-20px;top:18px;width:54px;rotate:12deg'); put3(t,star5(),i?'right:-16px;bottom:96px;width:44px;rotate:14deg':'left:-16px;bottom:96px;width:44px;rotate:-14deg'); });
 $$('.cam2').forEach((c,i) => { put3(c,smile(),'right:-22px;bottom:-14px;width:50px;rotate:12deg'); put3(c,star5(),'left:30%;bottom:-16px;width:40px;rotate:-14deg'); put3(c,pixHeart(),'right:18%;top:-22px;width:38px;rotate:8deg'); put3(c,charm(i),'left:-34px;top:36%;width:40px'); });
 const CHR = `<svg viewBox="0 0 24 24" style="fill:url(#cg);stroke:${O};stroke-width:.7"><use href="#sp"/></svg>`;
 [['#top','left:46%;top:84px;width:44px',0],['#about','left:30%;bottom:60px;width:52px',1],['#skills','left:44%;top:50px;width:46px',1],['#exp','left:40%;bottom:50px;width:50px',0],['#proj','right:30%;bottom:60px;width:56px',1],['#lead','left:44%;top:60px;width:50px',1]].forEach(([sel,st,tw]) => { const d = document.createElement('div'); d.className = 'spark'+(tw?' tw':''); d.style.cssText = st+';position:absolute'; d.innerHTML = CHR; $(sel).appendChild(d); });
