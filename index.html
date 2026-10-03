@@ -10,7 +10,7 @@
 <title>Lan Anh Do ✦ portal to my portfolio</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.44' stop-color='%23aab6e0'/%3E%3Cstop offset='.5' stop-color='%23232a52'/%3E%3Cstop offset='.56' stop-color='%237f8fbe'/%3E%3Cstop offset='1' stop-color='%23fff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%23ff7ac8'/%3E%3Cpath d='M16 3C17 11 21 15 29 16 21 17 17 21 16 29 15 21 11 17 3 16 11 15 15 11 16 3z' fill='url(%23g)' stroke='%231b1030' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Pixelify+Sans:wght@500;700&family=Yellowtail&family=Rubik:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Pixelify+Sans:wght@500;700&family=Yellowtail&family=Rubik:wght@400;500;600;700&family=Caveat:wght@600;700&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#1b1030;--pink:#ff4fb4;--hot:#ff2bd6;--lime:#b6ff5c;--green:#3df04a;--peri:#7a8cff;--sky:#7ec8ff;--lilac:#d9a8ff;--chrome:#dfe3ea;--xp:#0b49e0;--yel:#ffe14a;
   --f-wide:'Unbounded',sans-serif;--f-pix:'Pixelify Sans',monospace;--f-script:'Yellowtail',cursive;--f-body:'Rubik',sans-serif;--f-hand:'Caveat',cursive;
@@ -618,7 +618,7 @@ body{padding-bottom:50px}
 .banner .bk{display:none}
 .banner .t{gap:clamp(10px,2.4vw,30px);padding:0 14px;font:500 clamp(19px,3.5vw,44px)/1.15 var(--f-body);letter-spacing:.005em;color:#fff;text-shadow:0 0 18px rgba(255,255,255,.85),0 2px 8px rgba(8,28,140,.6)}
 .banner .t span{flex:0 1 auto;min-width:0}
-.banner .st5{width:clamp(26px,4vw,52px);flex:none;filter:drop-shadow(0 3px 0 rgba(8,28,140,.45));animation:none}
+.banner .st5{width:clamp(26px,4vw,52px);flex:none;filter:drop-shadow(0 3px 0 rgba(8,28,140,.45));animation:none;opacity:1;-webkit-text-stroke:0}
 /* hire me */
 .card.D{overflow:visible;background:transparent;box-shadow:none}
 .D .xp{border-radius:22px;overflow:hidden}.D .xp .tt{border-radius:0}
@@ -666,6 +666,56 @@ button.burst:hover .sbx{transform:translate(-50%,-50%) rotate(-12deg) scale(1.06
 .sk .qt em{font:600 11px var(--f-pix);font-style:normal;letter-spacing:.06em;text-transform:uppercase;color:var(--q);border:1.5px solid var(--q);border-radius:999px;padding:2px 9px}
 .sk .qg{align-self:flex-start;margin-top:4px;font:700 12px var(--f-wide);color:var(--ink);background:var(--q);border:2px solid var(--ink);border-radius:999px;padding:6px 14px;box-shadow:2px 2px 0 rgba(255,255,255,.35)}
 @media(max-width:600px){.sk{transform:none}}
+
+/* ---------- v17 ---------- */
+/* welcome banner font */
+.banner .t{font-family:'Fredoka','Rubik',sans-serif;font-weight:700;font-size:clamp(22px,3.7vw,46px);letter-spacing:.01em;color:#fff;-webkit-text-stroke:6px #0a2a9a;paint-order:stroke fill;text-shadow:0 4px 0 #0a2a9a,0 0 26px rgba(255,255,255,.75)}
+@media(max-width:600px){.banner .t{-webkit-text-stroke:5px #0a2a9a;font-size:clamp(20px,6vw,26px);gap:8px}.banner .st5{width:24px}}
+/* wordmark card */
+.B{padding:24px 16px 20px;gap:12px}
+.B .pill{position:relative;z-index:3;width:100%;max-width:340px;padding:16px 12px 14px;text-align:center;border-radius:999px;background:linear-gradient(180deg,#4a3aa8 0%,#2a1f6a 50%,#1c1450 52%,#3a2a8a 100%);border:3px solid #fff;box-shadow:0 5px 0 var(--ink),0 0 0 3px var(--ink),0 0 24px rgba(255,255,255,.5)}
+.B .pill::before{content:'';position:absolute;left:8%;right:8%;top:4px;height:34%;border-radius:999px;background:linear-gradient(rgba(255,255,255,.4),rgba(255,255,255,0));pointer-events:none}
+.B .pill .chr{display:inline-block;font-size:min(11cqw,54px);line-height:1;white-space:nowrap;position:relative;transform:skewX(-8deg)}
+.B .yr{position:absolute;z-index:4;left:12px;top:10px;font:700 12px var(--f-pix);letter-spacing:.1em;background:#b6ff5c;border:2.5px solid var(--ink);border-radius:999px;padding:2px 12px;box-shadow:2px 2px 0 var(--ink);transform:rotate(-8deg);color:var(--ink)}
+.B .cur2{position:absolute;z-index:5;right:14px;bottom:22px;width:30px;filter:drop-shadow(2px 2px 0 rgba(27,16,48,.4))}
+.B .sx{position:absolute;z-index:4}.B .x1{width:26px;right:16px;top:16px}.B .x2{width:18px;left:20px;bottom:20px}
+.B .sm{font-size:11px;letter-spacing:.12em}
+/* intro card */
+.C{padding:20px 22px 18px;font-size:15px;gap:0}
+.C .hi{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+.C .hi span{font:700 13px var(--f-body);background:var(--ink);color:#fff;padding:5px 12px;border-radius:999px}
+.C .hi i{font:600 11px var(--f-pix);font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:#6b4fa8}
+.C .big3{margin:0;font:800 clamp(19px,1.75vw,24px)/1.22 var(--f-wide);letter-spacing:-.045em;color:var(--ink);position:relative}
+.C .big3 .q{position:absolute;left:-4px;top:-20px;font:900 46px/1 var(--f-wide);color:#ff4fb4;font-style:normal;opacity:.35;z-index:0}.C .big3{z-index:1}
+.C .big3 mark{color:var(--ink);padding:0 3px;border-radius:4px}
+.C .big3 .m1{background:linear-gradient(transparent 52%,#ff9ad8 52%)}
+.C .big3 .m2{background:linear-gradient(transparent 52%,#b6ff5c 52%)}
+.C .sub3{margin:14px 0 0;font:500 15px/1.45 var(--f-body);color:#3a2f66}.C .sub3 b{background:none;color:var(--ink)}
+.C .tgs{margin-top:14px}
+/* start menu */
+#smenu{border:3px solid #fff;border-radius:26px 26px 0 0;box-shadow:0 0 0 3px #7f8fd0,0 -14px 44px rgba(60,40,160,.5);background:linear-gradient(180deg,#fff,#edf1ff)}
+#smenu .sh{position:relative;overflow:hidden;padding:14px 18px;color:var(--ink);background:linear-gradient(90deg,#ffc2ec,#dcc8ff 40%,#b3d6ff 72%,#c2f5e6);border-bottom:3px solid #fff}
+#smenu .sh::before{content:'';position:absolute;inset:0 0 50% 0;background:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.15))}
+#smenu .sh::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.55) 1.2px,transparent 1.8px);background-size:7px 7px}
+#smenu .sh>*{position:relative;z-index:2}
+#smenu .av{width:52px;height:52px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px #7f8fd0,0 3px 6px rgba(60,40,160,.35)}
+#smenu .sh b{font-size:19px;color:var(--ink)}#smenu .sh small{color:#4a3f78;opacity:1}
+#smenu .l{padding:12px 10px;gap:6px}
+#smenu .l a{padding:7px 12px 7px 8px;border-radius:999px;border:2px solid transparent;transition:.12s}
+#smenu .l a:hover{background:linear-gradient(180deg,#fff,#eaf0ff 50%,#c4d3f7 52%,#eef3ff);border-color:#7f8fd0;color:var(--ink);transform:translateX(3px)}
+#smenu .l a i{border-radius:50%;border:2px solid #fff;box-shadow:0 2px 0 rgba(0,0,0,.25),inset 0 2px 0 rgba(255,255,255,.4)}
+#smenu .r{background:linear-gradient(180deg,#f3ecff,#dfe9ff);border-left:2px solid #fff;padding:12px 12px;gap:8px}
+#smenu .r a{justify-content:center;padding:8px 12px;border-radius:999px;border:2px solid #7f8fd0;background:linear-gradient(180deg,#fff,#eaf0ff 50%,#c4d3f7 52%,#eef3ff);color:var(--ink);box-shadow:0 2px 0 #7f8fd0;font-size:13.5px}
+#smenu .r a:first-child{background:linear-gradient(180deg,#f3ffd0,#c9ff7a 50%,#a8f03a 52%,#c9ff7a);border-color:var(--ink);box-shadow:2px 3px 0 var(--ink)}
+#smenu .r a:hover{background:linear-gradient(180deg,#ffd0ee,#ff7ac8 50%,#ff4fb4 52%,#ff8fd2);color:var(--ink)}
+#smenu .sf{background:linear-gradient(180deg,#eef2ff,#d9e3ff);border-top:2px solid #fff;justify-content:center}
+#smenu .sf button{background:linear-gradient(180deg,#ffd0ee,#ff7ac8 50%,#ff4fb4 52%,#ff8fd2);border:2px solid var(--ink);border-radius:999px;box-shadow:2px 2px 0 var(--ink);color:var(--ink);font-weight:700;padding:5px 18px}
+/* tv v3 */
+.side2{background:linear-gradient(180deg,#f0fffc 0%,#a8efe6 50%,#6fd6cc 100%);box-shadow:inset 0 0 0 3px #fff,inset 0 -8px 14px rgba(10,120,120,.28)}
+.grill2{background:repeating-linear-gradient(0deg,rgba(8,110,110,.7) 0 6px,transparent 6px 15px);box-shadow:inset 0 0 0 3px rgba(255,255,255,.8)}
+.side2 .brand{color:#0b4a4a}
+.scn2::after{left:-12%;right:auto;top:-30%;width:55%;height:170%;border-radius:0;transform:rotate(16deg);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.09) 50%,rgba(255,255,255,0))}
+@media(max-width:700px){.tv2 .stk3{display:none}}
 @media(max-width:960px){
   .bento{grid-template-columns:1fr 1fr}.A{grid-column:span 2;grid-row:auto;min-height:480px}.F{grid-column:span 2}.G{grid-column:span 2}.G .xp .bd{grid-template-columns:1fr}
   .ab-g,.mg{grid-template-columns:1fr}.polas{height:400px;max-width:360px;margin:0 auto}
@@ -734,7 +784,7 @@ button.burst:hover .sbx{transform:translate(-50%,-50%) rotate(-12deg) scale(1.06
 <header id="top" data-name="home">
   <span class="orb" style="width:210px;height:210px;left:-80px;top:260px"></span><span class="orb" style="width:120px;height:120px;right:-30px;top:150px"></span><span class="orb" style="width:80px;height:80px;left:6%;bottom:40px"></span>
   <div class="wrap">
-    <div class="banner"><i class="bk b1"></i><i class="bk b2"></i><i class="bk b3"></i><div class="t"><svg class="st5" viewBox="0 0 40 40"><defs><linearGradient id="gst" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6a8"/><stop offset=".5" stop-color="#ffd23a"/><stop offset="1" stop-color="#ff9a1f"/></linearGradient></defs><path d="M20 3l5.2 10.9 12 1.6-8.8 8.3 2.2 11.9L20 29.9l-10.6 5.8 2.2-11.9-8.8-8.3 12-1.6z" fill="url(#gst)" stroke="#1b1030" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 8l3 6.4" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".9"/></svg><span>Welcome to your portal to my portfolio</span><svg class="st5" viewBox="0 0 40 40"><defs><linearGradient id="gst2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6a8"/><stop offset=".5" stop-color="#ffd23a"/><stop offset="1" stop-color="#ff9a1f"/></linearGradient></defs><path d="M20 3l5.2 10.9 12 1.6-8.8 8.3 2.2 11.9L20 29.9l-10.6 5.8 2.2-11.9-8.8-8.3 12-1.6z" fill="url(#gst2)" stroke="#1b1030" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 8l3 6.4" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".9"/></svg></div></div>
+    <div class="banner"><i class="bk b1"></i><i class="bk b2"></i><i class="bk b3"></i><div class="t"><svg class="st5" viewBox="0 0 40 40"><defs><linearGradient id="gst" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffbb0"/><stop offset=".5" stop-color="#ffdc00"/><stop offset="1" stop-color="#ff9500"/></linearGradient></defs><path d="M20 3l5.2 10.9 12 1.6-8.8 8.3 2.2 11.9L20 29.9l-10.6 5.8 2.2-11.9-8.8-8.3 12-1.6z" fill="url(#gst)" stroke="#1b1030" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 8l3 6.4" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".9"/></svg><span>Welcome to your portal to my portfolio</span><svg class="st5" viewBox="0 0 40 40"><defs><linearGradient id="gst2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffbb0"/><stop offset=".5" stop-color="#ffdc00"/><stop offset="1" stop-color="#ff9500"/></linearGradient></defs><path d="M20 3l5.2 10.9 12 1.6-8.8 8.3 2.2 11.9L20 29.9l-10.6 5.8 2.2-11.9-8.8-8.3 12-1.6z" fill="url(#gst2)" stroke="#1b1030" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 8l3 6.4" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".9"/></svg></div></div>
     <div class="tray">
       <div class="bento">
         <div class="card A reveal">
@@ -742,9 +792,9 @@ button.burst:hover .sbx{transform:translate(-50%,-50%) rotate(-12deg) scale(1.06
           <svg class="cursors" viewBox="0 0 70 40"><use href="#cur" x="0" y="0" width="26" height="28"/><use href="#cur" x="14" y="4" width="26" height="28"/><use href="#cur" x="28" y="8" width="26" height="28"/></svg>
           <img id="av" src="/assets/img/avatar-px.png" alt="Pixel avatar of Lan Anh">
         </div>
-        <div class="card B reveal"><div class="wm chr">Lan Anh<br>Do</div><div class="sm">✦ PORTFOLIO 2026 ✦</div></div>
-        <div class="card C reveal"><div class="i">i</div><p class="ct"><b>Hi, I'm Lan Anh,</b> a Computer Engineering + Economics student at UF (class of 2027) who loves where <b>technology, systems &amp; people</b> collide. The best technology in the world is useless if nobody uses it and nobody understands why it matters.</p><div class="tgs"><span>📍 Gainesville, FL</span><span>🎓 UF '27</span><span>🐊 Go Gators</span></div><div class="stt"><i></i>status: open to internships &amp; new grad opportunities</div></div>
-        <div class="card D reveal"><div class="xp"><div class="tt"><span class="ti">2027</span><span class="bs"><i>×</i></span></div><div class="bd"><button class="burst" type="button" data-go="fm" aria-label="Hire me: jump to the contact form"><svg class="sbx" viewBox="0 0 100 100"><polygon points="98.0,50.0 85.1,58.0 93.2,70.8 78.1,72.4 79.9,87.5 65.6,82.4 60.7,96.8 50.0,86.0 39.3,96.8 34.4,82.4 20.1,87.5 21.9,72.4 6.8,70.8 14.9,58.0 2.0,50.0 14.9,42.0 6.8,29.2 21.9,27.6 20.1,12.5 34.4,17.6 39.3,3.2 50.0,14.0 60.7,3.2 65.6,17.6 79.9,12.5 78.1,27.6 93.2,29.2 85.1,42.0" fill="#ffe14a" stroke="#1b1030" stroke-width="2.2" stroke-linejoin="round" transform="translate(2 3)" opacity=".35"/><polygon points="98.0,50.0 85.1,58.0 93.2,70.8 78.1,72.4 79.9,87.5 65.6,82.4 60.7,96.8 50.0,86.0 39.3,96.8 34.4,82.4 20.1,87.5 21.9,72.4 6.8,70.8 14.9,58.0 2.0,50.0 14.9,42.0 6.8,29.2 21.9,27.6 20.1,12.5 34.4,17.6 39.3,3.2 50.0,14.0 60.7,3.2 65.6,17.6 79.9,12.5 78.1,27.6 93.2,29.2 85.1,42.0" fill="#ffe14a" stroke="#1b1030" stroke-width="2.2" stroke-linejoin="round"/><polygon points="98.0,50.0 85.1,58.0 93.2,70.8 78.1,72.4 79.9,87.5 65.6,82.4 60.7,96.8 50.0,86.0 39.3,96.8 34.4,82.4 20.1,87.5 21.9,72.4 6.8,70.8 14.9,58.0 2.0,50.0 14.9,42.0 6.8,29.2 21.9,27.6 20.1,12.5 34.4,17.6 39.3,3.2 50.0,14.0 60.7,3.2 65.6,17.6 79.9,12.5 78.1,27.6 93.2,29.2 85.1,42.0" fill="none" stroke="#fff" stroke-width="1.4" transform="translate(50 50) scale(.86) translate(-50 -50)" stroke-dasharray="2 3"/></svg><b class="chr">HIRE<br>ME?</b><em>(pls &amp; thx)</em><svg class="sx x1" viewBox="0 0 32 32" fill="#fff" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg><svg class="sx x2" viewBox="0 0 32 32" fill="#ff8fd2" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg><svg class="sx x3" viewBox="0 0 32 32" fill="#b6ff5c" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg></button><div class="cap">Class of 2027 · CpE + Econ @ UF</div></div></div></div>
+        <div class="card B reveal"><span class="yr">2026</span><div class="pill"><span class="chr">Lan Anh Do</span></div><div class="sm">✦ PORTFOLIO ✦ CPE + ECON ✦</div><svg class="cur2" viewBox="0 0 26 28"><use href="#cur"/></svg><svg class="sx x1" viewBox="0 0 32 32" fill="#fff" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg><svg class="sx x2" viewBox="0 0 32 32" fill="#b6ff5c" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg></div>
+        <div class="card C reveal"><div class="hi"><span>👋 hi, i'm lan anh</span><i>CpE + Econ · UF '27</i></div><p class="big3"><em class="q">“</em>The best technology in the world is <mark class="m1">useless</mark> if nobody <mark class="m2">uses it</mark> and nobody understands <mark class="m2">why it matters.</mark></p><p class="sub3">I love where <b>technology, systems &amp; people</b> collide.</p><div class="tgs"><span>📍 Gainesville, FL</span><span>🎓 UF '27</span><span>🐊 Go Gators</span></div><div class="stt"><i></i>status: open to internships &amp; new grad opportunities</div></div>
+        <div class="card D reveal"><div class="xp"><div class="tt"><span class="ti">2027</span><span class="bs"><i>×</i></span></div><div class="bd"><button class="burst" type="button" data-go="fm" aria-label="Hire me: jump to the contact form"><svg class="sbx" viewBox="0 0 100 100"><polygon points="98.0,50.0 85.1,58.0 93.2,70.8 78.1,72.4 79.9,87.5 65.6,82.4 60.7,96.8 50.0,86.0 39.3,96.8 34.4,82.4 20.1,87.5 21.9,72.4 6.8,70.8 14.9,58.0 2.0,50.0 14.9,42.0 6.8,29.2 21.9,27.6 20.1,12.5 34.4,17.6 39.3,3.2 50.0,14.0 60.7,3.2 65.6,17.6 79.9,12.5 78.1,27.6 93.2,29.2 85.1,42.0" fill="#ffe14a" stroke="#1b1030" stroke-width="2.2" stroke-linejoin="round" transform="translate(2 3)" opacity=".35"/><polygon points="98.0,50.0 85.1,58.0 93.2,70.8 78.1,72.4 79.9,87.5 65.6,82.4 60.7,96.8 50.0,86.0 39.3,96.8 34.4,82.4 20.1,87.5 21.9,72.4 6.8,70.8 14.9,58.0 2.0,50.0 14.9,42.0 6.8,29.2 21.9,27.6 20.1,12.5 34.4,17.6 39.3,3.2 50.0,14.0 60.7,3.2 65.6,17.6 79.9,12.5 78.1,27.6 93.2,29.2 85.1,42.0" fill="#ffe14a" stroke="#1b1030" stroke-width="2.2" stroke-linejoin="round"/><polygon points="98.0,50.0 85.1,58.0 93.2,70.8 78.1,72.4 79.9,87.5 65.6,82.4 60.7,96.8 50.0,86.0 39.3,96.8 34.4,82.4 20.1,87.5 21.9,72.4 6.8,70.8 14.9,58.0 2.0,50.0 14.9,42.0 6.8,29.2 21.9,27.6 20.1,12.5 34.4,17.6 39.3,3.2 50.0,14.0 60.7,3.2 65.6,17.6 79.9,12.5 78.1,27.6 93.2,29.2 85.1,42.0" fill="none" stroke="#fff" stroke-width="1.4" transform="translate(50 50) scale(.86) translate(-50 -50)" stroke-dasharray="2 3"/></svg><b class="chr">HIRE<br>ME?</b><em>(pls &amp; thx)</em><svg class="sx x1" viewBox="0 0 32 32" fill="#fff" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg><svg class="sx x2" viewBox="0 0 32 32" fill="#ff8fd2" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg><svg class="sx x3" viewBox="0 0 32 32" fill="#b6ff5c" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg></button><div class="cap">Super cool to work with, trust me ✦</div></div></div></div>
       </div>
     </div>
     <div id="mq" aria-hidden="true"><div class="tr" id="tick"></div></div>
@@ -756,7 +806,7 @@ button.burst:hover .sbx{transform:translate(-50%,-50%) rotate(-12deg) scale(1.06
   <div class="wrap">
     <h2 class="hd"><span class="px">About</span><span class="sc">me</span></h2>
     <div class="ab-g">
-      <div class="avcard reveal"><div class="frm"><div class="in2"><div class="hdr"><b>LAN ANH</b><span>LV.20</span></div><svg class="cl c1" viewBox="0 0 60 24"><path d="M6 22a8 8 0 0 1 4-14 11 11 0 0 1 21-3 9 9 0 0 1 17 6 7 7 0 0 1 6 11z" fill="#fff"/></svg><svg class="cl c2" viewBox="0 0 60 24"><path d="M6 22a8 8 0 0 1 4-14 11 11 0 0 1 21-3 9 9 0 0 1 17 6 7 7 0 0 1 6 11z" fill="#fff"/></svg><svg class="st s1" viewBox="0 0 32 32" fill="#ffe14a" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg><svg class="st s2" viewBox="0 0 32 32" fill="#ff8fd2" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg><img src="/assets/img/avatar-px.png" alt="Pixel avatar of Lan Anh"><div class="gr"></div></div></div><p class="cap2">Lan Anh Do<small>Gainesville, FL · class of 2027</small></p><div class="bars"><span><i style="--w:94%;--c:#ff8fd2"></i>HP <em>3.94</em></span><span><i style="--w:100%;--c:#b6ff5c"></i>XP <em>∞</em></span></div><svg class="spark" style="right:-18px;top:-22px;width:54px;fill:url(#cg);stroke:#1b1030;stroke-width:.7"><use href="#sp"/></svg></div>
+      <div class="avcard reveal"><div class="frm"><div class="in2"><div class="hdr"><b>LAN ANH</b><span>LV.21</span></div><svg class="cl c1" viewBox="0 0 60 24"><path d="M6 22a8 8 0 0 1 4-14 11 11 0 0 1 21-3 9 9 0 0 1 17 6 7 7 0 0 1 6 11z" fill="#fff"/></svg><svg class="cl c2" viewBox="0 0 60 24"><path d="M6 22a8 8 0 0 1 4-14 11 11 0 0 1 21-3 9 9 0 0 1 17 6 7 7 0 0 1 6 11z" fill="#fff"/></svg><svg class="st s1" viewBox="0 0 32 32" fill="#ffe14a" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg><svg class="st s2" viewBox="0 0 32 32" fill="#ff8fd2" stroke="#1b1030" stroke-width="1.2"><use href="#sp"/></svg><img src="/assets/img/avatar-px.png" alt="Pixel avatar of Lan Anh"><div class="gr"></div></div></div><p class="cap2">Lan Anh Do<small>Gainesville, FL · class of 2027</small></p><div class="bars"><span><i style="--w:94%;--c:#ff8fd2"></i>HP <em>3.94</em></span><span><i style="--w:100%;--c:#b6ff5c"></i>XP <em>∞</em></span></div><svg class="spark" style="right:-18px;top:-22px;width:54px;fill:url(#cg);stroke:#1b1030;stroke-width:.7"><use href="#sp"/></svg></div>
       <div>
         <div class="xp readme reveal"><div class="tt"><span class="ti">readme.txt — Notepad</span><span class="bs"><i>_</i><i>□</i><i>×</i></span></div><div class="bd" id="abt"></div></div>
         <div class="stu reveal" id="stu"></div>
@@ -817,7 +867,7 @@ button.burst:hover .sbx{transform:translate(-50%,-50%) rotate(-12deg) scale(1.06
   </div>
 </section>
 
-<footer><div class="wrap"><div class="chr">Thanks 4 visiting</div><p>made with 💖 by lan anh · ilysm ♥</p><a class="btn pk" href="#top">▲ Back to the portal</a></div></footer>
+<footer><div class="wrap"><div class="chr">Thanks 4 visiting</div><p>made by lan anh · ilysm ♥</p><a class="btn pk" href="#top">▲ Back to the portal</a></div></footer>
 
 <div id="smenu" aria-hidden="true">
   <div class="sh"><span class="av"><img src="/assets/img/avatar-px.png" alt=""></span><div><b>Lan Anh Do</b><small>CompE + Econ · UF '27</small></div></div>
@@ -1005,6 +1055,7 @@ PUT.forEach(([sel,html,st]) => { const d = document.createElement('div'); d.clas
 const charm = (c) => `<svg viewBox="0 0 44 120"><path d="M30 0 Q8 20 22 44 Q36 66 22 86" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>${[[18,18],[12,32],[16,48],[24,62],[22,76]].map(([x,y],i) => `<circle cx="${x}" cy="${y}" r="5" fill="${['#ff4fb4','#ffe14a','#7ec8ff','#b6ff5c','#c3a6ff'][(i+c)%5]}" stroke="#1b1030" stroke-width="2"/>`).join('')}<path d="M22 86 l5 7 -5 7 -5 -7z" fill="#ff4fb4" stroke="#1b1030" stroke-width="2.5" stroke-linejoin="round"/><circle cx="22" cy="108" r="8" fill="#ffe14a" stroke="#1b1030" stroke-width="2.5"/><circle cx="19" cy="106" r="1.5" fill="#1b1030"/><circle cx="25" cy="106" r="1.5" fill="#1b1030"/><path d="M18 111 q4 4 8 0" stroke="#1b1030" stroke-width="1.6" fill="none"/></svg>`;
 const flutter = () => `<svg viewBox="0 0 64 48"><g stroke="#1b1030" stroke-width="2.4" stroke-linejoin="round"><path d="M31 24C19 3 1 4 3 18c1 8 12 10 28 6z" fill="#ff9ccf"/><path d="M31 26C21 40 7 46 9 34c1-6 10-8 22-8z" fill="#c9a8ff"/><path d="M33 24C45 3 63 4 61 18c-1 8-12 10-28 6z" fill="#ff9ccf"/><path d="M33 26C43 40 57 46 55 34c-1-6-10-8-22-8z" fill="#c9a8ff"/></g><rect x="30" y="14" width="4" height="24" rx="2" fill="#1b1030"/></svg>`;
 const put3 = (el,html,st) => { const d = document.createElement('div'); d.className = 'stk3'; d.style.cssText = st; d.innerHTML = html; el.appendChild(d); };
+$$('.tv2').forEach((t,i) => { put3(t,pixHeart(),i?'left:-18px;top:34px;width:52px;rotate:-12deg':'right:-18px;top:34px;width:52px;rotate:12deg'); put3(t,star5(),i?'right:-14px;bottom:70px;width:42px;rotate:14deg':'left:-14px;bottom:70px;width:42px;rotate:-14deg'); });
 $$('.cam2').forEach((c,i) => { put3(c,smile(),'right:-22px;bottom:-14px;width:50px;rotate:12deg'); put3(c,star5(),'left:30%;bottom:-16px;width:40px;rotate:-14deg'); put3(c,pixHeart(),'right:18%;top:-22px;width:38px;rotate:8deg'); put3(c,charm(i),'left:-34px;top:36%;width:40px'); });
 const CHR = `<svg viewBox="0 0 24 24" style="fill:url(#cg);stroke:${O};stroke-width:.7"><use href="#sp"/></svg>`;
 [['#top','left:46%;top:84px;width:44px',0],['#about','left:30%;bottom:60px;width:52px',1],['#skills','left:44%;top:50px;width:46px',1],['#exp','left:40%;bottom:50px;width:50px',0],['#proj','right:30%;bottom:60px;width:56px',1],['#lead','left:44%;top:60px;width:50px',1]].forEach(([sel,st,tw]) => { const d = document.createElement('div'); d.className = 'spark'+(tw?' tw':''); d.style.cssText = st+';position:absolute'; d.innerHTML = CHR; $(sel).appendChild(d); });
