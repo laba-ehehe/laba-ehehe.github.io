@@ -1121,8 +1121,7 @@ $('#tvs').innerHTML = D.leadership.map((x,i) => { const M = LM[i]; return `<div 
   <section class="chan on" aria-label="${esc(x.org)}"><div class="osd"><span>CH ${String(i+3).padStart(2,'0')}</span><span>${esc(x.dates)}</span><span>● LIVE</span></div>
     <div class="g2"><div class="h2c"><div><b class="m">${esc(M.hero[0])}</b><div class="ml">${esc(M.hero[1])}</div></div><div class="mm">${M.m.map(([n,l]) => `<div><b>${esc(n)}</b><span>${esc(l)}</span></div>`).join('')}</div></div>
     <div class="b2c"><h3>${esc(x.org)}</h3><div class="rl">${esc(x.role)}</div><ul>${x.bullets.map(b => `<li>${emph(fmt(b))}</li>`).join('')}</ul></div></div></section></div><div class="bars2"></div></div></div>
-  <div class="ctrl"><span class="bd2">✦ XP·VISION ✦</span><span class="lcd3"><b>CH ${String(i+3).padStart(2,'0')}</b>${esc(shortOrg(x.org))}</span><span class="dots3"></span><span class="led"></span><span class="pwr"></span></div></div>
-  <i class="ft f1"></i><i class="ft f2"></i></div>`; }).join('');
+  <div class="ctrl"><span class="bd2">✦ XP·VISION ✦</span><span class="lcd3"><b>CH ${String(i+3).padStart(2,'0')}</b>${esc(shortOrg(x.org))}</span><span class="dots3"></span><span class="led"></span><span class="pwr"></span></div><i class="ft f1"></i><i class="ft f2"></i></div></div>`; }).join('');
 
 /* ---------- contact icons ---------- */
 const IC = {
