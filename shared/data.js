@@ -23,7 +23,7 @@ window.PORTFOLIO = {
       ["class of", "May 2027"],
       ["based in", "Gainesville, FL"]
     ],
-    tagline: "professional tech yapper :D",
+    tagline: "professional yapper :D",
     about: [
       "Hi, I'm Lan Anh, a Computer Engineering + Economics student at UF (class of 2027) who loves where technology, systems & people collide. I believe the best technology in the world is useless if nobody uses it and nobody understands why it matters.",
       "When I'm not coding, you'll find me leading product workshops at UF Product Space, organizing inclusive hackathons at UF WiNGHacks, or helping students through data structures, digital logic and C++ as a teaching assistant.",
