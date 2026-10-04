@@ -1020,7 +1020,7 @@ $('#abt').innerHTML = `<p class="rd-hi">hi hi!! i'm lan anh ✦ <mark>profession
 $('#stu').innerHTML = `<div class="ph"><img src="/assets/img/avatar-px.png" alt=""></div><div><small>STUDENT ID · 2027</small><h4>${esc(E.school)}</h4><ul><li>${esc(E.dates)}</li>${E.degrees.map(d => `<li>${fmt(d)}</li>`).join('')}</ul><div class="cert">${E.certificates.map(c => `<span>${esc(c)}</span>`).join('')}</div></div>`;
 
 /* ---------- skills explorer ---------- */
-const EXT = { Python:'py','C++':'cpp',Java:'java',JavaScript:'js',TypeScript:'ts',Swift:'swift',SQL:'sql',R:'r',MATLAB:'m',SystemVerilog:'sv',Assembly:'asm','HTML/CSS':'css' };
+const EXT = { Python:'py','C++':'cpp',Java:'java',JavaScript:'js',TypeScript:'ts',Swift:'swift',SQL:'sql',R:'r',MATLAB:'m',SystemVerilog:'sv',Assembly:'asm',HTML:'html',CSS:'css' };
 const GC = ['#ff7ac8','#7ec8ff','#b6ff5c','#ffe14a'], GE = ['dll','pkg','exe','ai'];
 function showGroup(gi){
   const g = D.skills[gi];

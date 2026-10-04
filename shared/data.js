@@ -46,7 +46,7 @@ window.PORTFOLIO = {
   },
 
   skills: [
-    { name: "Languages", items: ["Python", "C++", "Java", "JavaScript", "TypeScript", "Swift", "SQL", "R", "MATLAB", "SystemVerilog", "Assembly", "HTML/CSS"] },
+    { name: "Languages", items: ["Python", "C++", "Java", "JavaScript", "TypeScript", "Swift", "SQL", "R", "MATLAB", "SystemVerilog", "Assembly", "HTML", "CSS"] },
     { name: "Frameworks", items: ["FastAPI", "Flask", "Spring", "React", "React Native", "Next.js", "Express.js", "Node.js", "Bootstrap", "SwiftUI"] },
     { name: "Developer Tools", items: ["Git", "Docker", "Kubernetes", "Kafka", "MySQL", "AWS", "GCP", "Azure", "MongoDB", "Jenkins", "Bazel", "Jira", "Figma", "Tiger Data", "DigitalOcean"] },
     { name: "AI / ML", items: ["Model Context Protocol (MCP)", "OpenCV", "PyTorch", "TensorFlow", "Scikit-learn", "NumPy", "pandas", "Claude Code"] }
